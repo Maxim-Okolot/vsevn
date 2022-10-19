@@ -1,4 +1,18 @@
-@import "fonts.css";
+@font-face {
+    font-family: 'ZabraProTest3-Regular';
+    src: url(../fonts/ZabraProTest3-Regular.ttf);
+    font-display: swap;
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'ZabraProTest3-Medium';
+    src: url(../fonts/ZabraProTest3-Medium.ttf);
+    font-display: swap;
+    font-style: normal;
+    font-weight: 500;
+}
 
 /* style general
 -----------------*/
@@ -13,8 +27,8 @@
 body {
     color: #fff;
     line-height: 1.5;
-    background: url("../img/bg.png") repeat;
-    font: normal 14px "Geometria", "Arial", sans-serif;
+    background: #fbf7da;
+    font: normal 14px "ZabraProTest3-Regular", "Arial", sans-serif;
 }
 
 a {
@@ -48,7 +62,8 @@ mark {
 
 :root {
     --content-size: calc(50% - 725px);
-    --normal: .4s ease;
+    --normal: .3s ease;
+    --red:  #ff0000;
 }
 
 .bg-img {
@@ -68,13 +83,6 @@ mark {
     background-color: #ffdd00;
 }
 
-.header-top, .header-bottom {
-    padding: 0 var(--content-size);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .header-top {
     height: 60px;
     border-bottom: 1px solid #ffe53b;
@@ -84,225 +92,33 @@ mark {
     height: 55px;
 }
 
-.menu {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.menu__item {
-    margin-left: 55px;
-}
-
-.menu__item:first-child {
-    margin: 0;
-}
-
-.menu__link {
-    color: #2c2c2c;
-    transition: var(--normal);
-    font-size: 18px;
-}
-
-.header-wrap {
-    display: inline-flex;
-}
-
-.header-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.header-top .header-button {
-    margin-right: 50px;
-}
-
-.header-button:last-child {
-    margin: 0;
-}
-
-.header-button svg {
-    transition: var(--normal);
-    margin-right: 10px;
-}
-
-.header-button span {
-    font-size: 16px;
-    color: #2c2c2c;
-}
-
 /* style main
 -----------------*/
 .content {
-    padding: 25px var(--content-size);
-}
-
-.content-wrap {
     width: 100%;
-    padding: 40px 35px;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50px;
-    display: grid;
-    grid-template-columns: 130px 1fr;
-}
-
-/*style left sidebar*/
-.left-sidebar {
-    width: 100%;
-    background-color: rgb(73,58,0);
-    padding: 18px 15px 64px;
-    border-radius: 25px 0 0 25px;
-}
-
-.button-logo {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto;
-}
-
-.button-resize, .button-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #6e5900;
-    border-radius: 50%;
-}
-
-.button-resize {
-    width: 35px;
-    height: 35px;
-    margin: 30px auto 0;
-}
-
-.left-menu {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 55px;
-}
-
-.left-menu li {
-    margin-bottom: 35px;
-}
-
-.left-menu li:last-child {
-    margin-bottom: 0;
-}
-
-/*style content sidebar*/
-.content-sidebar {
-    width: 100%;
-    background-color: #fffef4;
-    padding: 0 0 64px;
+    padding: 30px var(--content-size) 65px;
     border-radius: 0 25px 25px 0;
     overflow: hidden;
 }
 
-.content-header {
-    height: 70px;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffde00;
-    padding: 0 30px 0 25px;
-    display: grid;
-    grid-template-columns: repeat(2, max-content) 1fr repeat(3, max-content);
-    grid-column-gap: 35px;
-}
-
-.user-current-img {
-    width: 58px;
-    height: 58px;
-    border: 2px solid #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin: 0 10px;
-}
-
-.user-current-img, .user-current {
-    display: flex;
-    align-items: center;
-}
-
-.user-current {
-    justify-content: flex-end;
-    cursor: pointer;
-}
-
-.user-current-img-wrap {
-    overflow: hidden;
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.user-current__name {
-    color: #fff;
-    font: 300 12px sans-serif;
-}
-
-.form-search  {
-    width: 100%;
-    background-color: #f7ce00;
-    height: 40px;
-    border-radius: 20px;
-    padding: 0 40px 0 25px;
-    position: relative;
-}
-
-.form-search__input {
-    background-color: transparent;
-    width: 100%;
-    font: 300 18px sans-serif;
-    color: #000;
-    height: 100%;
-}
-
-.form-search__input::placeholder {
-    color: #373109;
-}
-
-.form-search__submit {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-}
-
-.form-search__submit svg {
-    fill: #fff;
-}
-
 .content-wrapper {
     width: 100%;
-    padding: 50px 30px 0 50px;
-}
-
-.content-wrapper.banner-col {
-    display: grid;
-    grid-template-columns: 1fr 290px;
-    grid-column-gap: 50px;
-}
-
-.content-wrapper * {
-    color: #000;
+    background: #fffef4;
+    padding: 50px 30px 50px 25px;
 }
 
 .title-h2 {
-    font: 500 30px sans-serif;
-    color: #665800;
-    margin-bottom: 5px;
+    padding-left: 25px;
+    font: 600 33px "ZabraProTest3-Medium", sans-serif;
+    color: #534a10;
+}
+
+.content-text {
+    margin-bottom: 25px;
 }
 
 .content-text, .content-text > a {
-    font: 300 16px sans-serif;
+    font: 300 21px sans-serif;
     color: #665800;
 }
 
@@ -310,12 +126,12 @@ mark {
     color: #edb607;
     padding-bottom: 3px;
     border-bottom: 1px dotted #edb607;
+    transition: var(--normal);
 }
 
-.wallet-info {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    margin-top: 50px;
+.content-text > a:hover {
+    color: #dba905;
+    border-color: #dba905;
 }
 
 .wallet-info > div {
@@ -330,15 +146,61 @@ mark {
     margin: 0;
 }
 
-.wallet-info > div svg {
+.wallet-info svg {
     width: 24px;
     height: 24px;
     fill: #665800;
     margin-right: 15px;
 }
 
-.wallet-info__row {
-    grid-column: 1/3;
+.wallet-info-box svg {
+    fill: var(--red);
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+}
+
+.wallet-info-box__value {
+    color: var(--red);
+}
+
+.wallet-info-box {
+    font-size: 21px;
+    margin-right: 60px;
+    flex-wrap: wrap;
+}
+
+.wallet-info__link {
+    border-bottom: 1px dotted var(--red);
+    color: var(--red);
+    font-size: 18px;
+    transition: var(--normal);
+}
+
+.wallet-info__link:hover {
+    color: rgb(158, 3, 3);
+}
+
+.wallet-info-text, .wallet-info-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.wallet-info-text p {
+    font-size: 21px;
+    color: #2c2c2c;
+}
+
+.wallet-info-text a {
+    color: #8cae59;
+    border-bottom: 1px dotted #8cae59;
+}
+
+.content__title {
+    font-size: 23px;
+    color: #534a10;
+    margin-bottom: 25px;
 }
 
 /*style breadcrumbs start*/
@@ -347,12 +209,13 @@ mark {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 30px;
+    margin: 12px 0 30px;
+    padding-left: 25px;
 }
 
 .breadcrumbs__link {
-    font: 300 14px sans-serif;
-    color: #665800;
+    font: 300 23px sans-serif;
+    color: #534a10;
     transition: var(--normal);
 }
 /*style breadcrumbs end*/
@@ -378,9 +241,11 @@ mark {
     overflow: hidden;
     cursor: pointer;
     border: 2px solid #e4ddb4;
-    box-shadow: 0 3px 15px 15px #fffad0;
 }
 
+.panel-nav__item.current {
+    box-shadow: 0 3px 15px 15px #fffad0;
+}
 
 .panel-nav__item:last-child {
     margin-bottom: 0;
@@ -414,8 +279,9 @@ mark {
 }
 
 .panel-nav__title {
-    font: 600 14px sans-serif;
+    font: 600 21px sans-serif;
     margin-bottom: 10px;
+    line-height: 32px;
 }
 
 .panel-nav__title, .panel-nav__text {
@@ -429,8 +295,9 @@ mark {
 }
 
 .panel-nav__text {
-    font: 300 12px sans-serif;
+    font: 300 18px sans-serif;
     color: #665800;
+    line-height: 24px;
 }
 
 .panel-nav__item:nth-child(1) .panel-nav__title {
@@ -461,17 +328,14 @@ mark {
 
 /*style deposit start*/
 .deposit {
-    width: calc(100% - 80px);
-    margin: 20px 30px 0 50px;
-    background-color: #fff;
+    width: 100%;
+    margin: 20px 0 0;
+    background: #fff;
     padding: 15px;
+    box-shadow: 0 0 10px rgba(17, 33, 60, 0.2);
 }
 
-.deposit * {
-    color: #000;
-}
-
-.deposit-info {
+.deposit-form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -483,4 +347,162 @@ mark {
     color: #665800;
     margin-bottom: 15px;
 }
+
+.wallet_input {
+    width: 205px;
+    height: 50px;
+    padding: 3px 5px 3px 10px;
+    border: 1px solid #e4ddb4;
+    margin-right: 15px;
+    outline: none;
+    font: 500 23px sans-serif;
+    color: #534a10;
+}
+
+.deposit-form__input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.deposit-form__input-text {
+    font-size: 23px;
+    color: #534a10;
+}
+
+.btn-radio__desc {
+    color: #665800;
+    margin-left: 20px;
+    font-size: 21px;
+}
+
+.enter-link-wrap {
+    border: 1px solid #e4ddb4;
+    padding: 17px 18px;
+    padding-top: 6px;
+    margin-top: 10px;
+}
+
+.enter-link {
+    color: #ff0000;
+    border-bottom: 1px solid #ff0000;
+    transition: var(--normal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+.enter-link:hover {
+    color: rgb(158, 3, 3);
+    border-color: rgb(158, 3, 3);
+}
+
+.btn-radio {
+    margin-bottom: 20px;
+}
+
+.deposit-form__button {
+    font-size: 21px;
+    color: #fff;
+    padding: 10px 27px 15px;
+    background: #ffdd00;
+    border-radius: 5px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    transition: 0.5s;
+}
+
+.deposit-form__button:disabled, .deposit-form__button:disabled:hover {
+    background: #ffec6c;
+    cursor: auto;
+}
+
+.deposit-form__button:hover {
+    background-color: #ff3a00;
+}
+
+.wallet-radio-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 30px;
+    transition: var(--normal);
+}
+
+.hide {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -10;
+}
+
+.wallet-radio-bottom__title {
+    color: #665800;
+    margin-bottom: 20px;
+    font: bold 18px sans-serif;
+}
+
+.btn-radio__desc svg {
+    width: 24px;
+    height: 24px;
+}
+
 /*style deposit end*/
+
+/*style cookie start*/
+.cookie {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+    background-color: rgba(44, 44, 44, 0.8);
+    color: #fff;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+}
+
+.cookie__wrapper {
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    padding: 15px;
+    max-width: 1450px;
+    width: 100%;
+}
+
+.cookie__wrapper p {
+    color: #fff;
+}
+
+.cookie__button {
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #8bc72a;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    transition: .2s;
+}
+
+.cookie__link {
+    color: #8bc72a;
+    text-decoration: underline;
+    transition: .2s;
+    white-space: nowrap;
+}
+
+.cookie__link:hover {
+    color: var(--red);
+}
+
+/*style cookie end*/

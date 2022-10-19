@@ -798,21 +798,6 @@
     user-select: none;
 }
 
-.btn-radio:not(:first-child) {
-    margin-left: 20px;
-}
-
-@media screen and (max-width: 480px) {
-    .btn-radio {
-        display: block;
-        float: none;
-    }
-    .btn-radio:not(:first-child) {
-        margin-left: 0;
-        margin-top: 15px;
-    }
-}
-
 .btn-radio svg {
     fill: none;
     vertical-align: middle;
@@ -1508,13 +1493,6 @@ table {
     background: #FFFFFF;
     padding: 15px 20px;
     box-shadow: 0 0 10px rgb(17 33 60 / 20%);
-}
-
-.wallet_input {
-    padding: 17px;
-    border: 1px solid #e4ddb4;
-    margin-right: 15px;
-    outline: none;
 }
 
 .wallet_input::-webkit-outer-spin-button,
@@ -2274,53 +2252,7 @@ table {
     fill: #ffffff !important;
 }
 
-.cookie {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 11;
-    background-color: rgba(44, 44, 44, 0.8);
-    color: #FFFFFF;
-    text-align: center;
-    display: block;
-    box-sizing: border-box;
-}
 
-.cookie__wrapper {
-    align-items: center;
-    display: flex;
-    margin: 0 auto;
-    padding: 15px;
-    max-width: 1450px;
-    width: 100%;
-}
-
-.cookie__wrapper p {
-    color: #FFFFFF;
-}
-
-.cookie__button {
-    margin: 0 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #8bc72a;
-    border: 0;
-    border-radius: 2px;
-    color: #fff;
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
-    transition: .2s;
-}
-
-.cookie__link {
-    color: #8bc72a;
-    text-decoration: underline;
-    transition: .2s;
-    white-space: nowrap;
-}
-
-.cookie__link:hover {
-    color: #ff0000;
-}
 
 .premium_star {
     fill: #3dbd14 !important;
