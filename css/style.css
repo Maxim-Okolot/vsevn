@@ -172,10 +172,34 @@ mark {
     color: var(--red);
 }
 
+.popup-message {
+    position: absolute;
+    color: #534a10;
+    width: max-content;
+    top: -35px;
+    left: 0;
+    background: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    opacity: 0;
+    z-index: -1;
+    border: 1px solid #e3dcb2;
+    transition: 0.5s;
+    visibility: hidden;
+}
+
+.wallet-info-box:hover .popup-message {
+    opacity: 1;
+    z-index: 100;
+    visibility: visible;
+}
+
 .wallet-info-box {
     font-size: 21px;
     margin-right: 60px;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .wallet-info__link {
@@ -218,7 +242,7 @@ mark {
     transition: .3s;
 }
 
-.giper_link:hover {
+.giper_link:hover, .open-new-window:hover {
     color: rgb(158, 3, 3);
 }
 
@@ -378,6 +402,7 @@ mark {
     font-size: 20px;
     color: var(--red);
     margin-left: 10px;
+    transition: var(--normal);
 }
 
 .wallet_input {
@@ -407,6 +432,16 @@ mark {
     color: #665800;
     margin-left: 20px;
     font-size: 21px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btn-radio, .btn-radio__desc mark {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .btn-radio__desc mark {
@@ -415,6 +450,10 @@ mark {
     font-size: 18px;
     position: relative;
     top: -4px;
+}
+
+.btn-radio__desc mark .icon-wallet-with-card-sticking-out {
+    margin-right: 10px;
 }
 
 .btn-radio__desc svg {
@@ -851,16 +890,16 @@ input:checked + .operation-sort__text {
     margin-right: 10px;
 }
 
-.tr div:last-child:not(.table-title div), [data-operation = "true"] {
-    color: #52a741;
+.tr div:last-child:not(.table-title div), div[data-status="true"] {
+    color: #52a741 !important;
 }
 
-div[data-price = "true"] {
-    color: rgb(91, 211, 210);
+div[data-price = "true"], div[data-operation = "true"], div[data-status='false'] {
+    color: rgb(51, 204, 204) !important;
 }
 
-div[data-price = "false"], [data-operation = "false"] {
-    color: rgb(252, 31, 31);
+div[data-price = "false"], div[data-operation = "false"] {
+    color: rgb(252, 31, 31) !important;
 }
 
 .history-pagination {
@@ -888,10 +927,6 @@ div[data-price = "false"], [data-operation = "false"] {
 
 .link-export span {
     margin-right: 10px;
-}
-
-.icon-export_upload_icon_176175:before {
-    content: "\e90c";
 }
 
 .page-next {
@@ -958,7 +993,7 @@ div[data-price = "false"], [data-operation = "false"] {
     grid-template-columns: 1fr 200px 200px 200px 110px;
 }
 
-.history-bonus__tr div, .history-bonus__title div {
+.history-bonus__tr div, .history-bonus__title div, .legal-operation__tr div, .legal-operation__title div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -966,20 +1001,33 @@ div[data-price = "false"], [data-operation = "false"] {
     height: 100%;
 }
 
-.history-bonus__title {
+.history-bonus__title, .legal-operation__title {
     border: 0.5px solid #d7d7cb;
     border-bottom: none;
 }
 
-.history-bonus__tr div {
+.legal-operation__title div, .history-bonus__title div {
+    font-weight: bold;
+}
+
+.history-bonus__tr div, .legal-operation__tr div {
     border: 0.5px solid #d7d7cb94;
+    color: #a39c7d;
 }
 
 .history-bonus__tr div:first-child, .history-bonus__title div:first-child {
     justify-content: flex-start;
 }
 
-
- .history-bonus__tr:nth-child(odd) {
+ .history-bonus__tr:nth-child(odd), .legal-operation__tr:nth-child(even) {
     background-color: #ecebe5;
+}
+
+ .legal-operation {
+     grid-column: 1/3;
+ }
+
+.legal-operation > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
