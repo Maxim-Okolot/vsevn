@@ -457,17 +457,6 @@
     z-index: 1;
 }
 
-.giper_link {
-    border-bottom: 1px dotted #ff0000;
-    color: #ff0000;
-    font-size: 18px;
-    transition: .3s;
-}
-
-.giper_link:hover {
-    color: rgb(158, 3, 3);
-}
-
 .contacts_link,
 .profit_link {
     color: #8cae59;

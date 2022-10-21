@@ -212,437 +212,218 @@
         </div>
         <button class="deposit-form__button hide">Продолжить</button>
       </form>
-
-      <div class="wallet__forms">
-        <form action="" class="payment__form wallet__forms-btns">
-          <h2 class="choose__payment-type">Выберите способ оплаты:</h2>
-          <div class="my__wallet">
-            <div class="radiobtn">
-              <input type="radio" class="radio custom-radio main__payment-radio" id="radio-1" name="group">
-              <label for="radio-1" class="label_radio"></label>
-              <p>Списать с Моего Кошелька</p>
-              <span class="icon-wallet-with-card-sticking-out my__wallet-icon"></span>
-              <span>0 ₽</span>
-            </div>
-          </div>
-          <div class="my__card">
-            <div class="radiobtn">
-              <input type="radio" class="radio custom-radio main__payment-radio" id="radio-2" name="group">
-              <label for="radio-2" class="label_radio"></label>
-              <p>Банковской картой</p>
-            </div>
-          </div>
-          <div class="yandex">
-            <div class="radiobtn">
-              <input type="radio" class="radio custom-radio main__payment-radio" id="radio-3" name="group">
-              <label for="radio-3" class="label_radio"></label>
-              <p>ЮMoney (Яндекс деньги)</p>
-            </div>
-          </div>
-          <div class="webmoney">
-            <div class="radiobtn">
-              <input type="radio" class="radio custom-radio main__payment-radio" id="radio-4" name="group">
-              <label for="radio-4" class="label_radio"></label>
-              <p>СберБанк Онлайн</p>
-            </div>
-          </div>
-          <div class="payment-block">
-            <div class="dissabled"></div>
-            <a href="#" class="payment__btn">Продолжить</a>
-          </div>
-        </form>
-        <form action="" class="payment__form wallet__forms-btns">
-          <div class="payment-block ">
-            <a href="#" class="payment__btn wallet__payment-btn">Выписать счет</a>
-          </div>
-          <div class="main__info-center wallet_info-center legal__bloc-center">
-            <div class="history__info">
-              <div class="left__info">
-                <h2 class="main__info-centerTitle history__info-title">
-                  <h2 class="main__info-centerTitle legal__bloc-title">Журнал счетов</h2>
-                </h2>
-              </div>
-              <div class="right__info">
-                <form action="">
-                  <div class="date_bedore">
-                    <label for="before">От</label>
-                    <input type="date" name="calendar" id="before">
-                  </div>
-                  <div class="date_after">
-                    <label for="after">До</label>
-                    <input type="date" name="calendar" id="after">
-                  </div>
-                </form>
-                <a href="#" class="payment__btn certify_btn">Применить</a>
-              </div>
-
-            </div>
-            <ul class="history__text">
-              <li>
-                <a href="#" class="history__text-link">Все операции 21</a>
-
-              </li>
-              <li>
-                <a href="#" class="history__text-link">Пополнения 21</a>
-              </li>
-              <li>
-                <a href="#" class="history__text-link">Платежи 21</a>
-              </li>
-              <li>
-                <a href="#" class="history__text-link">Возврат</a>
-              </li>
-            </ul>
-            <form action="" class="active_payment">
-              <div class="contact_resume wallet__form">
-                <label for="rdo-3" class="btn-radio">
-                  <input type="radio" id="rdo-3" name="radio-grp" class="wallet_btn">
-                  <svg width="27px" height="27px" viewbox="0 0 20 20">
-                    <circle cx="10" cy="10" r="9"></circle>
-                    <path
-                    d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z"
-                    class="inner"></path>
-                    <path
-                    d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z"
-                    class="outer"></path>
-                  </svg>
-                </label>
-                <div class="resume__about">
-                  <p class="wallet_radioType-desc">Только активные платежи</p>
-                </div>
-              </div>
-            </form>
-            <div class="legal__bloc">
-              <div class="legal__bloc-table">
-                <table>
-                  <tbody>
-                  <tr>
-                    <th class="bloc_date">Дата и время счета</th>
-                    <th class="bloc_account_number">Номер счета</th>
-                    <th class="bloc_sum">Сумма счета</th>
-                    <th>Статус</th>
-                  </tr>
-                  <tr>
-
-                    <td class="bloc_date"><span>06.03.2022</span>&nbsp;&nbsp;<span>09:05</span></td>
-                    <td class="bloc_account_number"><a href="#">№САЙТ000001932</a> </td>
-                    <td class="bloc_sum">500.00</td>
-                    <td class="bloc_status">Не оплачен</td>
-                  </tr>
-                  <tr>
-                    <td class="bloc_date"><span>06.03.2022</span><span>09:05</span></td>
-                    <td class="bloc_account_number"><a href="#">№САЙТ000001734</a></td>
-                    <td class="bloc_sum">1700.00</td>
-                    <td class="bloc_status">Оплачен</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!-- <a class="main__info-centerTitle history__info-title arrow_right">
-              Следующая страница
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="8px">
-                <path fill-rule="evenodd" fill="rgb(71, 61, 0)" d="M10.885,0.0 L10.217,0.649 L13.191,3.540 L0.0,3.540 L0.0,4.458 L13.191,4.458 L10.217,7.349 L10.885,7.999 L14.999,3.999 L10.885,0.0 Z"></path>
-              </svg>
-            </a> -->
-            <!-- <div class="pagination">
-              <div class="pagination__block">
-                <a href="#" class="page_number">1</a>
-                <a href="#" class="page_number">2</a>
-                <a href="#">Последняя</a>
-              </div>
-              <a href="#" class="payment__btn certify_btn download_btn"><img src="images/download.png" alt="Download">
-                Экспорт</a>
-            </div> -->
-
-          </div>
-
-        </form>
-      </div>
     </div>
-    <div class="main__info-center wallet_info-center">
-      <div class="history__info">
-        <div class="left__info">
-          <h2 class="main__info-centerTitle history__info-title">
-            История операций
-          </h2>
-        </div>
-        <div class="right__info">
-          <form action="">
-            <div class="date_bedore">
-              <label for="before">От</label>
-              <input type="date" name="calendar" id="before">
-            </div>
-            <div class="date_after">
-              <label for="after">До</label>
-              <input type="date" name="calendar" id="after">
-            </div>
-          </form>
-          <a href="#" class="payment__btn certify_btn">Применить</a>
-        </div>
 
-      </div>
-      <ul class="history__text">
-        <li>
-          <a href="#" class="history__text-link">Все операции 21</a>
-        </li>
-        <li>
-          <a href="#" class="history__text-link">Пополнения 21</a>
-        </li>
-        <li>
-          <a href="#" class="history__text-link">Платежи 21</a>
-        </li>
-        <li>
-          <a href="#" class="history__text-link">Возврат</a>
-        </li>
-      </ul>
-      <form action="" class="active_payment">
-        <div class="contact_resume wallet__form">
-          <label for="rdo-4" class="btn-radio">
-            <input type="radio" id="rdo-4" name="radio-grp" class="wallet_btn">
-            <svg width="27px" height="27px" viewbox="0 0 20 20">
-              <circle cx="10" cy="10" r="9"></circle>
-              <path
-              d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z"
-              class="inner"></path>
-              <path
-              d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z"
-              class="outer"></path>
-            </svg>
-          </label>
-          <div class="resume__about">
-            <p class="wallet_radioType-desc">Только активные платежи</p>
-          </div>
-        </div>
+    <div class="code-word">
+      <h3 class="code-word__title">Введите кодовое слово или сертификат</h3>
+      <form class="code-word-form">
+        <input type="text" placeholder="Кодовое слово или сертификат" name="code-word" class="code-word-form__input" title=""/>
+        <button type="submit" class="code-word-form__submit">Активировать</button>
       </form>
-      <div class="table__form">
-        <table>
-          <tbody>
-          <tr class="table__tr">
-            <th class="bloc_date">Дата</th>
-            <th class="bloc_account_number">Операция</th>
-            <th class="bloc_sum">Способ оплаты</th>
-            <th>Рубли</th>
-            <th>Статус</th>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Услуга ”Разовое размещение”</span>&nbsp;&nbsp;<a href="#">Для
-              объявления
-              №534534543</a></td>
-            <td class="credit__card">Банковская Карта</td>
-            <td class="table_price">-350</td>
-            <td class="table_status">Исполнено</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Услуга ”Разовое размещение”</span>&nbsp;&nbsp;<a href="#">Для
-              объявления
-              №534534543</a></td>
-            <td class="credit__card">Банковская Карта</td>
-            <td class="table_price">+350</td>
-            <td class="table_status">Исполнено</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Услуга ”Разовое размещение”</span>&nbsp;&nbsp;<a href="#">Для
-              объявления
-              №534534543</a></td>
-            <td class="credit__card">Банковская Карта</td>
-            <td class="table_price">-350</td>
-            <td class="table_status">Исполнено</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Услуга ”Разовое размещение”</span>&nbsp;&nbsp;<a href="#">Для
-              объявления
-              №534534543</a></td>
-            <td class="credit__card">Банковская Карта</td>
-            <td class="table_price">+350</td>
-            <td class="table_status">Исполнено</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Услуга ”Разовое размещение”</span>&nbsp;&nbsp;<a href="#">Для
-              объявления
-              №534534543</a></td>
-            <td class="credit__card">Банковская Карта</td>
-            <td class="table_price">-350</td>
-            <td class="table_status">Исполнено</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation">Пополнение Vsevn.ru Кошелька</td>
-            <td class="credit__card">Банковская Карта</td>
-            <td class="table_price">+350</td>
-            <td class="table_status">Исполнено</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation">Возврат денежных средств</td>
-            <td class="credit__card">Банковская Карта</td>
-            <td class="table_price">-350</td>
-            <td class="table_status">Исполнено</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <a class="main__info-centerTitle history__info-title arrow_right">
-        Следующая страница
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px"
-             height="8px">
-          <path fill-rule="evenodd" fill="rgb(71, 61, 0)"
-                d="M10.885,0.0 L10.217,0.649 L13.191,3.540 L0.0,3.540 L0.0,4.458 L13.191,4.458 L10.217,7.349 L10.885,7.999 L14.999,3.999 L10.885,0.0 Z" />
-        </svg>
-      </a>
-      <div class="pagination">
-        <div class="pagination__block">
-          <div class="first page_number">
-            <a href="#">1</a>
-          </div>
-          <div class="second page_number">
-            <a href="#">2</a>
-          </div>
-          <a href="#">Последняя</a>
-        </div>
-        <a href="#" class="payment__btn certify_btn download_btn">
-          <span class="icon-export_upload_icon_176175"></span>
-          Экспорт</a>
-      </div>
-
+      <span class="code-word-form__valid">Укажите кодовое слово или сертификат</span>
+      <p class="code-word__text">Наминал подарочного подарка сертификата зачисляется на Ваш счет в течени 10-15 минут
+        после активации. При оплате нужно будет выбрать способ оплаты «Пользовательский счет Озона» или «Частичная
+        оплата с Пользовательского счета»</p>
     </div>
-    <div class="main__info-center wallet_info-center">
-      <div class="history__info">
-        <div class="left__info">
-          <h2 class="main__info-centerTitle history__info-title">История операций по бонусам</h2>
-        </div>
-        <div class="right__info">
-          <form action="">
-            <div class="date_bedore">
-              <label for="before">От</label>
-              <input type="date" name="calendar" id="before">
-            </div>
-            <div class="date_after">
-              <label for="after">До</label>
-              <input type="date" name="calendar" id="after">
-            </div>
-          </form>
-          <a href="#" class="payment__btn certify_btn">Применить</a>
-        </div>
 
-      </div>
-      <ul class="history__text">
-        <li>
-          <a href="#" class="history__text-link">Все операции 21</a>
+    <div class="operation-history">
+      <h3 class="operation-history__title">История операций</h3>
+      <form class="form-date">
+        <label class="form-date__input-wrap">
+          <span>От</span>
+          <input type="date" name="date-from" class="form-date__input" title=""/>
+        </label>
+        <label class="form-date__input-wrap">
+          <span>До</span>
+          <input type="date" name="date-to" class="form-date__input" title=""/>
+        </label>
+        <button type="submit" class="form-date__submit">Применить</button>
+      </form>
+      <ul class="form-date-sort">
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Все операции 21</a>
         </li>
-        <li>
-          <a href="#" class="history__text-link">Пополнения 21</a>
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Пополнения 21</a>
         </li>
-        <li>
-          <a href="#" class="history__text-link">Платежи 21</a>
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Платежи 21</a>
         </li>
-        <li>
-          <a href="#" class="history__text-link">Возврат</a>
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Возврат</a>
         </li>
       </ul>
 
-      <div class="table__form">
-        <table>
-          <tbody>
-          <tr class="table__tr">
-            <th class="bloc_date">Дата</th>
-            <th class="bloc_account_number">Операция</th>
-            <th class="bloc_sum">Тип операции</th>
-            <th class="bloc_bonus">Количество бонусов</th>
-            <th>Итого</th>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Возврат или отмена
-                          заказа</span>&nbsp;&nbsp;<a href="#">№534534543</a>
-            </td>
-            <td>Списание</td>
-            <td class="table_price">-42</td>
-            <td class="table_status">0</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Начислено за заказ</span>&nbsp;&nbsp;<a href="#">№534534543</a>
-            </td>
-            <td>Начисление</td>
-            <td class="table_price">+33</td>
-            <td class="table_status">33</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Списано за скидку на заказ</span>&nbsp;&nbsp;<a href="#">
-              №534534543</a></td>
-            <td>Списание</td>
-            <td class="table_price">-14</td>
-            <td class="table_status">50</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Промокод “Подарок”</span>&nbsp;&nbsp;<a href="#">№534534543</a>
-            </td>
-            <td>Начисление</td>
-            <td class="table_price">+42</td>
-            <td class="table_status">92</td>
-          </tr>
-          <tr class="table__tr">
-            <td class="table_date"><span>18<span class="dot">.</span>10<span
-            class="dot">.</span>2019</span>&nbsp;&nbsp;<span>16<span class="dot">:</span>00</span></td>
-            <td class="table__operation"><span>Списано за скидку на
-                          заказ</span>&nbsp;&nbsp;<a href="#">№534534543</a>
-            </td>
-            <td>Списание</td>
-            <td class="table_price">-20</td>
-            <td class="table_status">72</td>
-          </tr>
-          </tbody>
-        </table>
+      <label class="btn-radio">
+        <input type="radio" name="" class="wallet_btn" />
+        <svg width="27px" height="27px" viewbox="0 0 20 20">
+          <circle cx="10" cy="10" r="9"></circle>
+          <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
+          <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
+        </svg>
+        <span class="btn-radio__desc">Только активные платежи</span>
+      </label>
+
+      <div class="history-table">
+        <div class="tr table-title">
+          <div>Дата</div>
+          <div>Операция</div>
+          <div>Способ оплаты</div>
+          <div>Рубли</div>
+          <div>Статус</div>
+        </div>
+        <div class="tr">
+          <div>18.10.2019  16:00	</div>
+          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
+          <div>Банковская Карта</div>
+          <div data-price="false">-350</div>
+          <div>Исполнено</div>
+        </div>
+        <div class="tr">
+          <div>18.10.2019  16:00	</div>
+          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
+          <div>Банковская Карта</div>
+          <div data-price="true">+350</div>
+          <div>Исполнено</div>
+        </div>
+        <div class="tr">
+          <div>18.10.2019  16:00</div>
+          <div>Пополнение Vsevn.ru Кошелька</div>
+          <div>Банковская Карта</div>
+          <div data-price="false">-350</div>
+          <div>Исполнено</div>
+        </div>
+        <div class="tr">
+          <div>18.10.2019  16:00	</div>
+          <div>Возврат денежных средств</div>
+          <div>Банковская Карта</div>
+          <div data-price="true">+350</div>
+          <div>Исполнено</div>
+        </div>
       </div>
-      <a class="main__info-centerTitle history__info-title arrow_right">
-        Следующая страница
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px"
-             height="8px">
-          <path fill-rule="evenodd" fill="rgb(71, 61, 0)"
-                d="M10.885,0.0 L10.217,0.649 L13.191,3.540 L0.0,3.540 L0.0,4.458 L13.191,4.458 L10.217,7.349 L10.885,7.999 L14.999,3.999 L10.885,0.0 Z">
-          </path>
+      <a href="#" class="page-next">Следующая страница
+        <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="8px">
+          <path fill-rule="evenodd" fill="rgb(71, 61, 0)" d="M10.885,0.0 L10.217,0.649 L13.191,3.540 L0.0,3.540 L0.0,4.458 L13.191,4.458 L10.217,7.349 L10.885,7.999 L14.999,3.999 L10.885,0.0 Z"></path>
         </svg>
       </a>
-      <div class="pagination">
-        <div class="pagination__block">
-          <a href="#" class="page_number">1</a>
-          <a href="#" class="page_number">2</a>
-          <a href="#">Последняя</a>
-        </div>
-        <a href="#" class="payment__btn certify_btn download_btn">
-          <span class="icon-export_upload_icon_176175"></span>
-          Экспорт</a>
-      </div>
+
+      <ul class="history-pagination">
+        <li class="history-pagination__item">
+          <a href="#" class="history-pagination__link">1</a>
+        </li>
+        <li class="history-pagination__item">
+          <a href="#" class="history-pagination__link">2</a>
+        </li>
+        <li class="history-pagination__item">
+          <a href="#" class="history-pagination__link">Последняя</a>
+        </li>
+      </ul>
+      <a href="#" class="link-export" download title="">Экспорт</a>
 
     </div>
-    <div class="cookie">
+    <div class="operation-history">
+      <h3 class="operation-history__title">История операций по бонусам</h3>
+      <form class="form-date">
+        <label class="form-date__input-wrap">
+          <span>От</span>
+          <input type="date" name="date-from" class="form-date__input" title=""/>
+        </label>
+        <label class="form-date__input-wrap">
+          <span>До</span>
+          <input type="date" name="date-to" class="form-date__input" title=""/>
+        </label>
+        <button type="submit" class="form-date__submit">Применить</button>
+      </form>
+      <ul class="form-date-sort">
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Все операции 21</a>
+        </li>
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Пополнения 21</a>
+        </li>
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Платежи 21</a>
+        </li>
+        <li class="form-date-sort__item">
+          <a href="#" class="form-date-sort__link">Возврат</a>
+        </li>
+      </ul>
+
+      <div class="history-bonus">
+        <div class="tr table-title">
+          <div>Дата</div>
+          <div>Операция</div>
+          <div>Тип операции</div>
+          <div>Количество бонусов</div>
+          <div>Итого</div>
+        </div>
+        <div class="tr">
+          <div>18.10.2019  16:00	</div>
+          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
+          <div>Списание</div>
+          <div data-price="true">+50</div>
+          <div>0</div>
+        </div>
+        <div class="tr">
+          <div>18.10.2019  16:00	</div>
+          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
+          <div>Списание</div>
+          <div data-price="false">-40</div>
+          <div>85</div>
+        </div>
+        <div class="tr">
+          <div>18.10.2019  16:00	</div>
+          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
+          <div>Списание</div>
+          <div data-price="false">-35</div>
+          <div>55</div>
+        </div>
+      </div>
+      <a href="#" class="page-next">Следующая страница
+        <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="8px">
+          <path fill-rule="evenodd" fill="rgb(71, 61, 0)" d="M10.885,0.0 L10.217,0.649 L13.191,3.540 L0.0,3.540 L0.0,4.458 L13.191,4.458 L10.217,7.349 L10.885,7.999 L14.999,3.999 L10.885,0.0 Z"></path>
+        </svg>
+      </a>
+
+      <ul class="history-pagination">
+        <li class="history-pagination__item">
+          <a href="#" class="history-pagination__link">1</a>
+        </li>
+        <li class="history-pagination__item">
+          <a href="#" class="history-pagination__link">2</a>
+        </li>
+        <li class="history-pagination__item">
+          <a href="#" class="history-pagination__link">Последняя</a>
+        </li>
+      </ul>
+      <a href="#" class="link-export" download title="">Экспорт</a>
+
+    </div>
+
+
+
+    <div class="cookie hide">
       <div class="cookie__wrapper">
         <p>Файлы cookie помогают нам предоставлять наши услуги. Наша политика использования файлов cookie объясняет,
           как мы используем файлы cookie и как их отключить.</p>
         <button class="cookie__button">ok</button>
-        <a class="cookie__link" href="#">Узнать больше</a>
+        <button class="cookie__link" id="cookie-link">Узнать больше</button>
       </div>
     </div>
   </div>
+  <div class="popup hide" id="popup">
+    <div class="popup-wrap">
+      <button type="button" class="close-popup">
+        <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <line x1="17.5" x2="54.5" y1="17.5" y2="54.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <line x1="54.5" x2="17.5" y1="17.5" y2="54.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
 </main>
+
 
 <script src="js/script.js"></script>
 </body>

@@ -41,5 +41,12 @@
     }
   }
 
-})();
+  let closePopup = function () {
+    document.querySelector('#popup').classList.toggle('hide');
+    document.body.classList.toggle('fix');
+  }
 
+  document.querySelector('.close-popup').onclick = closePopup;
+  document.querySelector('#cookie-link').onclick = closePopup;
+
+})();
