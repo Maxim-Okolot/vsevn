@@ -25,7 +25,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- additional styles -->
-  <link href="css/main.css" rel="stylesheet" type="text/css"/>
+
+  <link href="css/icons.css" rel="stylesheet" type="text/css"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -220,14 +221,14 @@
         <input type="text" placeholder="Кодовое слово или сертификат" name="code-word" class="code-word-form__input" title=""/>
         <button type="submit" class="code-word-form__submit">Активировать</button>
       </form>
-      <span class="code-word-form__valid">Укажите кодовое слово или сертификат</span>
+      <span class="code-word-form__valid"></span>
       <p class="code-word__text">Наминал подарочного подарка сертификата зачисляется на Ваш счет в течени 10-15 минут
         после активации. При оплате нужно будет выбрать способ оплаты «Пользовательский счет Озона» или «Частичная
         оплата с Пользовательского счета»</p>
     </div>
 
-    <div class="operation-history">
-      <h3 class="operation-history__title">История операций</h3>
+    <div class="operation-history table-history">
+      <h3 class="operation-history__title">История операций как физического лица</h3>
       <form class="form-date">
         <label class="form-date__input-wrap">
           <span>От</span>
@@ -237,20 +238,32 @@
           <span>До</span>
           <input type="date" name="date-to" class="form-date__input" title=""/>
         </label>
-        <button type="submit" class="form-date__submit">Применить</button>
       </form>
-      <ul class="form-date-sort">
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Все операции 21</a>
+
+      <ul class="operation-sort">
+        <li class="operation-sort__item">
+          <label class="operation-sort-label">
+            <input type="radio" name="sort-operation" value="all" checked title=""/>
+            <span class="operation-sort__text">Все операции 4</span>
+          </label>
         </li>
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Пополнения 21</a>
+        <li class="operation-sort__item">
+          <label class="operation-sort__">
+            <input type="radio" name="sort-operation" value="all" title=""/>
+            <span class="operation-sort__text">Пополнение</span>
+          </label>
         </li>
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Платежи 21</a>
+        <li class="operation-sort__item">
+          <label class="operation-sort__">
+            <input type="radio" name="sort-operation" value="all" title=""/>
+            <span class="operation-sort__text">Возврат 1</span>
+          </label>
         </li>
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Возврат</a>
+        <li class="operation-sort__item">
+          <label class="operation-sort__">
+            <input type="radio" name="sort-operation" value="all" title=""/>
+            <span class="operation-sort__text">Не оплачен 1</span>
+          </label>
         </li>
       </ul>
 
@@ -309,7 +322,7 @@
 
       <ul class="history-pagination">
         <li class="history-pagination__item">
-          <a href="#" class="history-pagination__link">1</a>
+          <a href="#" class="history-pagination__link current">1</a>
         </li>
         <li class="history-pagination__item">
           <a href="#" class="history-pagination__link">2</a>
@@ -318,10 +331,13 @@
           <a href="#" class="history-pagination__link">Последняя</a>
         </li>
       </ul>
-      <a href="#" class="link-export" download title="">Экспорт</a>
+      <a href="#" class="link-export" download title="">
+        <span class="icon-export_upload_icon_176175"></span>
+        Экспорт</a>
 
     </div>
-    <div class="operation-history">
+
+    <div class="history-bonus table-history">
       <h3 class="operation-history__title">История операций по бонусам</h3>
       <form class="form-date">
         <label class="form-date__input-wrap">
@@ -332,53 +348,53 @@
           <span>До</span>
           <input type="date" name="date-to" class="form-date__input" title=""/>
         </label>
-        <button type="submit" class="form-date__submit">Применить</button>
       </form>
-      <ul class="form-date-sort">
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Все операции 21</a>
-        </li>
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Пополнения 21</a>
-        </li>
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Платежи 21</a>
-        </li>
-        <li class="form-date-sort__item">
-          <a href="#" class="form-date-sort__link">Возврат</a>
-        </li>
-      </ul>
 
-      <div class="history-bonus">
-        <div class="tr table-title">
-          <div>Дата</div>
-          <div>Операция</div>
+      <div class="history-bonus-wrap">
+        <div class="history-bonus__title">
+          <div>Наименование</div>
+          <div></div>
           <div>Тип операции</div>
-          <div>Количество бонусов</div>
+          <div>ON-бонусов</div>
           <div>Итого</div>
         </div>
-        <div class="tr">
-          <div>18.10.2019  16:00	</div>
-          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
-          <div>Списание</div>
-          <div data-price="true">+50</div>
-          <div>0</div>
+        <div class="history-bonus__tr">
+          <div>Акция: Улицы Н.Новгорода 04.2019 (кодовое слово KUPON2020202)</div>
+          <div>07.10.2022 17:36</div>
+          <div data-operation="true">Начисление</div>
+          <div>50</div>
+          <div>758</div>
         </div>
-        <div class="tr">
-          <div>18.10.2019  16:00	</div>
-          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
-          <div>Списание</div>
-          <div data-price="false">-40</div>
-          <div>85</div>
+        <div class="history-bonus__tr">
+          <div>Промокод</div>
+          <div>07.10.2022 17:36</div>
+          <div data-operation="false">Списание</div>
+          <div>-550</div>
+          <div>758</div>
         </div>
-        <div class="tr">
-          <div>18.10.2019  16:00	</div>
-          <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
-          <div>Списание</div>
-          <div data-price="false">-35</div>
-          <div>55</div>
+        <div class="history-bonus__tr">
+          <div>Акция: Жара 07.2019 (кодовое слово FDSOP432FDSDS)</div>
+          <div>07.10.2022 17:36</div>
+          <div data-operation="true">Начисление</div>
+          <div>50</div>
+          <div>758</div>
+        </div>
+        <div class="history-bonus__tr">
+          <div>Отзыв №946893</div>
+          <div>07.10.2022 17:36</div>
+          <div data-operation="true">Начисление</div>
+          <div>50</div>
+          <div>758</div>
+        </div>
+        <div class="history-bonus__tr">
+          <div>Отзыв №946893</div>
+          <div>07.10.2022 17:36</div>
+          <div data-operation="false">Списание</div>
+          <div>-50</div>
+          <div>758</div>
         </div>
       </div>
+
       <a href="#" class="page-next">Следующая страница
         <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="8px">
           <path fill-rule="evenodd" fill="rgb(71, 61, 0)" d="M10.885,0.0 L10.217,0.649 L13.191,3.540 L0.0,3.540 L0.0,4.458 L13.191,4.458 L10.217,7.349 L10.885,7.999 L14.999,3.999 L10.885,0.0 Z"></path>
@@ -387,7 +403,7 @@
 
       <ul class="history-pagination">
         <li class="history-pagination__item">
-          <a href="#" class="history-pagination__link">1</a>
+          <a href="#" class="history-pagination__link current">1</a>
         </li>
         <li class="history-pagination__item">
           <a href="#" class="history-pagination__link">2</a>
@@ -396,10 +412,10 @@
           <a href="#" class="history-pagination__link">Последняя</a>
         </li>
       </ul>
-      <a href="#" class="link-export" download title="">Экспорт</a>
-
+      <a href="#" class="link-export" download title="">
+        <span class="icon-export_upload_icon_176175"></span>
+        Экспорт</a>
     </div>
-
 
 
     <div class="cookie hide">

@@ -35,18 +35,68 @@
 
   if (document.getElementsByName('radio-grp')) {
     let inputs = document.getElementsByName('radio-grp');
+    let inputsBottom = document.getElementsByName('radio-bottom');
+
 
     for (let element of inputs) {
       element.addEventListener('change', checkInputDeposit);
     }
+
+    for (let element of inputsBottom) {
+      element.addEventListener('change', function () {
+        document.querySelector('.deposit-form__button').removeAttribute('disabled');
+      });
+    }
   }
+
 
   let closePopup = function () {
     document.querySelector('#popup').classList.toggle('hide');
     document.body.classList.toggle('fix');
   }
 
+
   document.querySelector('.close-popup').onclick = closePopup;
   document.querySelector('#cookie-link').onclick = closePopup;
+
+
+  let validation = function (event) {
+    event.preventDefault();
+    let message = document.querySelector('.code-word-form__valid');
+    let input = document.querySelector('.code-word-form__input');
+    let form = document.querySelector('.code-word-form');
+
+    switch (input.value) {
+      case '':
+        form.classList.add('no-valid');
+        form.classList.remove('valid');
+        message.innerHTML = 'Укажите кодовое слово или сертификат';
+        break;
+      case 'date':
+        form.classList.add('no-valid');
+        form.classList.remove('valid');
+        message.innerHTML = 'Извините, но срок по этой акции истек (до 01.5.2019)';
+        break;
+      case 'action':
+        form.classList.add('no-valid');
+        form.classList.remove('valid');
+        message.innerHTML = 'К сожалению, Вы не можете активировать это кодовое слово, так как не являетесь участником ' +
+          'акции';
+        break;
+      case 'use':
+        form.classList.add('no-valid');
+        form.classList.remove('valid');
+        message.innerHTML = 'Вы уже вводили это кодовое слово ранее. Акция для Вас активирована, наслаждайтесь ' +
+          'выгодными покупками';
+        break;
+      default:
+        form.classList.remove('no-valid');
+        form.classList.add('valid');
+        message.innerHTML = 'Кодовое слово принято!';
+    }
+
+  }
+
+  document.querySelector('.code-word-form').addEventListener('submit', validation);
 
 })();
