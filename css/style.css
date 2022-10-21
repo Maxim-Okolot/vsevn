@@ -121,10 +121,6 @@ mark {
     color: #534a10;
 }
 
-.content-text {
-    margin-bottom: 25px;
-}
-
 .content-text, .content-text > a {
     font: 300 21px sans-serif;
     color: #665800;
@@ -232,7 +228,7 @@ mark {
 .content__title {
     font-size: 23px;
     color: #534a10;
-    margin-bottom: 25px;
+    margin: 25px 0;
 }
 
 .giper_link {
@@ -271,7 +267,7 @@ mark {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .panel-nav__item {
@@ -1030,4 +1026,100 @@ div[data-price = "false"], div[data-operation = "false"] {
 .legal-operation > div {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+}
+
+.attention {
+    width: 23px;
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--red);
+    border: 1px solid var(--red);
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.check-approval {
+    padding-left: 49px;
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.check-approval__flag {
+    width: 27px;
+    height: 27px;
+    border: 1px solid #bebebe;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0.25em;
+}
+
+.check-approval__flag:after {
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: #ffdd00;
+    transition: var(--normal);
+    opacity: 0;
+    border-radius: 3px;
+}
+
+.check-approval__text, .check-approval__text a {
+    color: var(--red);
+}
+
+.check-approval__text a {
+    border-bottom: 1px dotted transparent;
+}
+
+.price-select {
+    margin-top: 30px;
+}
+
+.check-approval__input:checked ~ .check-approval__flag:after {
+    opacity: 1;
+}
+
+.check-approval__input:checked ~ .check-approval__text {
+    color: rgb(102, 88, 0);
+}
+
+.check-approval__input:checked ~ .check-approval__text a {
+    color: rgb(237, 180, 0);
+    border-color: rgb(237, 180, 0);
+}
+
+.check-approval__input:checked ~ .check-approval__text a:hover {
+    color: #dba905;
+}
+
+.check-approval__input:checked ~ .attention {
+    display: none;
+}
+
+.price-select-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.price-select-wrap:last-child {
+    margin: 0;
+}
+
+.price-select-wrap .btn-radio {
+    margin: 0 20px 0 0;
+}
+
+.price-select-wrap > div {
+    margin-left: 20px;
 }
