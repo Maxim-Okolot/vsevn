@@ -1556,7 +1556,7 @@ table {
     background: #ffffff;
     padding: 20px;
     box-shadow: 0 3px 10px 3px #fcf762;
-    max-width: 215px;
+    max-width: 20%;
     width: 100%;
     position: relative;
 }
@@ -2164,6 +2164,7 @@ table {
 .payment__btn:hover {
     background: #ff3a00;
     opacity: 0.85;
+    color: #fff;
 }
 
 .info__top-leftTitle,

@@ -1239,3 +1239,14 @@ div[data-price = "false"], div[data-operation = "false"] {
 .button-buy {
     cursor: pointer;
 }
+
+.content__text {
+    font-size: 21px;
+    line-height: 22px;
+    color: #665800;
+    margin-top: 25px;
+}
+
+.text-opacity {
+    color: #b2ab7a;
+}
