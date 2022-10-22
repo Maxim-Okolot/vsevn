@@ -787,12 +787,6 @@
     user-select: none;
 }
 
-
-
-
-
-
-
 .btn-radio span {
     display: inline-block;
     vertical-align: middle;
@@ -1551,17 +1545,17 @@ table {
 .main__info-cards {
     margin-top: 45px;
     margin-bottom: 45px;
-    display: none;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    display: flex;
     position: relative;
 }
 
 .main__info-card {
     background: #ffffff;
     padding: 20px;
-    box-shadow: 0px 3px 10px 3px #fcf762;
+    box-shadow: 0 3px 10px 3px #fcf762;
     max-width: 215px;
     width: 100%;
     position: relative;
@@ -1741,31 +1735,27 @@ table {
 }
 
 .package__payment {
-    background: #ffffff;
+    background: #fff;
     padding: 15px 0 15px 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    box-shadow: 0px 7px 10px 5px #34343436;
+    box-shadow: 0 7px 10px 5px #34343436;
     width: 100%;
     top: 0;
     margin-top: 0;
-    position: relative;
-    z-index: -1;
 }
 
 .package__payment-start {
-    background: #ffffff;
+    background: #fff;
     padding: 15px 0 15px 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    box-shadow: 0px 7px 10px 5px #34343436;
+    box-shadow: 0 7px 10px 5px #34343436;
     width: 100%;
     top: 0;
     margin-top: 0;
-    position: absolute;
-    z-index: -1;
 }
 
 .package__payment.active {

@@ -25,6 +25,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- additional styles -->
+  <link href="css/icons.css" rel="stylesheet" type="text/css"/>
   <link href="css/main.css" rel="stylesheet" type="text/css"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -123,9 +124,9 @@
           <span class="check-approval__text">Я ознакомлен и согласен с <a href="#">Условиями</a> платного доступа к контактам соискателя и <a href="#">Офертой</a> </span>
         </label>
 
-        <div class="price-select-wrap">
+        <div class="price-select-wrap" aria-disabled="true">
           <label class="btn-radio">
-            <input type="radio" name="price-select" class="price-select__input" title=""/>
+            <input type="radio" name="price-select" class="price-select__input" disabled title=""/>
             <svg width="27px" height="27px" viewbox="0 0 20 20">
               <circle cx="10" cy="10" r="9"></circle>
               <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -164,15 +165,15 @@
             <path class="fil1" d="M4192 2660l1880 0c-6,46 -8,91 -8,138 0,652 528,1181 1181,1181 652,0 1180,-529 1180,-1181 0,-47 -2,-92 -8,-138l1880 0 0 9297 -1947 0c49,-129 75,-269 75,-416 0,-652 -528,-1181 -1180,-1181 -653,0 -1181,529 -1181,1181 0,147 26,287 75,416l-1947 0 0 -9297z"></path>
             <path class="fil2" d="M7245 6738c-329,0 -596,256 -596,571 0,315 267,571 596,571 328,0 595,-256 595,-571 0,-315 -267,-571 -595,-571z"></path>
             <path class="fil2" d="M9566 7135c-522,-651 -1164,-1254 -2320,-1255l0 0 0 0c0,0 -1,0 -1,0 0,0 -1,0 -1,0 -1,0 -1,0 -1,0l0 0c0,0 0,0 0,0 -1155,1 -1798,604 -2320,1255 -82,103 -82,245 0,348 522,651 1165,1254 2320,1255 0,0 0,0 0,0l0 0c0,0 0,0 1,0l0 0c0,0 1,0 1,0 0,0 0,0 0,0l0 0 1 0 0 0 0 0 0 0c1,0 2,0 3,0 2,-1 3,-1 4,0 1151,-3 1792,-605 2313,-1255 82,-103 82,-245 0,-348zm-2321 1031l0 0 0 0 0 0 0 0 0 0c-1,0 -1,0 -1,0l0 0c0,0 0,0 0,0 -492,0 -893,-385 -893,-857 0,-472 401,-857 893,-857 0,0 0,0 1,0l0 0c493,0 893,385 893,857 0,472 -400,857 -893,857z"></path>
-              </svg>
-          <div>
-            <p>Один контакт резюме, <mark>экономия до 30%</mark><span></span>30 ₽</p>
+            </svg>
+          <div class="price-select-text">
+            <p>Один контакт резюме, <mark class="economy-text">экономия до 30%</mark><span class="border"></span>30 ₽</p>
             <span>Будет доступен, пока резюме соискателя активно</span>
           </div>
         </div>
-        <div class="price-select-wrap">
+        <div class="price-select-wrap" aria-disabled="true">
           <label class="btn-radio">
-            <input type="radio" name="price-select" class="price-select__input" title=""/>
+            <input type="radio" name="price-select" class="price-select__input" disabled title=""/>
             <svg width="27px" height="27px" viewbox="0 0 20 20">
               <circle cx="10" cy="10" r="9"></circle>
               <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -215,16 +216,371 @@
             <path class="fil3" d="M7251.18 6712.14c-329.15,0 -596.56,256.54 -596.56,572.3 0,315.77 267.41,572.03 596.56,572.03 329.15,0 596.53,-256.25 596.53,-572.03 0,-315.77 -267.38,-572.3 -596.53,-572.3z"></path>
             <path class="fil3" d="M9575.64 7110.07c-522.74,-652.23 -1165.72,-1255.82 -2323.01,-1256.38l-0.15 0 -0.15 0c0,-0.28 -0.87,-0.28 -1.16,0 0,0 -0.73,0 -1.02,0 -0.15,0 -0.15,0 -0.15,0l-0.15 0c-0.15,0 -0.15,0 -0.15,0 -1157.26,0.56 -1800.26,604.16 -2322.98,1256.38 -82.26,102.84 -82.26,245.91 0,348.75 522.72,652.22 1165.72,1255.82 2323.01,1256.38 0,0 0,0 0.15,0l0.15 0c0,0 0,0 0.15,0l0.15 0c0.15,0 0.88,0 0.88,0 0.15,0 0.28,0 0.59,0l0.27 0 0.15 0 0.15 0 0.15 0 0.15 0c1.01,0 2.04,0 3.2,0 1.32,-0.28 2.62,-0.28 3.94,0 1152.62,-3.01 1794.14,-605.56 2315.86,-1256.38 82.23,-102.84 82.23,-245.91 -0.03,-348.75zm-2323.59 1032.82l-0.17 0 -0.11 0 -0.16 0 -0.29 0 -0.14 0c-0.29,0 -0.61,0 -0.61,0l-0.13 0c0,0 0,0 -0.15,0 -492.88,-0.56 -893.95,-385.63 -893.95,-858.45 0,-472.81 401.07,-857.89 893.95,-858.45 0.27,0 0.73,0 1.31,0l0.44 0c492.86,0.56 893.93,385.64 893.93,858.45 0,472.82 -401.06,857.9 -893.92,858.45z"></path>
           </svg>
-          <div>
-            <p>Пакет просмотров на 39 дней, <mark>экономия до 50%</mark></p>
+          <div class="price-select-text">
+            <p>Пакет просмотров на 39 дней, <mark class="economy-text">экономия до 50%</mark></p>
           </div>
         </div>
 
-
-
       </form>
-      <p class="content-text">Срок действия пакета просмотров ограничен и отсчитывается с момента первого просмотра
-        контактов. Контакты соискателя будут доступны, пока резюме соискателя активно.</p>
+      <div class="main__info-cards hide">
+        <div class="main__info-card">
+          <span class="icon-samokat iconType"></span>
+          <h3 class="info__card-title">Минимальный</h3>
+          <p class="info__card-desc">10 контактов</p>
+          <div class="divider"></div>
+          <div class="price_card">
+            <span class="last_price">300 ₽</span>
+            <span class="new_price">270 ₽</span>
+          </div>
+          <p class="card__economy">Экономия 10%</p>
+          <p class="card_piece">За штуку 27 руб.</p>
+          <a class="button-buy">Купить пакет</a>
+        </div>
+        <div class="main__info-card">
+          <span class="icon-car iconType"></span>
+          <h3 class="info__card-title">Базовый</h3>
+          <p class="info__card-desc">50 контактов</p>
+          <div class="divider"></div>
+          <div class="price_card">
+            <span class="last_price">1500 ₽</span>
+            <span class="new_price">1000 ₽</span>
+          </div>
+          <p class="card__economy">Экономия 30%</p>
+          <p class="card_piece">За штуку 20 руб.</p>
+          <a class="button-buy">Купить пакет</a>
+        </div>
+        <div class="main__info-card">
+          <span class="icon-plane iconType"></span>
+          <h3 class="info__card-title">Средний</h3>
+          <p class="info__card-desc">100 контактов</p>
+          <div class="divider"></div>
+          <div class="price_card">
+            <span class="last_price">3000 ₽</span>
+            <span class="new_price">1800 ₽</span>
+          </div>
+          <p class="card__economy">Экономия 40%</p>
+          <p class="card_piece">За штуку 18 руб.</p>
+          <a class="button-buy">Купить пакет</a>
+        </div>
+        <div class="main__info-card">
+          <span class="icon-rocket iconType"></span>
+          <h3 class="info__card-title">Максимальный</h3>
+          <p class="info__card-desc">150 контактов</p>
+          <div class="divider"></div>
+          <div class="price_card">
+            <span class="last_price">4250 ₽</span>
+            <span class="new_price">2250 ₽</span>
+          </div>
+          <p class="card__economy">Экономия 50%</p>
+          <p class="card_piece">За штуку 15 руб.</p>
+          <a class="button-buy">Купить пакет</a>
+        </div>
+      </div>
+      <p class="main__content-desc">Срок действия пакета просмотров ограничен и отсчитывается с момента первого
+        просмотра контактов. Контакты соискателя будут доступны, пока резюме соискателя активно.</p>
+      <div class="main__payment">
+        <div class="package__payment-start hide">
+          <h2 class="package__payment-title">
+            Оплата «Одного контакта соискателя из резюме»
+          </h2>
+          <p class="package__payment-desc">
+            После оплаты вы можете связаться с соискателем, который разместил резюме
+          </p>
+          <div class="contact_resume">
+            <div class="icon_eye1">
+              <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="145.5mm" height="145.5mm"
+                   version="1.1" style="
+                          shape-rendering: geometricPrecision;
+                          text-rendering: geometricPrecision;
+                          image-rendering: optimizeQuality;
+                          fill-rule: evenodd;
+                          clip-rule: evenodd;
+                        " viewbox="0 0 14550 14550" xmlns:xlink="http://www.w3.org/1999/xlink"
+                   enable-background="new 0 0 512 512">
+                      <defs>
+                        <style type="text/css">
+                          .fil1 {
+                              fill: #fefefe;
+                          }
+
+                          .fil2 {
+                              fill: #fec305;
+                              fill-rule: nonzero;
+                          }
+
+                          .fil0 {
+                              fill: url(#id0);
+                          }
+                        </style>
+                        <lineargradient id="id02" gradientunits="userSpaceOnUse" x1="6662.68" y1="132.47" x2="7826.42"
+                                        y2="14485.4">
+                          <stop offset="0" style="stop-opacity: 1; stop-color: #fcc00c"></stop>
+                          <stop offset="0.0313725" style="stop-opacity: 1; stop-color: #fcc00c"></stop>
+                          <stop offset="0.929412" style="stop-opacity: 1; stop-color: #fdda66"></stop>
+                          <stop offset="0.980392" style="stop-opacity: 1; stop-color: #fdd250"></stop>
+                          <stop offset="1" style="stop-opacity: 1; stop-color: #fde076"></stop>
+                        </lineargradient>
+                      </defs>
+                <g id="Слой_x0020_3">
+                        <metadata id="CorelCorpID_0Corel2-Layer"></metadata>
+                  <path class="fil0"
+                        d="M7245 109c3976,0 7200,3223 7200,7200 0,3976 -3224,7200 -7200,7200 -3977,0 -7200,-3224 -7200,-7200 0,-3977 3223,-7200 7200,-7200z">
+                        </path>
+                  <path class="fil1"
+                        d="M4192 2660l1880 0c-6,46 -8,91 -8,138 0,652 528,1181 1181,1181 652,0 1180,-529 1180,-1181 0,-47 -2,-92 -8,-138l1880 0 0 9297 -1947 0c49,-129 75,-269 75,-416 0,-652 -528,-1181 -1180,-1181 -653,0 -1181,529 -1181,1181 0,147 26,287 75,416l-1947 0 0 -9297z">
+                        </path>
+                  <path class="fil2"
+                        d="M7245 6738c-329,0 -596,256 -596,571 0,315 267,571 596,571 328,0 595,-256 595,-571 0,-315 -267,-571 -595,-571z">
+                        </path>
+                  <path class="fil2"
+                        d="M9566 7135c-522,-651 -1164,-1254 -2320,-1255l0 0 0 0c0,0 -1,0 -1,0 0,0 -1,0 -1,0 -1,0 -1,0 -1,0l0 0c0,0 0,0 0,0 -1155,1 -1798,604 -2320,1255 -82,103 -82,245 0,348 522,651 1165,1254 2320,1255 0,0 0,0 0,0l0 0c0,0 0,0 1,0l0 0c0,0 1,0 1,0 0,0 0,0 0,0l0 0 1 0 0 0 0 0 0 0c1,0 2,0 3,0 2,-1 3,-1 4,0 1151,-3 1792,-605 2313,-1255 82,-103 82,-245 0,-348zm-2321 1031l0 0 0 0 0 0 0 0 0 0c-1,0 -1,0 -1,0l0 0c0,0 0,0 0,0 -492,0 -893,-385 -893,-857 0,-472 401,-857 893,-857 0,0 0,0 1,0l0 0c493,0 893,385 893,857 0,472 -400,857 -893,857z">
+                        </path>
+                      </g>
+                    </svg>
+
+            </div>
+            <div class="resume__about">
+              <div class="resume__about-info">
+                <h3>Один контакт резюме</h3>
+                <svg class="package__payment-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px"
+                     viewbox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+                        <g>
+                          <g>
+                            <path
+                            d="M230.724,181.208c-2.393,2.587-3.95,4.256-5.119,5.508C227.775,184.379,230.724,181.208,230.724,181.208z" />
+                            <path class="svg_question" d="M336.962,200.875c7.956,9.792,11.906,21.337,11.906,34.634c0,9.514-2.727,18.666-8.151,27.512
+			c-2.977,5.007-6.898,9.848-11.795,14.465l-16.301,16.107c-15.634,15.356-25.732,28.958-30.35,40.865
+			c-4.618,11.878-6.927,27.54-6.927,46.957h36.275c0-17.108,1.947-30.044,5.814-38.807c3.866-8.763,12.323-19.444,25.37-32.102
+			c17.942-17.387,29.849-30.572,35.746-39.53s8.874-20.641,8.874-35.051c0-23.756-8.039-43.285-24.146-58.585
+			c-16.106-15.3-37.526-22.922-64.288-22.922c-28.931,0-51.686,8.929-68.266,26.789s-24.87,41.449-24.87,70.797h36.275
+			c0.667-17.665,3.478-31.184,8.346-40.559c8.679-16.83,24.369-25.259,47.068-25.259
+			C315.875,186.187,329.033,191.083,336.962,200.875z" />
+                            <path class="svg_border" d="M612,306C612,137.004,474.995,0,306,0C137.004,0,0,137.004,0,306c0,168.995,137.004,306,306,306
+			C474.995,612,612,474.995,612,306z M27.818,306C27.818,152.36,152.36,27.818,306,27.818S584.182,152.36,584.182,306
+			S459.64,584.182,306,584.182S27.818,459.64,27.818,306z" />
+                            <rect class="svg_dot" x="274.51" y="415.214" width="40.559" height="42.367" />
+                          </g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                      </svg>
+                <span class="dotted"></span>
+                <span class="price">30 ₽</span>
+                <span class="help">
+                        Услуга <span>"Один контакт из резюме соискателя"</span> заключается в предоставлении
+                        пользователю возможности осуществить однократный запрос на автоматическое отображение контактных
+                        данных в резюме одного пользователя (соискателя). Если у одного соискателя несколько резюме, то
+                        контактные данные отображаются автоматически, дополнительная оплата не требуется. Обязательства
+                        по предоставлению
+                        данной услуги считаются исполненными с момента направления запроса на автоматическое отображение
+                        контактных данных в резюме в соответствующих полях на странице резюме на
+                        <a href="#">Vsevn.ru</a>
+                      </span>
+              </div>
+              <p>Будет доступен, пока резюме соискателя активно</p>
+            </div>
+          </div>
+          <h2 class="choose__payment-type">Выберите способ оплаты:</h2>
+          <form action="" class="payment__form">
+            <div class="my__wallet">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-1" name="group">
+                <label for="radio-1" class="label_radio"></label>
+                <p>Списать с Моего Кошелька</p>
+                <span class="icon-wallet-with-card-sticking-out my__wallet-icon"></span>
+                <span>0 ₽</span>
+              </div>
+            </div>
+            <div class="my__card">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-2" name="group" />
+                <label for="radio-2" class="label_radio"></label>
+                <p>Банковской картой</p>
+              </div>
+            </div>
+            <div class="yandex">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-3" name="group" />
+                <label for="radio-3" class="label_radio"></label>
+                <p>ЮMoney (Яндекс деньги)</p>
+              </div>
+            </div>
+            <div class="webmoney">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-4" name="group" />
+                <label for="radio-4" class="label_radio"></label>
+                <p>СберБанк Онлайн</p>
+              </div>
+            </div>
+          </form>
+          <div class="payment-block">
+            <div class="dissabled"></div>
+            <a href="#" class="payment__btn">Продолжить</a>
+          </div>
+        </div>
+        <div class="package__payment hide">
+          <h2 class="package__payment-title">
+            Оплата «Одного контакта соискателя из резюме»
+          </h2>
+          <p class="package__payment-desc">
+            После оплаты вы можете связаться с соискателем, который разместил резюме
+          </p>
+          <div class="contact_resume">
+            <span class="resume_icon"></span>
+            <div class="resume__about">
+              <div class="resume__about-block">
+                <h3 class="resume__about-title">Минимальный</h3>
+                <svg class="package__payment-icon prompt__icon" version="1.1" id="capa_1"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="20px" height="20px" viewbox="0 0 612 612" style="enable-background:new 0 0 612 612;"
+                     xml:space="preserve">
+                        <g>
+                          <g>
+                            <path
+                            d="M230.724,181.208c-2.393,2.587-3.95,4.256-5.119,5.508C227.775,184.379,230.724,181.208,230.724,181.208z">
+                            </path>
+                            <path class="svg_question" d="M336.962,200.875c7.956,9.792,11.906,21.337,11.906,34.634c0,9.514-2.727,18.666-8.151,27.512
+                                                        c-2.977,5.007-6.898,9.848-11.795,14.465l-16.301,16.107c-15.634,15.356-25.732,28.958-30.35,40.865
+                                                        c-4.618,11.878-6.927,27.54-6.927,46.957h36.275c0-17.108,1.947-30.044,5.814-38.807c3.866-8.763,12.323-19.444,25.37-32.102
+                                                        c17.942-17.387,29.849-30.572,35.746-39.53s8.874-20.641,8.874-35.051c0-23.756-8.039-43.285-24.146-58.585
+                                                        c-16.106-15.3-37.526-22.922-64.288-22.922c-28.931,0-51.686,8.929-68.266,26.789s-24.87,41.449-24.87,70.797h36.275
+                                                        c0.667-17.665,3.478-31.184,8.346-40.559c8.679-16.83,24.369-25.259,47.068-25.259
+                                                        C315.875,186.187,329.033,191.083,336.962,200.875z"></path>
+                            <path class="svg_border" d="M612,306C612,137.004,474.995,0,306,0C137.004,0,0,137.004,0,306c0,168.995,137.004,306,306,306
+                                                        C474.995,612,612,474.995,612,306z M27.818,306C27.818,152.36,152.36,27.818,306,27.818S584.182,152.36,584.182,306
+                                                        S459.64,584.182,306,584.182S27.818,459.64,27.818,306z"></path>
+                            <rect class="svg_dot" x="274.51" y="415.214" width="40.559" height="42.367"></rect>
+                          </g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                  <g>
+                        </g>
+                      </svg>
+                <span class="dots"></span>
+                <span>30 ₽</span>
+                <span class="help">
+                        Услуга <span>«Пакет просмотров»</span> предоставляет пользователю возможности осуществлять
+                        запросы на автоматическое отображение контактов в резюме в пределах допустимого пакетом
+                        количества запросов в рамках срока действия пакета. Сделка на использование Пакета просмотров
+                        регулируется настоящими Условиями, а также положениями ст. 429.4 Гражданского кодекса РФ. При
+                        заказе пакета просмотров
+                        стоимость услуг определяется исходя из максимальной базовой стоимости услуги «Контакт резюме» и
+                        количества запросов контактных данных в резюме, предусмотренных пакетом просмотров, с учетом
+                        установленной
+                        для данного пакета скидки, применяемой исключительно при условии использования пакета в полном
+                        объеме в предусмотренный для этого срок. В любом случае, стоимость таких услуг не может
+                        превышать стоимости
+                        выбранного пользователем пакета. Для просмотра контактных данных нескольких резюме одного
+                        соискателя, учитывается один просмотр из пакета просмотров. Услуги с использованием пакета
+                        просмотров признаются
+                        полностью оказанными в момент наступления любого из следующих событий, которое произойдет
+                        раньше: использование в полном объеме предусмотренного пакетом количества запросов просмотра
+                        контактных данных в
+                        резюме или окончание срока действия пакета, независимо от того использовал ли пользователь в
+                        полном объеме предусмотренное пакетом количество запросов просмотра контактных данных в резюме.
+                      </span>
+              </div>
+
+              <p class="contacts_quantity">
+                10 контактов резюме в течении 30 дней
+              </p>
+            </div>
+          </div>
+          <h2 class="choose__payment-type">Выберите способ оплаты:</h2>
+          <form action="" class="payment__form">
+            <div class="my__wallet">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio radioBtn" id="radio-5" name="group1"/>
+                <label for="radio-5" class="label_radio"></label>
+                <p>Списать с Моего Кошелька</p>
+                <span class="icon-wallet-with-card-sticking-out my__wallet-icon"></span>
+                <span>0 ₽</span>
+              </div>
+            </div>
+            <div class="my__card">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio radioBtn" id="radio-6" name="group1"/>
+                <label for="radio-6" class="label_radio"></label>
+                <p>Банковской картой</p>
+              </div>
+            </div>
+            <div class="yandex">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio radioBtn" id="radio-7" name="group1"/>
+                <label for="radio-7" class="label_radio"></label>
+                <p>ЮMoney (Яндекс деньги)</p>
+              </div>
+            </div>
+            <div class="webmoney">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio radioBtn" id="radio-8" name="group1"/>
+                <label for="radio-8" class="label_radio"></label>
+                <p>СберБанк Онлайн</p>
+              </div>
+            </div>
+          </form>
+          <div class="payment-block">
+            <div class="dissable"></div>
+            <a href="#" class="payment__btn">Продолжить</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -97,6 +97,107 @@
 
   }
 
-  document.querySelector('.code-word-form').addEventListener('submit', validation);
+  if (document.querySelector('.code-word-form')) {
+    document.querySelector('.code-word-form').addEventListener('submit', validation);
+  }
+
+
+  let checkDisabled = function () {
+    let inputs = document.querySelectorAll('.price-select__input');
+    let selectWrap = document.querySelectorAll('.price-select-wrap');
+
+    if (document.querySelector('.check-approval__input').checked) {
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].removeAttribute('disabled');
+        selectWrap[i].setAttribute('aria-disabled', false);
+      }
+    } else {
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].setAttribute('disabled', 'disabled');
+        selectWrap[i].setAttribute('aria-disabled', true);
+        inputs[i].checked = false;
+      }
+    }
+  }
+
+  let visiblePaymen = function () {
+    let inputs = document.querySelectorAll('.price-select__input');
+    let packagePaymentStart = document.querySelector('.package__payment-start');
+    let infoCards = document.querySelector('.main__info-cards');
+
+    if (inputs[0].checked) {
+      packagePaymentStart.classList.remove('hide');
+      infoCards.classList.add('hide');
+    } else {
+      packagePaymentStart.classList.add('hide');
+      infoCards.classList.remove('hide');
+    }
+  }
+
+  let openPackagePayment = function () {
+    let packagePayment = document.querySelector('.package__payment');
+    let aboutTitle = document.querySelector('.resume__about-title');
+
+    packagePayment.classList.remove('hide');
+
+    let iconSpan = document.querySelector(".resume_icon");
+    let currentIcon;
+    let icons = this.parentElement.querySelector('.iconType').classList;
+
+    for (let icon of icons) {
+      if (icon !== 'iconType') {
+        currentIcon = icon;
+      }
+    }
+
+    let currentIconSpan = iconSpan.classList;
+
+    for (let icon of currentIconSpan) {
+      if (icon !== 'resume_icon') {
+        iconSpan.classList.remove(icon);
+      }
+    }
+
+    iconSpan.classList.add(currentIcon);
+
+    let titleText = this.parentElement.querySelector('.info__card-title').innerText;
+
+    aboutTitle.innerHTML = titleText;
+
+  }
+
+
+  if (document.querySelector('.check-approval__input')) {
+    document.querySelector('.check-approval__input').onchange = checkDisabled;
+
+    let inputs = document.querySelectorAll('.price-select__input');
+
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].onchange = visiblePaymen;
+    }
+
+    let btnBuy = document.querySelectorAll('.button-buy');
+
+    for (let i = 0; i < btnBuy.length; i++) {
+      btnBuy[i].addEventListener('click', openPackagePayment);
+    }
+
+  }
+
+
+  if (document.querySelector('.my__wallet')) {
+    let radio = document.getElementsByName('group1');
+
+    for (let input of radio) {
+      input.onchange = function () {
+        if (input.checked) {
+          document.querySelector('.payment-block .dissable').style.display = 'none';
+        }
+      }
+    }
+  }
+
+
+
 
 })();
