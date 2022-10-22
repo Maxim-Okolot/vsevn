@@ -14,7 +14,7 @@
   let checkInputDeposit =  function () {
     let walletRadioBottom = document.querySelector('.wallet-radio-bottom');
     let enterLinkWrap = document.querySelector('.enter-link-wrap');
-    let depositFormButton = document.querySelector('.deposit-form__button');
+    let depositFormButton = document.querySelector('.payment__btn');
 
     switch (this.value) {
       case 'физ лицо':
@@ -29,24 +29,15 @@
         depositFormButton.innerHTML = "Выписать счет";
         depositFormButton.removeAttribute('disabled');
     }
-
-    document.querySelector('.deposit-form__button').classList.remove('hide');
   }
 
   if (document.getElementsByName('radio-grp')) {
     let inputs = document.getElementsByName('radio-grp');
-    let inputsBottom = document.getElementsByName('radio-bottom');
-
 
     for (let element of inputs) {
       element.addEventListener('change', checkInputDeposit);
     }
 
-    for (let element of inputsBottom) {
-      element.addEventListener('change', function () {
-        document.querySelector('.deposit-form__button').removeAttribute('disabled');
-      });
-    }
   }
 
 
@@ -205,12 +196,13 @@
   }
 
 
-  if (document.querySelector('.my__wallet')) {
+  if (document.querySelector('.custom-radio')) {
     let radio = document.getElementsByClassName('custom-radio');
 
     for (let input of radio) {
       input.onchange = function () {
         if (input.checked) {
+          console.log(this.closest('.payment__form'));
           let boxDisabled = this.closest('.payment__form').nextElementSibling.querySelector('.dissabled');
           boxDisabled.style.display = 'none';
         }

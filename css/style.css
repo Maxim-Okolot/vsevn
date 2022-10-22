@@ -510,29 +510,6 @@ mark {
     margin-bottom: 20px;
 }
 
-.deposit-form__button {
-    font-size: 21px;
-    color: #fff;
-    padding: 10px 27px 15px;
-    background: #ffdd00;
-    border-radius: 5px;
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 40px;
-    transition: 0.5s;
-}
-
-.deposit-form__button:disabled, .deposit-form__button:disabled:hover {
-    background: #ffec6c;
-    cursor: auto;
-}
-
-.deposit-form__button:hover {
-    background-color: #ff3a00;
-}
-
 .wallet-radio-bottom {
     display: flex;
     flex-direction: column;
@@ -553,6 +530,10 @@ mark {
     color: #665800;
     margin-bottom: 20px;
     font: bold 18px sans-serif;
+}
+
+.wallet-radio-bottom > div {
+    margin-bottom: 15px;
 }
 
 .btn-radio {

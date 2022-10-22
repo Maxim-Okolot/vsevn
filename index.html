@@ -27,6 +27,7 @@
   <!-- additional styles -->
 
   <link href="css/icons.css" rel="stylesheet" type="text/css"/>
+  <link href="css/main.css" rel="stylesheet" type="text/css"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -157,61 +158,47 @@
 
         <div class="wallet-radio-bottom hide">
           <h5 class="wallet-radio-bottom__title">Выберите способ оплаты:</h5>
-
-          <label class="btn-radio">
-            <input type="radio" name="radio-bottom" class="wallet_btn"/>
-            <svg width="27px" height="27px" viewbox="0 0 20 20">
-              <circle cx="10" cy="10" r="9"></circle>
-              <path
-              d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z"
-              class="inner"></path>
-              <path
-              d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z"
-              class="outer"></path>
-            </svg>
-            <span class="btn-radio__desc">Списать с Моего Кошелька
-              <mark>
-               <span class="icon-wallet-with-card-sticking-out"></span>
+          <div class="payment__form">
+            <div class="my__wallet">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-1" name="group">
+                <label for="radio-1" class="label_radio"></label>
+                <p>Списать с Моего Кошелька</p>
+                <span class="icon-wallet-with-card-sticking-out my__wallet-icon"></span>
                 <span>0 ₽</span>
-              </mark>
-            </span>
-          </label>
-
-          <label class="btn-radio">
-            <input type="radio" name="radio-bottom" class="wallet_btn" />
-            <svg width="27px" height="27px" viewbox="0 0 20 20">
-              <circle cx="10" cy="10" r="9"></circle>
-              <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
-              <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
-            </svg>
-            <span class="btn-radio__desc">Банковской картой</span>
-          </label>
-
-          <label class="btn-radio">
-            <input type="radio" name="radio-bottom" class="wallet_btn" />
-            <svg width="27px" height="27px" viewbox="0 0 20 20">
-              <circle cx="10" cy="10" r="9"></circle>
-              <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
-              <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
-            </svg>
-            <span class="btn-radio__desc">ЮMoney (Яндекс деньги)</span>
-          </label>
-
-          <label class="btn-radio">
-            <input type="radio" name="radio-bottom" class="wallet_btn" />
-            <svg width="27px" height="27px" viewbox="0 0 20 20">
-              <circle cx="10" cy="10" r="9"></circle>
-              <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
-              <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z" class="outer"></path>
-            </svg>
-            <span class="btn-radio__desc">СберБанк Онлайн</span>
-          </label>
+              </div>
+            </div>
+            <div class="my__card">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-2" name="group" />
+                <label for="radio-2" class="label_radio"></label>
+                <p>Банковской картой</p>
+              </div>
+            </div>
+            <div class="yandex">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-3" name="group" />
+                <label for="radio-3" class="label_radio"></label>
+                <p>ЮMoney (Яндекс деньги)</p>
+              </div>
+            </div>
+            <div class="webmoney">
+              <div class="radiobtn">
+                <input type="radio" class="radio custom-radio main__payment-radio" id="radio-4" name="group" />
+                <label for="radio-4" class="label_radio"></label>
+                <p>СберБанк Онлайн</p>
+              </div>
+            </div>
+          </div>
+          <div class="payment-block">
+            <div class="dissabled"></div>
+            <a href="#" class="payment__btn">Продолжить</a>
+          </div>
         </div>
 
         <div class="enter-link-wrap hide">
           <a href="#" class="enter-link">Заполните реквизиты своей компании</a>
         </div>
-        <button class="deposit-form__button hide">Продолжить</button>
       </form>
     </div>
 
