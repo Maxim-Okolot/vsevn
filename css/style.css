@@ -1052,7 +1052,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     border-radius: 0.25em;
 }
 
-.check-approval__flag:after {
+.check-approval__flag:after, .table-services__flag:after {
     content: "";
     width: 13px;
     height: 13px;
@@ -1249,4 +1249,109 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .text-opacity {
     color: #b2ab7a;
+}
+
+.create {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.create__title {
+    font-size: 21px;
+    font-family: "ZabraProTest3-Medium", sans-serif;
+    color: #534a10;
+}
+
+.ads_Btn {
+    height: 50px;
+}
+
+.create__btn {
+    margin: 0;
+}
+
+.table-services {
+    width: 100%;
+    border: .5px solid #d7d7cb;
+}
+
+.table-services__title, .table-services__tr {
+    display: grid;
+    grid-template-columns: 375px 1fr;
+    border-bottom: .5px solid #d7d7cb;
+}
+
+.table-services__title > div,  .table-services__tr > div:not(div:first-child) {
+    padding: 15px;
+}
+
+.table-services__title > div:first-child, .table-services__tr > div:first-child, .table-services__check {
+    border-right: .5px solid #d7d7cb;
+}
+
+.table-services__title > div:first-child {
+    text-align: center;
+}
+
+.table-services__tr > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-services__tr:last-child {
+    border: none;
+}
+
+.table-services__check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 100%;
+    padding: 15px;
+}
+
+.table-services__check .btn-radio, .table-services__label {
+    margin: 0 15px 0 0;
+}
+
+.table-services__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 15px;
+}
+
+.sale__prices {
+    margin-top: 10px;
+}
+
+.table-services__flag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 27px;
+    height: 27px;
+    border: 1px solid #bebebe;
+    border-radius: 0.25em;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.payment__radio:checked + .table-services__flag:after {
+    opacity: 1;
+    z-index: 10;
+}
+
+.table-services[aria-disabled='true'] * {
+    opacity: 0.85;
+    cursor: auto;
 }
