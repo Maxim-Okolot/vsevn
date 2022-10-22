@@ -124,14 +124,26 @@
     let inputs = document.querySelectorAll('.price-select__input');
     let packagePaymentStart = document.querySelector('.package__payment-start');
     let infoCards = document.querySelector('.main__info-cards');
+    let radio = document.getElementsByClassName('custom-radio');
+    let packagePayment = document.querySelector('.package__payment');
 
     if (inputs[0].checked) {
       packagePaymentStart.classList.remove('hide');
       infoCards.classList.add('hide');
+      packagePayment.classList.add('hide');
     } else {
       packagePaymentStart.classList.add('hide');
       infoCards.classList.remove('hide');
     }
+
+    for (let input of radio) {
+      input.checked = false;
+
+      let boxDisabled = input.closest('.payment__form').nextElementSibling.querySelector('.dissabled');
+      boxDisabled.style.display = 'block';
+    }
+
+
   }
 
   let openPackagePayment = function () {
@@ -161,8 +173,16 @@
     iconSpan.classList.add(currentIcon);
 
     let titleText = this.parentElement.querySelector('.info__card-title').innerText;
+    let price = this.parentElement.querySelector('.new_price').innerText;
+    let cardDesc = this.parentElement.querySelector('.info__card-desc').innerText;
+
+    let contactsQuantity = document.querySelector('.contacts_quantity');
+    let resumeCost = document.querySelector('.resume__cost');
+
 
     aboutTitle.innerHTML = titleText;
+    contactsQuantity.innerHTML = cardDesc + ' резюме в течении 30 дней';
+    resumeCost.innerHTML = price;
 
   }
 
@@ -186,12 +206,13 @@
 
 
   if (document.querySelector('.my__wallet')) {
-    let radio = document.getElementsByName('group1');
+    let radio = document.getElementsByClassName('custom-radio');
 
     for (let input of radio) {
       input.onchange = function () {
         if (input.checked) {
-          document.querySelector('.payment-block .dissable').style.display = 'none';
+          let boxDisabled = this.closest('.payment__form').nextElementSibling.querySelector('.dissabled');
+          boxDisabled.style.display = 'none';
         }
       }
     }

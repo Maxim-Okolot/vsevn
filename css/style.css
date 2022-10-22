@@ -223,6 +223,12 @@ mark {
 .wallet-info-text a {
     color: #8cae59;
     border-bottom: 1px dotted #8cae59;
+    transition: var(--normal);
+}
+
+.wallet-info-text a:hover {
+    color: #5a6d37;
+    border-bottom: 1px dotted #5a6d37;
 }
 
 .content__title {

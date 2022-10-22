@@ -1726,10 +1726,6 @@ table {
     margin-top: 27px;
 }
 
-.contacts_quantity {
-    opacity: 0;
-}
-
 .contacts_quantity.active {
     opacity: 1;
 }
@@ -2126,20 +2122,16 @@ table {
     animation-fill-mode: both;
 }
 
-#radio-4:checked~p,
-#radio-8:checked~p {
+#radio-4:checked~p, #radio-8:checked~p {
     color: #34A853;
 }
-
-
 
 .payment-block {
     position: relative;
     max-width: 240px;
 }
 
-.dissabled,
-.dissable {
+.dissabled, .dissable {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -2152,7 +2144,7 @@ table {
 
 .payment__btn {
     font-size: 21px;
-    color: #ffffff;
+    color: #373109;
     padding: 10px 27px 15px;
     background: rgb(255, 221, 0);
     border-radius: 5px;
