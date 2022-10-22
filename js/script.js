@@ -41,14 +41,18 @@
   }
 
 
-  let closePopup = function () {
+  let popup = function () {
     document.querySelector('#popup').classList.toggle('hide');
     document.body.classList.toggle('fix');
   }
 
 
-  document.querySelector('.close-popup').onclick = closePopup;
-  document.querySelector('#cookie-link').onclick = closePopup;
+  document.querySelector('.close-popup').onclick = popup;
+  document.querySelector('#cookie-link').onclick = popup;
+
+  if (document.querySelector('.create__btn')) {
+    document.querySelector('.create__btn').addEventListener('click', popup)
+  }
 
 
   let validation = function (event) {
