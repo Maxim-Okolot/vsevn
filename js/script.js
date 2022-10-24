@@ -206,7 +206,6 @@
     for (let input of radio) {
       input.onchange = function () {
         if (input.checked) {
-          console.log(this.closest('.payment__form'));
           let boxDisabled = this.closest('.payment__form').nextElementSibling.querySelector('.dissabled');
           boxDisabled.style.display = 'none';
         }
@@ -214,5 +213,135 @@
     }
   }
 
+
+  let checkServices = function () {
+    let tableServices = document.querySelector('.table-services');
+    let paymentRadio = document.querySelectorAll('.payment__radio');
+    let inputBonus = document.querySelector('.write-down-bonus');
+    let servicesSum = document.querySelector('.services-sum');
+    let sumPrice = document.querySelector('.sum-price');
+    let totalSum = document.querySelector('.total-sum');
+    let currentBonus = document.querySelector('.current-bonus');
+
+
+    tableServices.setAttribute('aria-disabled', false);
+
+    for (let i = 0; i < paymentRadio.length; i++ ) {
+      if (!paymentRadio[i].classList.contains('id-services')) {
+        paymentRadio[i].classList.add(`id-services-${i}`);
+      }
+
+      paymentRadio[i].removeAttribute('disabled');
+      // inputBonus.removeAttribute('disabled');
+
+      paymentRadio[i].onchange = function () {
+
+        let div = document.createElement('div');
+
+        if (paymentRadio[i].checked) {
+          div.classList.add(`id-services-${i}`, 'service-cost');
+
+          div.innerHTML = `<div>${paymentRadio[i].value}. скидка ${paymentRadio[i].dataset.sale}%</div>
+          <div class="sale-price">${paymentRadio[i].dataset.salePrice} р</div>`;
+          servicesSum.prepend(div);
+        } else {
+          let arrClass = paymentRadio[i].classList;
+          document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
+        }
+
+
+        let serviceCost = document.querySelectorAll('.service-cost .sale-price');
+        let sum = 0;
+
+        for (let el of serviceCost) {
+          let num = el.innerHTML.split(' ').shift();
+          sum = sum + Number(num);
+        }
+
+        sumPrice.innerHTML = sum;
+
+        let sumBonus = 0;
+
+        if (sum <= 1000) {
+          sumBonus = sum;
+        } else {
+          sumBonus = 1000;
+        }
+
+        currentBonus.innerHTML = sumBonus + ' р.';
+        inputBonus.value = '-' + sumBonus + ' p';
+        totalSum.innerHTML = sum - sumBonus;
+      }
+
+    }
+
+    popup();
+
+  }
+
+  if (document.querySelector('.table-services')) {
+    let btnChoose = document.querySelector('.advertisement-confirm__choose');
+    let btncancel = document.querySelector('.advertisement-confirm__cancel');
+    let advertisementInput = document.querySelectorAll('.advertisement');
+
+    for (let input of advertisementInput) {
+      input.onchange = function () {
+        btnChoose.removeAttribute('disabled');
+      }
+    }
+
+    btnChoose.addEventListener('click', checkServices);
+
+    btncancel.addEventListener('click', popup);
+  }
+
+  let inputBonus = document.querySelector('.write-down-bonus');
+  document.querySelector('input:focus');
+
+
+
+  function validate(evt) {
+    let theEvent = evt || window.event;
+    let key = theEvent.keyCode || theEvent.which;
+
+    key = String.fromCharCode( key );
+
+    let regex = /[0-9]/;
+
+    if ( !regex.test(key) ) {
+      theEvent.returnValue = false;
+
+      if (theEvent.preventDefault) {
+        theEvent.preventDefault();
+      }
+    }
+
+  }
+
+  inputBonus.onkeypress = validate;
+
+  inputBonus.onfocus = function () {
+    let arr = inputBonus.value.split('');
+    arr.shift();
+    arr.length = arr.length - 2;
+    inputBonus.value = arr.join('');
+  };
+
+  inputBonus.onblur = function () {
+    if (inputBonus.value === '' || inputBonus.value === ' ') {
+      inputBonus.value = 0;
+    }
+
+    let currentBonus = document.querySelector('.current-bonus').innerHTML;
+
+
+    if (inputBonus.value > 1000 || inputBonus.value > currentBonus) {
+      let arr = currentBonus.split('');
+      arr.length = arr.length - 2;
+      inputBonus.value = Number(arr.join(''));
+    }
+
+    inputBonus.value = '-' + inputBonus.value + ' р';
+  };
 
 })();

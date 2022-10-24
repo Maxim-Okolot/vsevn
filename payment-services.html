@@ -133,8 +133,9 @@
         <div class="table-services__tr">
           <div>
             <div class="table-services__check">
-              <label for="rdo-1" class="btn-radio">
-                <input type="radio" id="rdo-1" name="radio" class="payment__radio" disabled="disabled">
+              <label class="btn-radio">
+                <input type="radio" name="services-radio" class="payment__radio" disabled="disabled"
+                       value="VIP - размещение" data-price="300" data-sale="95" data-sale-price = "15"/>
                 <svg width="27px" height="27px" viewBox="0 0 20 20" class="table_icon1">
                   <circle cx="10" cy="10" r="9"></circle>
                   <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -277,8 +278,9 @@
         <div class="table-services__tr">
           <div>
             <div class="table-services__check">
-              <label for="rdo-2" class="btn-radio">
-                <input type="radio" id="rdo-2" name="radio" class="payment__radio" disabled="disabled">
+              <label class="btn-radio">
+                <input type="radio" name="services-radio" class="payment__radio" disabled="disabled"
+                       value="ТОП – размещение" data-price="300" data-sale="95" data-sale-price="15"/>
                 <svg width="27px" height="27px" viewBox="0 0 20 20" class="table_icon1">
                   <circle cx="10" cy="10" r="9"></circle>
                   <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -421,7 +423,8 @@
           <div>
             <div class="table-services__check">
               <label class="table-services__label">
-                <input type="checkbox" class="payment__radio" disabled="disabled"/>
+                <input type="checkbox" class="payment__radio" disabled="disabled"
+                       value="Выделить XXL" data-price="300" data-sale="95" data-sale-price = "15"/>
                 <span class="table-services__flag"></span>
               </label>
               <svg id="service-vip-logo" class="vip" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="50px" height="50px" viewBox="0 0 7600 7600" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -561,7 +564,8 @@
           <div>
             <div class="table-services__check">
               <label class="table-services__label">
-                <input type="checkbox" class="payment__radio" disabled="disabled"/>
+                <input type="checkbox" class="payment__radio" disabled="disabled"
+                       value="Выделить название вакансии цветом" data-price="300" data-sale="95" data-sale-price = "15"/>
                 <span class="table-services__flag"></span>
               </label>
               <svg id="service-vip-logo" class="vip" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="50px" height="50px" viewBox="0 0 7600 7600" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -701,7 +705,8 @@
           <div>
             <div class="table-services__check">
               <label class="table-services__label">
-                <input type="checkbox" class="payment__radio" disabled="disabled"/>
+                <input type="checkbox" class="payment__radio" disabled="disabled"
+                       value="Поднять объявление в поиске" data-price="300" data-sale="95" data-sale-price = "995"/>
                 <span class="table-services__flag"></span>
               </label>
               <svg id="service-vip-logo" class="vip" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="50px" height="50px" viewBox="0 0 7600 7600" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -825,7 +830,7 @@
             <div class="table-services__name">
               <span class="placement">Поднять объявление в поиске</span>
               <div class="sale__prices">
-                <span class="sale_price">50₽</span>
+                <span class="sale_price">995₽</span>
               </div>
             </div>
           </div>
@@ -835,6 +840,25 @@
             показа. Один раз рассылается наиболее подходящим соискателям по электронной почте. Открытые контакты в
             откликах и до 15 подходящих резюме для каждой вакансии.</div>
         </div>
+      </div>
+
+      <div class="services-sum">
+        <div>
+          <div>Итого</div>
+          <div class="sum-price">0 р.</div>
+        </div>
+        <div>
+          <div>Доступные бонусы <span class="current-bonus">0 р.</span> <mark>Укажите сколько Вы хотите списать</mark></div>
+          <div><input type="text" class="write-down-bonus" value="-0 р" title=""/></div>
+        </div>
+        <div>
+          <div>Итого с учетом бонусов</div>
+          <div class="total-sum">0 р.</div>
+        </div>
+      </div>
+      <div class="payment-block payment__result-block">
+        <p><span>!</span>Услуги продвижения действуют на все время активности объявления, но не более 30 дней</p>
+        <a href="#" class="ads_Btn">Продолжить</a>
       </div>
     </div>
   </div>
@@ -849,8 +873,8 @@
 
       <ul class="advertisement">
         <li class="advertisement__item">
-          <label for="advertisement-1" class="btn-radio">
-            <input type="radio" id="advertisement-1" name="radio" class="payment__radio">
+          <label class="btn-radio">
+            <input type="radio" name="radio" class="advertisement__radio"/>
             <svg width="27px" height="27px" viewBox="0 0 20 20" class="table_icon1">
               <circle cx="10" cy="10" r="9"></circle>
               <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -863,8 +887,8 @@
             <mark class="advertisement__date-end">(осталось 20 дней)</mark></span>
         </li>
         <li class="advertisement__item">
-          <label for="advertisement-2" class="btn-radio">
-            <input type="radio" id="advertisement-2" name="radio" class="payment__radio">
+          <label class="btn-radio">
+            <input type="radio" name="radio" class="advertisement__radio">
             <svg width="27px" height="27px" viewBox="0 0 20 20" class="table_icon1">
               <circle cx="10" cy="10" r="9"></circle>
               <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z" class="inner"></path>
@@ -878,7 +902,7 @@
         </li>
       </ul>
       <div class="advertisement-confirm">
-        <button type="button" class="advertisement-confirm__choose">Выбрать</button>
+        <button type="button" class="advertisement-confirm__choose" disabled>Выбрать</button>
         <button type="button" class="advertisement-confirm__cancel">Отмена</button>
       </div>
     </div>

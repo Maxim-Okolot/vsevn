@@ -674,7 +674,7 @@
 
 .ads_Btn {
     font-size: 21px;
-    color: #ffffff;
+    color: #373109;
     padding: 10px 20px 12px;
     background: rgb(255, 221, 0);
     border-radius: 5px;
@@ -690,6 +690,7 @@
 .ads_Btn:hover {
     background: #ff3a00;
     opacity: 0.85;
+    color: #fff;
 }
 
 .payment__service-activate {
