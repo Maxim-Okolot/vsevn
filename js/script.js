@@ -222,6 +222,21 @@
     let sumPrice = document.querySelector('.sum-price');
     let totalSum = document.querySelector('.total-sum');
     let currentBonus = document.querySelector('.current-bonus');
+    let titleOutput = document.querySelector('.title-output');
+    let advertisementRadio = document.querySelectorAll('.advertisement__radio');
+
+
+  for (let inputs of advertisementRadio) {
+    if (inputs.checked) {
+      let nameAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__desc');
+
+      let str = nameAdvertisement.innerHTML.split(' ');
+      console.log(str);
+      str[0] = `${str[0]}a`;
+      titleOutput.innerHTML = str.join(" ").toLocaleLowerCase();
+    }
+  }
+
 
 
     tableServices.setAttribute('aria-disabled', false);
@@ -232,9 +247,10 @@
       }
 
       paymentRadio[i].removeAttribute('disabled');
-      // inputBonus.removeAttribute('disabled');
+      inputBonus.removeAttribute('disabled');
 
       paymentRadio[i].onchange = function () {
+
 
         let div = document.createElement('div');
 
@@ -244,6 +260,16 @@
           div.innerHTML = `<div>${paymentRadio[i].value}. скидка ${paymentRadio[i].dataset.sale}%</div>
           <div class="sale-price">${paymentRadio[i].dataset.salePrice} р</div>`;
           servicesSum.prepend(div);
+
+          for (let elementInput of paymentRadio) {
+            if (!elementInput.checked) {
+              let arrClass = elementInput.classList;
+              if (document.querySelector(`div.${arrClass[arrClass.length - 1]}`)) {
+                document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
+              }
+            }
+          }
+
         } else {
           let arrClass = paymentRadio[i].classList;
           document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
@@ -282,7 +308,7 @@
   if (document.querySelector('.table-services')) {
     let btnChoose = document.querySelector('.advertisement-confirm__choose');
     let btncancel = document.querySelector('.advertisement-confirm__cancel');
-    let advertisementInput = document.querySelectorAll('.advertisement');
+    let advertisementInput = document.querySelectorAll('.advertisement__radio');
 
     for (let input of advertisementInput) {
       input.onchange = function () {
@@ -296,9 +322,6 @@
   }
 
   let inputBonus = document.querySelector('.write-down-bonus');
-  document.querySelector('input:focus');
-
-
 
   function validate(evt) {
     let theEvent = evt || window.event;

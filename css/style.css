@@ -1419,10 +1419,15 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: grid;
     grid-template-columns: auto 125px;
     grid-gap: 30px;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.services-sum div {
+.services-sum div, .services-sum mark {
     text-align: right;
+    font-size: 21px;
+    color: #665800;
+    font-family: 'ZabraProTest3-Medium', sans-serif;
 }
 
 .payment__result-block {
@@ -1437,10 +1442,20 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .write-down-bonus {
     width: 100%;
-    height: 50px;
+    height: 40px;
     color: #ff0000;
     border: 1px solid #e4ddb4;
     padding: 0 15px 0 10px;
     text-align: right;
     font-size: 21px;
+}
+
+.current-bonus, .title-output {
+    color: #ff0000;
+}
+
+.services-sum__total {
+    font: bold 21px sans-serif;
+    color: #665800;
+    text-transform: uppercase;
 }
