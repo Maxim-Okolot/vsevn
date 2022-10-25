@@ -1450,7 +1450,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     font-size: 21px;
 }
 
-.current-bonus, .title-output {
+.current-bonus, .title-output, .advertisement__date-end {
     color: #ff0000;
 }
 
