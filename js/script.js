@@ -325,6 +325,30 @@
     let inputBonus = document.querySelector('.write-down-bonus');
 
     inputBonus.onkeypress = validate;
+
+    inputBonus.onfocus = function () {
+      let arr = inputBonus.value.split('');
+      arr.shift();
+      arr.length = arr.length - 2;
+      inputBonus.value = arr.join('');
+    };
+
+    inputBonus.onblur = function () {
+      if (inputBonus.value === '' || inputBonus.value === ' ') {
+        inputBonus.value = 0;
+      }
+
+      let currentBonus = document.querySelector('.current-bonus').innerHTML;
+
+
+      if (inputBonus.value > 1000 || inputBonus.value > currentBonus) {
+        let arr = currentBonus.split('');
+        arr.length = arr.length - 2;
+        inputBonus.value = Number(arr.join(''));
+      }
+
+      inputBonus.value = '-' + inputBonus.value + ' р';
+    };
   }
 
   function validate(evt) {
@@ -342,33 +366,10 @@
         theEvent.preventDefault();
       }
     }
-
   }
 
 
 
-  inputBonus.onfocus = function () {
-    let arr = inputBonus.value.split('');
-    arr.shift();
-    arr.length = arr.length - 2;
-    inputBonus.value = arr.join('');
-  };
 
-  inputBonus.onblur = function () {
-    if (inputBonus.value === '' || inputBonus.value === ' ') {
-      inputBonus.value = 0;
-    }
-
-    let currentBonus = document.querySelector('.current-bonus').innerHTML;
-
-
-    if (inputBonus.value > 1000 || inputBonus.value > currentBonus) {
-      let arr = currentBonus.split('');
-      arr.length = arr.length - 2;
-      inputBonus.value = Number(arr.join(''));
-    }
-
-    inputBonus.value = '-' + inputBonus.value + ' р';
-  };
 
 })();
