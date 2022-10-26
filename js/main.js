@@ -475,43 +475,8 @@ function initFilterRegions(target) {
 }
 
 // show modal
-const modal = find('.modal');
-const modalContent = modal.querySelector('.modal__content');
-const modalBody = modal.querySelector('.modal__body');
-const modalHeader = modal.querySelector('.modal__header');
-const modalFooter = modal.querySelector('.modal__footer');
 
-function clearModal() {
-    modalHeader.innerHTML = '';
-    modalBody.innerHTML = '';
-    modalFooter.innerHTML = '';
 
-    modalContent.classList.remove('confirm');
-}
-
-function showModal(html) {
-    modalBody.innerHTML = html;
-
-    const closeBtn = document.createElement('span');
-    closeBtn.classList.add('icon-cross-svgrepo-com', 'modal__close-btn');
-    modalBody.appendChild(closeBtn);
-
-    document.body.classList.add('lock');
-
-    modal.classList.add('modal--visible');
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove('modal--visible');
-        document.body.classList.remove('lock');
-        clearModal();
-    });
-    modal.addEventListener('click', e => {
-        if (e.target === modal) {
-            modal.classList.remove('modal--visible');
-            document.body.classList.remove('lock');
-            clearModal();
-        }
-    });
-}
 
 function showConfirmModal(title, content, buttons) {
     modalContent.classList.add('confirm');
