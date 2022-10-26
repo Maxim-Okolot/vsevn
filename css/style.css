@@ -1459,3 +1459,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     color: #665800;
     text-transform: uppercase;
 }
+
+.service__img {
+    width: 50px;
+}
