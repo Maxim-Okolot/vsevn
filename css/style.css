@@ -1291,7 +1291,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding: 15px;
 }
 
-.table-services__title > div:first-child, .table-services__tr > div:first-child, .table-services__check {
+.table-services__title > div:first-child, .table-services__tr > div:first-child {
     border-right: .5px solid #d7d7cb;
 }
 
@@ -1311,7 +1311,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .table-services__check {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 125px;
     height: 100%;
