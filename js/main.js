@@ -157,7 +157,139 @@ function initClearFieldBtns(target) {
     });
 }
 
+// init filter calendar
+function initFilterCalendar(target) {
+    target.querySelectorAll('.adv-filter-date.calendar-container').forEach(container => {
 
+        const dateFromTextElem = container.querySelector('#adv-filter-date-from');
+        const dateToTextElem = container.querySelector('#adv-filter-date-to');
+
+        const dateFromInputField = container.querySelector('.date-input-field.date-from');
+        const dateToInputField = container.querySelector('.date-input-field.date-to');
+
+        const wrapperFrom = dateFromInputField.parentNode.parentNode;
+        const wrapperTo = dateToInputField.parentNode.parentNode;
+
+        wrapperFrom.setAttribute('data-empty', 'true');
+        wrapperTo.setAttribute('data-empty', 'true');
+
+        const btns = container.querySelectorAll('.calendar-open-btn--double');
+        btns.forEach(btn => btn.addEventListener('click', () => {
+            if (container.querySelector('.calendar') !== null) {
+                return;
+            }
+
+            const strDateFrom = dateFromTextElem.getAttribute('data-date');
+            const strDateTo = dateToTextElem.getAttribute('data-date');
+            if (strDateFrom) {
+                setDateInputFieldValue(dateFromInputField, new Date(strDateFrom.trim()));
+                wrapperFrom.setAttribute('data-empty', 'false');
+            } else {
+                clearDateInputField(dateFromInputField);
+            }
+            if (strDateTo) {
+                setDateInputFieldValue(dateToInputField, new Date(strDateTo.trim()));
+                wrapperTo.setAttribute('data-empty', 'false');
+            } else {
+                clearDateInputField(dateToInputField);
+            }
+
+            container.classList.add('calendar-expanded');
+
+            const calendar = showDoubleCalendar(container, dateFrom => {
+                setDateInputFieldValue(dateFromInputField, dateFrom);
+                dateFromTextElem.setAttribute('data-date', dateFrom.toLocaleDateString());
+                wrapperFrom.setAttribute('data-empty', false);
+            }, dateTo => {
+                setDateInputFieldValue(dateToInputField, dateTo);
+                dateToTextElem.setAttribute('data-date', dateTo.toLocaleDateString());
+                wrapperTo.setAttribute('data-empty', false);
+
+            }, (dateFrom, dateTo, err) => {
+                if (err) {
+                    // console.log(err);
+                }
+
+                try {
+                    dateFromTextElem.textContent = formatDate(getDateInputFieldValue(dateFromInputField));
+                } catch (e) {
+                    wrapperFrom.setAttribute('data-empty', 'true');
+                    dateFromTextElem.textContent = '';
+                }
+
+                try {
+                    dateToTextElem.textContent = formatDate(getDateInputFieldValue(dateToInputField));
+                } catch (e) {
+                    wrapperTo.setAttribute('data-empty', 'true');
+                    dateToTextElem.textContent = '';
+                }
+
+                performFiltering();
+
+                container.classList.toggle('calendar-expanded');
+                calendar.close();
+            });
+
+            dateFromInputField.querySelectorAll('input').forEach(inp => inp.addEventListener('input', () => {
+                wrapperFrom.setAttribute('data-empty', checkDateInputFieldEmpty(dateFromInputField));
+                try {
+                    const date = getDateInputFieldValue(dateFromInputField);
+                    calendar.first.setDate(date);
+                } catch (e) {}
+            }));
+            dateToInputField.querySelectorAll('input').forEach(inp => inp.addEventListener('input', () => {
+                wrapperTo.setAttribute('data-empty', checkDateInputFieldEmpty(dateToInputField));
+                try {
+                    const date = getDateInputFieldValue(dateToInputField);
+                    calendar.second.setDate(date);
+                } catch (e) {}
+            }));
+
+            cover.addEventListener('click', () => {
+                try {
+                    dateFromTextElem.textContent = formatDate(getDateInputFieldValue(dateFromInputField));
+                } catch (e) {
+                    wrapperFrom.setAttribute('data-empty', 'true');
+                    dateFromTextElem.textContent = '';
+                }
+
+                try {
+                    dateToTextElem.textContent = formatDate(getDateInputFieldValue(dateToInputField));
+                } catch (e) {
+                    wrapperTo.setAttribute('data-empty', 'true');
+                    dateToTextElem.textContent = '';
+                }
+
+                container.classList.remove('calendar-expanded');
+                calendar.close();
+
+                performFiltering();
+            });
+
+            const [cross1, cross2] = container.querySelectorAll('.cross');
+            cross1.addEventListener('click', () => {
+                clearDateInputField(dateFromInputField);
+                wrapperFrom.setAttribute('data-empty', 'true');
+                dateFromTextElem.removeAttribute('data-date');
+                calendar.first.clear();
+                dateFromTextElem.textContent = '';
+                if (!container.querySelector('.calendar')) {
+                    performFiltering();
+                }
+            });
+            cross2.addEventListener('click', () => {
+                clearDateInputField(dateToInputField);
+                wrapperTo.setAttribute('data-empty', 'true');
+                dateToTextElem.removeAttribute('data-date');
+                calendar.second.clear();
+                dateToTextElem.textContent = '';
+                if (!container.querySelector('.calendar')) {
+                    performFiltering();
+                }
+            });
+        }));
+    });
+}
 
 // expanding list with links
 function initExpandingLists(target) {
@@ -309,6 +441,138 @@ function checkDateInputFieldEmpty(field) {
     return day === '' && month === '' && year === '';
 }
 
+// filter region popup
+function initFilterRegions(target) {
+    const textElem = target.querySelector('.adv-filter-region .text');
+
+    if (textElem.scrollWidth > textElem.clientWidth) {
+        textElem.classList.add('ovf-fade');
+        textElem.parentNode.classList.add('hint');
+    }
+
+    textElem.addEventListener('click', () => {
+
+
+        showChooseRegionPopup((regions, cities) => {
+            let resultText;
+            if (regions.length + cities.length === 0) {
+                resultText = 'Регион / Населенный пункт';
+            } else {
+                resultText = `Регионов: ${regions.length}, Населенных пунктов: ${cities.length}`;
+            }
+
+            textElem.textContent = resultText;
+
+            if (textElem.scrollWidth > textElem.clientWidth) {
+                textElem.classList.add('ovf-fade');
+                textElem.parentNode.classList.add('hint');
+                textElem.nextElementSibling.textContent = resultText;
+            } else {
+                textElem.parentNode.classList.remove('hint');
+            }
+        });
+    });
+}
+
+// show modal
+const modal = find('.modal');
+const modalContent = modal.querySelector('.modal__content');
+const modalBody = modal.querySelector('.modal__body');
+const modalHeader = modal.querySelector('.modal__header');
+const modalFooter = modal.querySelector('.modal__footer');
+
+function clearModal() {
+    modalHeader.innerHTML = '';
+    modalBody.innerHTML = '';
+    modalFooter.innerHTML = '';
+
+    modalContent.classList.remove('confirm');
+}
+
+function showModal(html) {
+    modalBody.innerHTML = html;
+
+    const closeBtn = document.createElement('span');
+    closeBtn.classList.add('icon-cross-svgrepo-com', 'modal__close-btn');
+    modalBody.appendChild(closeBtn);
+
+    document.body.classList.add('lock');
+
+    modal.classList.add('modal--visible');
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('modal--visible');
+        document.body.classList.remove('lock');
+        clearModal();
+    });
+    modal.addEventListener('click', e => {
+        if (e.target === modal) {
+            modal.classList.remove('modal--visible');
+            document.body.classList.remove('lock');
+            clearModal();
+        }
+    });
+}
+
+function showConfirmModal(title, content, buttons) {
+    modalContent.classList.add('confirm');
+
+    modalBody.innerHTML = content;
+
+    const h4 = document.createElement('h4');
+    h4.innerHTML = title;
+    modalHeader.appendChild(h4);
+
+    const closeBtn = document.createElement('span');
+    closeBtn.classList.add('icon-cross-svgrepo-com', 'modal__close-btn', 'modal__close-btn--inner');
+    modalHeader.appendChild(closeBtn);
+
+    document.body.classList.add('lock');
+
+    return new Promise((resolve, reject) => {
+        if (buttons) {
+            for (const button of buttons) {
+                const $btn = document.createElement('a');
+                $btn.setAttribute('href', '');
+                $btn.textContent = button.text;
+                $btn.classList.add('action-btn');
+                if (button.className) {
+                    $btn.classList.add(button.className);
+                }
+                modalFooter.appendChild($btn);
+
+                $btn.addEventListener('click', e => {
+                    e.preventDefault();
+
+                    if (button.type === 'submit') {
+                        resolve();
+                    } else if (button.type === 'cancel') {
+                        reject();
+                    }
+
+                    modal.classList.remove('modal--visible');
+                    document.body.classList.remove('lock');
+                    clearModal();
+                });
+            }
+        }
+
+        modal.classList.add('modal--visible');
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('modal--visible');
+            document.body.classList.remove('lock');
+            clearModal();
+            reject();
+        });
+        modal.addEventListener('click', e => {
+            if (e.target === modal) {
+                modal.classList.remove('modal--visible');
+                document.body.classList.remove('lock');
+                clearModal();
+                reject();
+            }
+        });
+    });
+}
 
 // advertisement rendering system
 const DEFAULT_LOGO_URL = 'img/profile-icons/default-logo.svg';
@@ -520,7 +784,33 @@ async function printArticles(articles) {
     }
 }
 
+function setupArticle(article) {
+    initLinkPreventReload(article.el);
+    initExpandingLists(article.el);
+    initFadeEffects(article.el);
+    initDateInputFields(article.el);
+    initArticleCalendar(article);
+    initCopyLinkModals(article);
+    initDeleteCityBtns(article);
+    initShowCitiesBtn(article);
+    initArticleDates(article);
+    initArticleStateBackground(article);
+    initProlongCheckbox(article);
 
+    article.el.querySelector('.checkbox').addEventListener('click', () => {
+        if (article.checked) {
+            setArticleCheckState(article, false);
+        } else {
+            setArticleCheckState(article, true);
+        }
+    });
+
+    article.el.querySelector('.adv-item__services a').addEventListener('click', async () => {
+        showModal(await renderElement('services', { services: article.data._services, state: article.data._state }));
+    });
+
+    article.el.querySelector('.adv-item__city-list .service-item').addEventListener('click', () => showChooseRegionPopup(() => {}));
+}
 
 function updateArticle(article, options = {}) {
     article.data = {...article.data, ...options};
@@ -565,7 +855,99 @@ function initProlongCheckbox(article) {
     }
 }
 
+function initArticleCalendar(article) {
+    const container = article.el.querySelector('.calendar-container');
+    const btn = container.querySelector('.calendar-open-btn');
+    btn.addEventListener('click', () => {
+        if (article.el.querySelector('.calendar') !== null) {
+            return;
+        }
+        container.setAttribute('data-state', 'focused');
 
+        const dateTextElem = container.querySelector('.date-value');
+
+        const dateInputField = container.querySelector('.date-input-field');
+        const dateInputFieldDay = dateInputField.querySelector('.day');
+
+        const errorHintText = container.querySelector('.hint__text');
+
+        // clearDateInputField(dateInputField);
+        setDateInputFieldValue(dateInputField, new Date(dateTextElem.getAttribute('data-date').trim()));
+        dateInputFieldDay.focus();
+
+        const calendar = showSingleCalendar(container, date => {
+            setDateInputFieldValue(dateInputField, date);
+            container.setAttribute('data-state', 'focused');
+        }, (date, err) => {
+            if (err) {
+                try {
+                    const date = getDateInputFieldValue(dateInputField);
+                    dateTextElem.textContent = formatDate(date);
+                    article.data._date.deactivation = date;
+                    initArticleDates(article);
+                    container.removeAttribute('data-state');
+                    calendar.close();
+                } catch (e) {
+                    container.setAttribute('data-state', 'error');
+                }
+                return;
+            }
+            dateTextElem.textContent = formatDate(date);
+            article.data._date.deactivation = date;
+            initArticleDates(article);
+            container.removeAttribute('data-state');
+            calendar.close();
+        });
+
+        cover.addEventListener('click', () => {
+            try {
+                const date = getDateInputFieldValue(dateInputField);
+                dateTextElem.textContent = formatDate(date);
+                article.data._date.deactivation = date;
+                initArticleDates(article);
+                container.removeAttribute('data-state');
+                calendar.close();
+            } catch (e) {
+                container.setAttribute('data-state', 'error');
+            }
+        });
+
+        dateInputField.querySelectorAll('input').forEach(inp => inp.addEventListener('input', () => {
+            container.setAttribute('data-state', 'focused');
+            try {
+                const date = getDateInputFieldValue(dateInputField);
+                try {
+                    calendar.setDate(date);
+                } catch (e) {
+                    calendar.clear();
+                    dateInputFieldDay.focus();
+                    clearDateInputField(dateInputField);
+                    errorHintText.style.display = 'block';
+                    setTimeout(() => {
+                        errorHintText.style.display = 'none';
+                    }, 2000);
+                }
+            } catch (e) {
+            }
+        }));
+    });
+}
+
+function initArticleDates(article) {
+    const deactivationValueElem = article.el.querySelector('.adv-item__state .calendar-container .date-value');
+    deactivationValueElem.setAttribute('data-date', article.data._date.deactivation);
+    deactivationValueElem.textContent = formatDate(new Date(article.data._date.deactivation));
+
+    article.el.querySelector('.expires .value').textContent = getDayDifference(new Date(article.data._date.activation), new Date(article.data._date.deactivation));
+
+    const updateDateBtn = article.el.querySelector('.adv-item__dates .update-time-btn');
+    updateDateBtn.addEventListener('click', () => {
+        const date = new Date();
+        article.el.querySelector('.adv-item__dates .updated .date-value').textContent = formatDateDots(date);
+        article.el.querySelector('.adv-item__dates .updated .time-value').textContent = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+        updateDateBtn.classList.add('hidden');
+    });
+}
 
 function initArticleStateBackground(article) {
     article.el.setAttribute('data-state', article.data._state);
@@ -626,9 +1008,116 @@ function initCopyLinkModals(article) {
     });
 }
 
+// advertisement checkboxes
+let checkedArticlesCount = 0;
 
+const mainCheckbox = find('.actions .checkbox');
+mainCheckbox.addEventListener('click', () => {
+    const checked = switchCheckbox(mainCheckbox);
+    filteredArticles.forEach(a => {
+        setArticleCheckState(a, checked);
+    });
+});
 
+function switchMainCheckBoxVisibility(visible) {
+    if (visible) {
+        mainCheckbox.classList.remove('hidden');
+    } else {
+        mainCheckbox.classList.add('hidden');
+    }
+}
 
+function switchCheckbox(elem, checked = null) {
+    if (checked === null) {
+        if (elem.classList.contains('active')) {
+            elem.classList.remove('active');
+            return false;
+        } else {
+            elem.classList.add('active');
+            return true;
+        }
+    }
+
+    if (checked) {
+        elem.classList.add('active');
+    } else {
+        elem.classList.remove('active');
+    }
+
+    return checked;
+}
+
+function setArticleCheckState(article, checked, actionBarUpdateNeeded = true) {
+    if (article.checked === checked) {
+        return;
+    }
+    article.checked = checked;
+    if (checked) {
+        checkedArticlesCount++;
+        article.el.querySelector('.checkbox').classList.add('active');
+    } else {
+        checkedArticlesCount--;
+        article.el.querySelector('.checkbox').classList.remove('active');
+    }
+
+    if (actionBarUpdateNeeded) {
+        updateActionBar();
+    }
+}
+
+function updateActionBar() {
+    updateMainCheckbox();
+    switchActionsBtns(checkedArticlesCount > 0);
+}
+
+function updateMainCheckbox() {
+    switchCheckbox(mainCheckbox, checkedArticlesCount === filteredArticles.length && checkedArticlesCount > 0);
+}
+
+// submit deactivation modal text content
+const deactivationMessage = 'Обратите внимание, что при снятии вакансии тариф израсходуется. Не распространяется на тарифы "Подписка"';
+// action bar
+const actionBtnsContainer = find('.actions .actions__container');
+let checkSensitiveBtns;
+
+const defaultActionBtns = [{
+    elem: null, text: 'Подать объявление', action: function () {
+        console.log('подать объяление');
+    }
+}];
+
+const actionBtns = {
+    delete: {
+        text: 'Удалить', action: function (a) {
+            setArticleCheckState(a, false, false);
+            updateArticle(a, {_state: 'deleted'});
+        }
+    }, activate: {
+        text: 'Активировать', action: function (a) {
+            setArticleCheckState(a, false, false);
+            updateArticle(a, {_state: 'active'});
+        }
+    }, unpublish: {
+        text: 'Снять с публикации', action: function (a) {
+            setArticleCheckState(a, false, false);
+            updateArticle(a, {_state: 'closed'});
+        },
+        beforeAction() {
+            const title = `Снять с публикации вакансию(и): ${articles.filter(a => a.checked).reduce((arr, a) => {
+                arr.push(`«${a.data.title}»`);
+                return arr;
+            }, []).join(', ')} ?`
+            return showConfirmModal(title, deactivationMessage, [
+                {text: 'Все равно снять', className: 'action-btn--red', type: 'submit'},
+                {text: 'Отменить', type: 'cancel'},
+            ]);
+        },
+    }, emptyTrash: {
+        text: 'Очистить корзину', action: function (a) {
+            articles = articles.filter(article => a !== article);
+        },
+    }
+};
 
 function switchActionsBtns(enabled = null) {
     if (enabled === null) {
@@ -803,7 +1292,37 @@ const filters = [function (a) {
     return true;
 }];
 
+const listeners = [{
+    selector: ['#adv-filter-title'], event: 'input',
+}, {
+    selector: ['.adv-filter-type .tab-link'], event: 'click',
+}, {
+    selector: ['#adv-filter-price-from', '#adv-filter-price-to'], event: 'input',
+}, {
+    selector: ['.adv-filter-region .select ul li'], event: 'click'
+}, {
+    selector: ['.adv-filter-state .tab-link'], event: 'click'
+}, {
+    selector: ['.adv-filter-price .cross', '.adv-filter-title .cross'], event: 'click',
+}, {
+    selector: ['.adv-filter-date .cross'], event: 'click', checker: function (e) {
+        return !find('.adv-filter-date .calendar');
+    },
+}];
 
+function filterArticles(articles) {
+    return articles.filter(a => {
+        let match = true;
+        for (let i = 0; i < filters.length; i++) {
+            if (!filters[i](a)) {
+                match = false;
+                setArticleCheckState(a, false);
+                break;
+            }
+        }
+        return match;
+    });
+}
 
 function initFilters() {
     listeners.forEach(l => {
@@ -817,13 +1336,57 @@ function initFilters() {
     });
 }
 
+// sorting
+function performSorting(compareFunction) {
+    const articlesCopy = filteredArticles;
+    articlesCopy.sort(compareFunction);
+    printArticles(articlesCopy);
+}
+
+const sorts = {
+    'default': function (a1, a2) {
+        return a1.id - a2.id;
+    },
+    'date': function (a1, a2) {
+        if (a1.data._state === 'draft') {
+            return new Date(a1.data._date.created) - new Date(a2.data._date.created);
+        }
+        return new Date(a1.data._date.activation) - new Date(a2.data._date.activation);
+    }, 'date-rev': function (a1, a2) {
+        if (a1.data._state === 'draft') {
+            return new Date(a2.data._date.created) - new Date(a1.data._date.created);
+        }
+        return new Date(a2.data._date.activation) - new Date(a1.data._date.activation);
+    }, 'title': function (a1, a2) {
+        return a1.data.title.localeCompare(a2.data.title);
+    }, 'title-rev': function (a1, a2) {
+        return a2.data.title.localeCompare(a1.data.title);
+    }, 'price': function (a1, a2) {
+        return a1.data.price - a2.data.price;
+    }, 'price-rev': function (a1, a2) {
+        return a2.data.price - a1.data.price;
+    },
+};
+
+function initSorts() {
+    findAll('.action-sort .select__list > li').forEach(opt => opt.addEventListener('click', e => {
+        const sortType = e.target.getAttribute('id').split('-').splice(3).join('-');
+        performSorting(sorts[sortType]);
+    }));
+    find('.action-sort .cross').addEventListener('click', () => {
+        performSorting(sorts['default']);
+    });
+}
+
 let globalTestData;
 
 initLinkPreventReload(document.body);
 initClearFieldBtns(document.body);
-
+initFilterCalendar(document.body);
 initDateInputFields(document.body);
+initFilterRegions(document.body);
 initInputValidation();
+initSorts();
 
 fetchData().then(data => {
     initDefaultActionBtns();
