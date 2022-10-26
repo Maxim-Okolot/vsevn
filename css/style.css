@@ -779,6 +779,10 @@ mark {
     margin-right: 5px;
 }
 
+.form-date__input {
+    width: 140px;
+}
+
 .operation-sort__item {
     margin-right: 50px;
 }

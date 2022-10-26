@@ -28,12 +28,8 @@
 
   <link href="css/icons.css" rel="stylesheet" type="text/css"/>
   <link href="css/main.css" rel="stylesheet" type="text/css"/>
-  <link href="css/custom.css" rel="stylesheet" type="text/css"/>
-  <link href="css/calendar.css" rel="stylesheet" type="text/css"/>
+  <link href="css/air-datepicker.css" rel="stylesheet" type="text/css"/>
   <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
-  <script src="js/calendar.js"></script>
-  <script src="js/main.js"></script>
 </head>
 <body>
 
@@ -222,40 +218,19 @@
     <div class="table-history">
       <h3 class="operation-history__title">История операций как юридического лица
         <a href="#" class="open-new-window" target="_blank">Открыть в отдельном окне</a></h3>
-      <div class="adv-filter-date calendar-container calendar-container--left flex">
-        <div class="wrapper">
-          <label class="calendar-open-btn--double">
-            <span class="placeholder">От</span>
-            <div class="date-input-field date-from">
-              <input placeholder="ДД" type="tel" class="day">
-              <span>.</span>
-              <input placeholder="ММ" type="tel" class="month">
-              <span>.</span>
-              <input placeholder="ГГГГ" type="tel" class="year">
-            </div>
-            <span class="date-value" id="adv-filter-date-from"></span>
-          </label>
-          <span aria-controls="adv-filter-date-from" class="hint icon cross icon-cross-svgrepo-com">
-                                <span class="hint__text hint__text--center">Очистить поле?</span>
-                            </span>
-        </div>
-        <div class="wrapper">
-          <label class="calendar-open-btn--double">
-            <span class="placeholder">До</span>
-            <div class="date-input-field date-to">
-              <input placeholder="ДД" type="tel" class="day">
-              <span>.</span>
-              <input placeholder="ММ" type="tel" class="month">
-              <span>.</span>
-              <input placeholder="ГГГГ" type="tel" class="year">
-            </div>
-            <span class="date-value" id="adv-filter-date-to"></span>
-          </label>
-          <span aria-controls="adv-filter-date-to" class="hint icon cross icon-cross-svgrepo-com">
-                                <span class="hint__text hint__text--center">Очистить поле?</span>
-                            </span>
-        </div>
+
+      <!-- calendar -->
+      <div class="form-date">
+        <label class="form-date__input-wrap">
+          <span>От</span>
+          <input type="text" name="date-from" class="form-date__input date-min" placeholder="дд мм гггг" title=""/>
+        </label>
+        <label class="form-date__input-wrap">
+          <span>До</span>
+          <input type="text" name="date-to" class="form-date__input date-max" placeholder="дд мм гггг" title=""/>
+        </label>
       </div>
+      <!-- calendar -->
 
       <ul class="operation-sort">
         <li class="operation-sort__item">
@@ -334,16 +309,19 @@
 
     <div class="operation-history table-history">
       <h3 class="operation-history__title">История операций как физического лица</h3>
-      <form class="form-date">
+
+      <!-- calendar -->
+      <div class="form-date">
         <label class="form-date__input-wrap">
           <span>От</span>
-          <input type="date" name="date-from" class="form-date__input" title=""/>
+          <input type="text" name="date-from" class="form-date__input date-min" placeholder="дд мм гггг" title=""/>
         </label>
         <label class="form-date__input-wrap">
           <span>До</span>
-          <input type="date" name="date-to" class="form-date__input" title=""/>
+          <input type="text" name="date-to" class="form-date__input date-max" placeholder="дд мм гггг" title=""/>
         </label>
-      </form>
+      </div>
+      <!-- calendar -->
 
       <ul class="operation-sort">
         <li class="operation-sort__item">
@@ -442,16 +420,19 @@
 
     <div class="history-bonus table-history">
       <h3 class="operation-history__title">История операций по бонусам</h3>
-      <form class="form-date">
+
+      <!-- calendar -->
+      <div class="form-date">
         <label class="form-date__input-wrap">
           <span>От</span>
-          <input type="date" name="date-from" class="form-date__input" title=""/>
+          <input type="text" name="date-from" class="form-date__input date-min" placeholder="дд мм гггг" title=""/>
         </label>
         <label class="form-date__input-wrap">
           <span>До</span>
-          <input type="date" name="date-to" class="form-date__input" title=""/>
+          <input type="text" name="date-to" class="form-date__input date-max" placeholder="дд мм гггг" title=""/>
         </label>
-      </form>
+      </div>
+      <!-- calendar -->
 
       <div class="history-bonus-wrap">
         <div class="history-bonus__title">
@@ -542,8 +523,7 @@
 
 </main>
 
-
+<script src="js/air-datepicker.js"></script>
 <script src="js/script.js"></script>
-
 </body>
 </html>

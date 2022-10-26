@@ -369,6 +369,49 @@
   }
 
 
+  if (document.querySelector('.form-date')) {
+    let dpMin, dpMax;
+
+    let inputMin = document.getElementsByClassName('date-min');
+    let inputMx = document.getElementsByClassName('date-max');
+
+    for (let i = 0; i < inputMin.length; i++) {
+
+      dpMin = new AirDatepicker(inputMin[i], {
+        onSelect({date}) {
+          dpMax.update({
+            minDate: date
+          })
+        }
+      })
+
+      dpMin = new AirDatepicker(inputMx[i], {
+        onSelect({date}) {
+          dpMax.update({
+            minDate: date
+          })
+        }
+      })
+    }
+
+
+  }
+
+
+
+
+
+
+
+  dpMax = new AirDatepicker('.date-max', {
+    onSelect({date}) {
+      dpMin.update({
+        maxDate: date
+      })
+    }
+  })
+
+
 
 
 
