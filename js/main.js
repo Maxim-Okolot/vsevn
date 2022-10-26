@@ -1071,20 +1071,6 @@ const listeners = [{
     },
 }];
 
-function filterArticles(articles) {
-    return articles.filter(a => {
-        let match = true;
-        for (let i = 0; i < filters.length; i++) {
-            if (!filters[i](a)) {
-                match = false;
-                setArticleCheckState(a, false);
-                break;
-            }
-        }
-        return match;
-    });
-}
-
 function initFilters() {
     listeners.forEach(l => {
         Array.from(findAll(l.selector)).forEach(el => {
@@ -1094,48 +1080,6 @@ function initFilters() {
                 }
             });
         });
-    });
-}
-
-// sorting
-function performSorting(compareFunction) {
-    const articlesCopy = filteredArticles;
-    articlesCopy.sort(compareFunction);
-    printArticles(articlesCopy);
-}
-
-const sorts = {
-    'default': function (a1, a2) {
-        return a1.id - a2.id;
-    },
-    'date': function (a1, a2) {
-        if (a1.data._state === 'draft') {
-            return new Date(a1.data._date.created) - new Date(a2.data._date.created);
-        }
-        return new Date(a1.data._date.activation) - new Date(a2.data._date.activation);
-    }, 'date-rev': function (a1, a2) {
-        if (a1.data._state === 'draft') {
-            return new Date(a2.data._date.created) - new Date(a1.data._date.created);
-        }
-        return new Date(a2.data._date.activation) - new Date(a1.data._date.activation);
-    }, 'title': function (a1, a2) {
-        return a1.data.title.localeCompare(a2.data.title);
-    }, 'title-rev': function (a1, a2) {
-        return a2.data.title.localeCompare(a1.data.title);
-    }, 'price': function (a1, a2) {
-        return a1.data.price - a2.data.price;
-    }, 'price-rev': function (a1, a2) {
-        return a2.data.price - a1.data.price;
-    },
-};
-
-function initSorts() {
-    findAll('.action-sort .select__list > li').forEach(opt => opt.addEventListener('click', e => {
-        const sortType = e.target.getAttribute('id').split('-').splice(3).join('-');
-        performSorting(sorts[sortType]);
-    }));
-    find('.action-sort .cross').addEventListener('click', () => {
-        performSorting(sorts['default']);
     });
 }
 
