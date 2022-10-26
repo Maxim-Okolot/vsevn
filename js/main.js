@@ -1090,7 +1090,6 @@ initClearFieldBtns(document.body);
 initFilterCalendar(document.body);
 initDateInputFields(document.body);
 initInputValidation();
-initSorts();
 
 fetchData().then(data => {
     initDefaultActionBtns();
