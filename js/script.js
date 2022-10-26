@@ -321,7 +321,11 @@
     btncancel.addEventListener('click', popup);
   }
 
-  let inputBonus = document.querySelector('.write-down-bonus');
+  if (document.querySelector('.write-down-bonus')) {
+    let inputBonus = document.querySelector('.write-down-bonus');
+
+    inputBonus.onkeypress = validate;
+  }
 
   function validate(evt) {
     let theEvent = evt || window.event;
@@ -341,7 +345,7 @@
 
   }
 
-  inputBonus.onkeypress = validate;
+
 
   inputBonus.onfocus = function () {
     let arr = inputBonus.value.split('');
