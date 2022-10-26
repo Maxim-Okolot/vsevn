@@ -1,4 +1,6 @@
 (function () {
+  MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
   /*cookies*/
   let closeCookies = function () {
     let cookie = document.querySelector('.cookie');
@@ -370,46 +372,68 @@
 
 
   if (document.querySelector('.form-date')) {
-    let dpMin, dpMax;
 
     let inputMin = document.getElementsByClassName('date-min');
-    let inputMx = document.getElementsByClassName('date-max');
+    let inputMax = document.getElementsByClassName('date-max');
+    let btnClear = document.getElementsByClassName('clear');
+    let dateInput = document.getElementsByClassName('form-date__input');
 
     for (let i = 0; i < inputMin.length; i++) {
 
-      dpMin = new AirDatepicker(inputMin[i], {
-        onSelect({date}) {
-          dpMax.update({
-            minDate: date
-          })
+
+      for (let btn of btnClear) {
+        btn.addEventListener('click', function () {
+          if (btn.previousElementSibling.classList.contains('date-min')) {
+            dpMin.clear();
+          } else {
+            dpMax.clear();
+          }
+        })
+      }
+
+      for (let int of dateInput) {
+        int.onkeypress = validate;
+        int.oninput = function () {
+          if (int.previousElementSibling.classList.contains('date-min')) {
+            dpMin.setViewDate(int.value);
+            dpMin.setFocusDate(int.value);
+          } else {
+            dpMax.setViewDate(int.value);
+            dpMax.setFocusDate(int.value);
+          }
         }
+
+      }
+
+      let dpMin = new AirDatepicker(inputMin[i], {
+        autoClose: true,
+        position: 'bottom center',
+        onSelect({date}) {
+
+          if (inputMin[i].value !== '') {
+            inputMin[i].classList.add('visible-message');
+          } else {
+            inputMin[i].classList.remove('visible-message');
+          }
+        }
+
       })
 
-      dpMin = new AirDatepicker(inputMx[i], {
+      let dpMax = new AirDatepicker(inputMax[i], {
+        autoClose: true,
+        position: 'bottom center',
         onSelect({date}) {
-          dpMax.update({
-            minDate: date
-          })
+
+
+          if (inputMax[i].value !== '') {
+            inputMax[i].classList.add('visible-message');
+          } else {
+            inputMax[i].classList.remove('visible-message');
+          }
         }
       })
     }
-
-
   }
-
-
-
-
-
-
-
-  dpMax = new AirDatepicker('.date-max', {
-    onSelect({date}) {
-      dpMin.update({
-        maxDate: date
-      })
-    }
-  })
 
 
 

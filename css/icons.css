@@ -27,7 +27,7 @@
 
 .icon-arrow__left:before {
     content: "\e900";
-    color: #fff;
+    color: #000;
 }
 .icon-arrow__right:before {
     content: "\e901";
