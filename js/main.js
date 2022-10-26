@@ -973,3 +973,327 @@ function initCopyLinkModals(article) {
     });
 }
 
+
+
+
+
+function switchActionsBtns(enabled = null) {
+    if (enabled === null) {
+
+    }
+    if (enabled) {
+        actionBtnsContainer.querySelectorAll('a:not(.action-btn--red)').forEach(b => {
+            b.classList.remove('disabled');
+        });
+    } else {
+        actionBtnsContainer.querySelectorAll('a:not(.action-btn--red)').forEach(b => {
+            b.classList.add('disabled');
+        });
+    }
+}
+
+function initDefaultActionBtns() {
+    defaultActionBtns.forEach(b => {
+        const btn = document.createElement('a');
+        btn.setAttribute('href', '');
+        btn.classList.add('action-btn', 'action-btn--red');
+        btn.textContent = b.text;
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            b.action();
+        });
+
+        b.elem = btn;
+    });
+}
+
+function clearActionBtns() {
+    actionBtnsContainer.querySelectorAll('.action-btn').forEach(b => b.remove());
+    checkSensitiveBtns = [];
+}
+
+function initActionBar(state) {
+    clearActionBtns();
+    switchMainCheckBoxVisibility(true);
+
+    switch (state) {
+        case 'active':
+            addActionBtn(actionBtns.unpublish);
+            break;
+        case 'closed':
+            addActionBtn(actionBtns.activate);
+            addActionBtn(actionBtns.delete);
+            break;
+        case 'blocked':
+        case 'rejected':
+        case 'pending':
+            switchMainCheckBoxVisibility(false);
+            break;
+        case 'draft':
+            addActionBtn(actionBtns.delete);
+            break;
+        case 'deleted':
+            addActionBtn(actionBtns.emptyTrash);
+            break;
+    }
+
+    defaultActionBtns.forEach(b => {
+        actionBtnsContainer.appendChild(b.elem);
+    });
+}
+
+function addActionBtn({text, action, beforeAction = null}) {
+    const btn = document.createElement('a');
+    btn.setAttribute('href', '');
+    btn.textContent = text;
+    btn.classList.add('action-btn', 'disabled');
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        if (beforeAction && typeof beforeAction === 'function') {
+            beforeAction()
+                .then(() => performAction(action))
+                .catch(() => {});
+            return;
+        }
+        performAction(action);
+    });
+    actionBtnsContainer.appendChild(btn);
+}
+
+function performAction(action) {
+    articles.forEach(a => {
+        if (a.checked) {
+            action(a);
+        }
+    });
+    updateActionBar();
+    performFiltering();
+    updateStateFiltersNumbers();
+}
+
+// advertisement filters
+const stateFiltersBtns = Array.from(findAll('.adv-filter-state .tab-link'));
+
+function initStateFiltersBtns() {
+    stateFiltersBtns.forEach(b => {
+        const state = b.getAttribute('id').split('-').pop();
+        if (b.classList.contains('active')) {
+            initActionBar(state);
+        }
+        b.addEventListener('click', () => initActionBar(state));
+    });
+}
+
+function updateStateFiltersNumbers() {
+    stateFiltersBtns.forEach(b => {
+        b.querySelector('span:last-child').textContent = 0;
+    });
+    articles.forEach(a => {
+        const filterNumber = find(`#adv-filter-state-${a.data._state} span:last-child`);
+        filterNumber.textContent = ++filterNumber.textContent;
+    });
+}
+
+const filters = [function (a) {
+    const strings = find('#adv-filter-title').value.trim().split(' ');
+    let match = false;
+    for (let i = 0; i < strings.length; i++) {
+        if ((a.data.title.toLowerCase().includes(strings[i]) && strings[i].length > 2) || strings[i] === '') {
+            match = true;
+            break;
+        }
+    }
+    return match;
+}, function (a) {
+    const type = find('.adv-filter-type .tab-link.active').getAttribute('id').toLowerCase();
+    if (type.endsWith('all')) {
+        return true;
+    }
+    if (type.endsWith('resume')) {
+        return a.data._type.toLowerCase() === 'resume';
+    }
+    if (type.endsWith('vacancy')) {
+        return a.data._type.toLowerCase() === 'vacancy';
+    }
+}, function (a) {
+    const priceFrom = +find('#adv-filter-price-from').value;
+    const priceTo = +find('#adv-filter-price-to').value || Number.POSITIVE_INFINITY;
+    const price = +a.data.price;
+    return price >= priceFrom && price <= priceTo;
+}, function (a) {
+    const field = find('.adv-filter-region .select span');
+    if (field.getAttribute('data-empty') === 'true') {
+        return true;
+    }
+    const city = field.textContent.toLowerCase();
+    let match = false;
+    for (let i = 0; i < a.data.cityList.length; i++) {
+        if (a.data.cityList[i].toLowerCase() === city) {
+            match = true;
+            break;
+        }
+    }
+    return match;
+}, function (a) {
+    const state = find('.adv-filter-state .tab-link.active').getAttribute('id').split('-').pop();
+    return a.data._state === state;
+}, function (a) {
+    const comparingDate = a.data._state === 'draft' ? new Date(a.data._date.created) : new Date(a.data._date.activation);
+    const dateStartStr = find('#adv-filter-date-from').getAttribute('data-date');
+    const dateEndStr = find('#adv-filter-date-to').getAttribute('data-date');
+    if (dateStartStr && comparingDate < new Date(dateStartStr)) {
+        return false;
+    }
+    if (dateEndStr && comparingDate > new Date(dateEndStr)) {
+        return false;
+    }
+    return true;
+}];
+
+const listeners = [{
+    selector: ['#adv-filter-title'], event: 'input',
+}, {
+    selector: ['.adv-filter-type .tab-link'], event: 'click',
+}, {
+    selector: ['#adv-filter-price-from', '#adv-filter-price-to'], event: 'input',
+}, {
+    selector: ['.adv-filter-region .select ul li'], event: 'click'
+}, {
+    selector: ['.adv-filter-state .tab-link'], event: 'click'
+}, {
+    selector: ['.adv-filter-price .cross', '.adv-filter-title .cross'], event: 'click',
+}, {
+    selector: ['.adv-filter-date .cross'], event: 'click', checker: function (e) {
+        return !find('.adv-filter-date .calendar');
+    },
+}];
+
+function filterArticles(articles) {
+    return articles.filter(a => {
+        let match = true;
+        for (let i = 0; i < filters.length; i++) {
+            if (!filters[i](a)) {
+                match = false;
+                setArticleCheckState(a, false);
+                break;
+            }
+        }
+        return match;
+    });
+}
+
+function initFilters() {
+    listeners.forEach(l => {
+        Array.from(findAll(l.selector)).forEach(el => {
+            el.addEventListener(l.event, e => {
+                if (l.checker === undefined || l.checker(e)) {
+                    performFiltering();
+                }
+            });
+        });
+    });
+}
+
+// sorting
+function performSorting(compareFunction) {
+    const articlesCopy = filteredArticles;
+    articlesCopy.sort(compareFunction);
+    printArticles(articlesCopy);
+}
+
+const sorts = {
+    'default': function (a1, a2) {
+        return a1.id - a2.id;
+    },
+    'date': function (a1, a2) {
+        if (a1.data._state === 'draft') {
+            return new Date(a1.data._date.created) - new Date(a2.data._date.created);
+        }
+        return new Date(a1.data._date.activation) - new Date(a2.data._date.activation);
+    }, 'date-rev': function (a1, a2) {
+        if (a1.data._state === 'draft') {
+            return new Date(a2.data._date.created) - new Date(a1.data._date.created);
+        }
+        return new Date(a2.data._date.activation) - new Date(a1.data._date.activation);
+    }, 'title': function (a1, a2) {
+        return a1.data.title.localeCompare(a2.data.title);
+    }, 'title-rev': function (a1, a2) {
+        return a2.data.title.localeCompare(a1.data.title);
+    }, 'price': function (a1, a2) {
+        return a1.data.price - a2.data.price;
+    }, 'price-rev': function (a1, a2) {
+        return a2.data.price - a1.data.price;
+    },
+};
+
+function initSorts() {
+    findAll('.action-sort .select__list > li').forEach(opt => opt.addEventListener('click', e => {
+        const sortType = e.target.getAttribute('id').split('-').splice(3).join('-');
+        performSorting(sorts[sortType]);
+    }));
+    find('.action-sort .cross').addEventListener('click', () => {
+        performSorting(sorts['default']);
+    });
+}
+
+let globalTestData;
+
+initLinkPreventReload(document.body);
+initClearFieldBtns(document.body);
+initFilterCalendar(document.body);
+initDateInputFields(document.body);
+initFilterRegions(document.body);
+initInputValidation();
+initSorts();
+
+fetchData().then(data => {
+    initDefaultActionBtns();
+    initStateFiltersBtns();
+    updateStateFiltersNumbers();
+
+    initFilters(data);
+    initArticles(data).then(() => {
+        const scroll = getScrollValue();
+        if (scroll) {
+            window.scrollTo(0, +scroll);
+        }
+        window.addEventListener('beforeunload', () => {
+            updateScrollValue();
+        });
+    });
+
+    globalTestData = data;
+});
+
+
+// TEST
+const testInputs = findAll('.test-form input');
+find('.test-form .add').addEventListener('click', () => {
+    const type = find('input[name="type"]:checked').value;
+    globalTestData = [...globalTestData, {
+        el: null, data: {
+            title: testInputs[0].value,
+            price: testInputs[1].value,
+            _type: type,
+            img: {
+                url: testInputs[3].value || DEFAULT_LOGO_URL,
+                className: type === 'resume' ? 'avatar-circle' : 'avatar-square'
+            },
+            cityList: testInputs[2].value.split(' '),
+            views: testInputs[4].value,
+            favourites: testInputs[5].value,
+            dialogs: testInputs[6].value,
+            responses: testInputs[7].value,
+            matchingVacancies: testInputs[8].value,
+            daysPublished: testInputs[9].value,
+            services: Array(+testInputs[10].value).fill().map((el, i) => ({
+                id: i, dateFrom: '10.05.2022', dateTo: '10.06.2022'
+            }))
+        }
+    }];
+    initArticles(globalTestData);
+    initFilters(globalTestData);
+});
+find('.test-form .delete').addEventListener('click', () => {
+    articlesContainer.innerHTML = '';
+});
