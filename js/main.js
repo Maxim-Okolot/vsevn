@@ -157,139 +157,7 @@ function initClearFieldBtns(target) {
     });
 }
 
-// init filter calendar
-function initFilterCalendar(target) {
-    target.querySelectorAll('.adv-filter-date.calendar-container').forEach(container => {
 
-        const dateFromTextElem = container.querySelector('#adv-filter-date-from');
-        const dateToTextElem = container.querySelector('#adv-filter-date-to');
-
-        const dateFromInputField = container.querySelector('.date-input-field.date-from');
-        const dateToInputField = container.querySelector('.date-input-field.date-to');
-
-        const wrapperFrom = dateFromInputField.parentNode.parentNode;
-        const wrapperTo = dateToInputField.parentNode.parentNode;
-
-        wrapperFrom.setAttribute('data-empty', 'true');
-        wrapperTo.setAttribute('data-empty', 'true');
-
-        const btns = container.querySelectorAll('.calendar-open-btn--double');
-        btns.forEach(btn => btn.addEventListener('click', () => {
-            if (container.querySelector('.calendar') !== null) {
-                return;
-            }
-
-            const strDateFrom = dateFromTextElem.getAttribute('data-date');
-            const strDateTo = dateToTextElem.getAttribute('data-date');
-            if (strDateFrom) {
-                setDateInputFieldValue(dateFromInputField, new Date(strDateFrom.trim()));
-                wrapperFrom.setAttribute('data-empty', 'false');
-            } else {
-                clearDateInputField(dateFromInputField);
-            }
-            if (strDateTo) {
-                setDateInputFieldValue(dateToInputField, new Date(strDateTo.trim()));
-                wrapperTo.setAttribute('data-empty', 'false');
-            } else {
-                clearDateInputField(dateToInputField);
-            }
-
-            container.classList.add('calendar-expanded');
-
-            const calendar = showDoubleCalendar(container, dateFrom => {
-                setDateInputFieldValue(dateFromInputField, dateFrom);
-                dateFromTextElem.setAttribute('data-date', dateFrom.toLocaleDateString());
-                wrapperFrom.setAttribute('data-empty', false);
-            }, dateTo => {
-                setDateInputFieldValue(dateToInputField, dateTo);
-                dateToTextElem.setAttribute('data-date', dateTo.toLocaleDateString());
-                wrapperTo.setAttribute('data-empty', false);
-
-            }, (dateFrom, dateTo, err) => {
-                if (err) {
-                    // console.log(err);
-                }
-
-                try {
-                    dateFromTextElem.textContent = formatDate(getDateInputFieldValue(dateFromInputField));
-                } catch (e) {
-                    wrapperFrom.setAttribute('data-empty', 'true');
-                    dateFromTextElem.textContent = '';
-                }
-
-                try {
-                    dateToTextElem.textContent = formatDate(getDateInputFieldValue(dateToInputField));
-                } catch (e) {
-                    wrapperTo.setAttribute('data-empty', 'true');
-                    dateToTextElem.textContent = '';
-                }
-
-                performFiltering();
-
-                container.classList.toggle('calendar-expanded');
-                calendar.close();
-            });
-
-            dateFromInputField.querySelectorAll('input').forEach(inp => inp.addEventListener('input', () => {
-                wrapperFrom.setAttribute('data-empty', checkDateInputFieldEmpty(dateFromInputField));
-                try {
-                    const date = getDateInputFieldValue(dateFromInputField);
-                    calendar.first.setDate(date);
-                } catch (e) {}
-            }));
-            dateToInputField.querySelectorAll('input').forEach(inp => inp.addEventListener('input', () => {
-                wrapperTo.setAttribute('data-empty', checkDateInputFieldEmpty(dateToInputField));
-                try {
-                    const date = getDateInputFieldValue(dateToInputField);
-                    calendar.second.setDate(date);
-                } catch (e) {}
-            }));
-
-            cover.addEventListener('click', () => {
-                try {
-                    dateFromTextElem.textContent = formatDate(getDateInputFieldValue(dateFromInputField));
-                } catch (e) {
-                    wrapperFrom.setAttribute('data-empty', 'true');
-                    dateFromTextElem.textContent = '';
-                }
-
-                try {
-                    dateToTextElem.textContent = formatDate(getDateInputFieldValue(dateToInputField));
-                } catch (e) {
-                    wrapperTo.setAttribute('data-empty', 'true');
-                    dateToTextElem.textContent = '';
-                }
-
-                container.classList.remove('calendar-expanded');
-                calendar.close();
-
-                performFiltering();
-            });
-
-            const [cross1, cross2] = container.querySelectorAll('.cross');
-            cross1.addEventListener('click', () => {
-                clearDateInputField(dateFromInputField);
-                wrapperFrom.setAttribute('data-empty', 'true');
-                dateFromTextElem.removeAttribute('data-date');
-                calendar.first.clear();
-                dateFromTextElem.textContent = '';
-                if (!container.querySelector('.calendar')) {
-                    performFiltering();
-                }
-            });
-            cross2.addEventListener('click', () => {
-                clearDateInputField(dateToInputField);
-                wrapperTo.setAttribute('data-empty', 'true');
-                dateToTextElem.removeAttribute('data-date');
-                calendar.second.clear();
-                dateToTextElem.textContent = '';
-                if (!container.querySelector('.calendar')) {
-                    performFiltering();
-                }
-            });
-        }));
-    });
-}
 
 // expanding list with links
 function initExpandingLists(target) {
@@ -652,33 +520,7 @@ async function printArticles(articles) {
     }
 }
 
-function setupArticle(article) {
-    initLinkPreventReload(article.el);
-    initExpandingLists(article.el);
-    initFadeEffects(article.el);
-    initDateInputFields(article.el);
-    initArticleCalendar(article);
-    initCopyLinkModals(article);
-    initDeleteCityBtns(article);
-    initShowCitiesBtn(article);
-    initArticleDates(article);
-    initArticleStateBackground(article);
-    initProlongCheckbox(article);
 
-    article.el.querySelector('.checkbox').addEventListener('click', () => {
-        if (article.checked) {
-            setArticleCheckState(article, false);
-        } else {
-            setArticleCheckState(article, true);
-        }
-    });
-
-    article.el.querySelector('.adv-item__services a').addEventListener('click', async () => {
-        showModal(await renderElement('services', { services: article.data._services, state: article.data._state }));
-    });
-
-    article.el.querySelector('.adv-item__city-list .service-item').addEventListener('click', () => showChooseRegionPopup(() => {}));
-}
 
 function updateArticle(article, options = {}) {
     article.data = {...article.data, ...options};
@@ -723,99 +565,7 @@ function initProlongCheckbox(article) {
     }
 }
 
-function initArticleCalendar(article) {
-    const container = article.el.querySelector('.calendar-container');
-    const btn = container.querySelector('.calendar-open-btn');
-    btn.addEventListener('click', () => {
-        if (article.el.querySelector('.calendar') !== null) {
-            return;
-        }
-        container.setAttribute('data-state', 'focused');
 
-        const dateTextElem = container.querySelector('.date-value');
-
-        const dateInputField = container.querySelector('.date-input-field');
-        const dateInputFieldDay = dateInputField.querySelector('.day');
-
-        const errorHintText = container.querySelector('.hint__text');
-
-        // clearDateInputField(dateInputField);
-        setDateInputFieldValue(dateInputField, new Date(dateTextElem.getAttribute('data-date').trim()));
-        dateInputFieldDay.focus();
-
-        const calendar = showSingleCalendar(container, date => {
-            setDateInputFieldValue(dateInputField, date);
-            container.setAttribute('data-state', 'focused');
-        }, (date, err) => {
-            if (err) {
-                try {
-                    const date = getDateInputFieldValue(dateInputField);
-                    dateTextElem.textContent = formatDate(date);
-                    article.data._date.deactivation = date;
-                    initArticleDates(article);
-                    container.removeAttribute('data-state');
-                    calendar.close();
-                } catch (e) {
-                    container.setAttribute('data-state', 'error');
-                }
-                return;
-            }
-            dateTextElem.textContent = formatDate(date);
-            article.data._date.deactivation = date;
-            initArticleDates(article);
-            container.removeAttribute('data-state');
-            calendar.close();
-        });
-
-        cover.addEventListener('click', () => {
-            try {
-                const date = getDateInputFieldValue(dateInputField);
-                dateTextElem.textContent = formatDate(date);
-                article.data._date.deactivation = date;
-                initArticleDates(article);
-                container.removeAttribute('data-state');
-                calendar.close();
-            } catch (e) {
-                container.setAttribute('data-state', 'error');
-            }
-        });
-
-        dateInputField.querySelectorAll('input').forEach(inp => inp.addEventListener('input', () => {
-            container.setAttribute('data-state', 'focused');
-            try {
-                const date = getDateInputFieldValue(dateInputField);
-                try {
-                    calendar.setDate(date);
-                } catch (e) {
-                    calendar.clear();
-                    dateInputFieldDay.focus();
-                    clearDateInputField(dateInputField);
-                    errorHintText.style.display = 'block';
-                    setTimeout(() => {
-                        errorHintText.style.display = 'none';
-                    }, 2000);
-                }
-            } catch (e) {
-            }
-        }));
-    });
-}
-
-function initArticleDates(article) {
-    const deactivationValueElem = article.el.querySelector('.adv-item__state .calendar-container .date-value');
-    deactivationValueElem.setAttribute('data-date', article.data._date.deactivation);
-    deactivationValueElem.textContent = formatDate(new Date(article.data._date.deactivation));
-
-    article.el.querySelector('.expires .value').textContent = getDayDifference(new Date(article.data._date.activation), new Date(article.data._date.deactivation));
-
-    const updateDateBtn = article.el.querySelector('.adv-item__dates .update-time-btn');
-    updateDateBtn.addEventListener('click', () => {
-        const date = new Date();
-        article.el.querySelector('.adv-item__dates .updated .date-value').textContent = formatDateDots(date);
-        article.el.querySelector('.adv-item__dates .updated .time-value').textContent = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
-        updateDateBtn.classList.add('hidden');
-    });
-}
 
 function initArticleStateBackground(article) {
     article.el.setAttribute('data-state', article.data._state);
@@ -1053,23 +803,7 @@ const filters = [function (a) {
     return true;
 }];
 
-const listeners = [{
-    selector: ['#adv-filter-title'], event: 'input',
-}, {
-    selector: ['.adv-filter-type .tab-link'], event: 'click',
-}, {
-    selector: ['#adv-filter-price-from', '#adv-filter-price-to'], event: 'input',
-}, {
-    selector: ['.adv-filter-region .select ul li'], event: 'click'
-}, {
-    selector: ['.adv-filter-state .tab-link'], event: 'click'
-}, {
-    selector: ['.adv-filter-price .cross', '.adv-filter-title .cross'], event: 'click',
-}, {
-    selector: ['.adv-filter-date .cross'], event: 'click', checker: function (e) {
-        return !find('.adv-filter-date .calendar');
-    },
-}];
+
 
 function initFilters() {
     listeners.forEach(l => {
@@ -1087,7 +821,7 @@ let globalTestData;
 
 initLinkPreventReload(document.body);
 initClearFieldBtns(document.body);
-initFilterCalendar(document.body);
+
 initDateInputFields(document.body);
 initInputValidation();
 
