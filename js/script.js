@@ -359,7 +359,7 @@
 
     key = String.fromCharCode( key );
 
-    let regex = /[0-9]/;
+    var regex = /[0-9]|\./;
 
     if ( !regex.test(key) ) {
       theEvent.returnValue = false;
@@ -377,53 +377,47 @@
     let inputMax = document.getElementsByClassName('date-max');
     let btnClear = document.getElementsByClassName('clear');
     let dateInput = document.getElementsByClassName('form-date__input');
+    let arrDp = [];
 
     for (let i = 0; i < inputMin.length; i++) {
 
-
-      for (let btn of btnClear) {
-        btn.addEventListener('click', function () {
-          if (btn.previousElementSibling.classList.contains('date-min')) {
-            dpMin.clear();
-          } else {
-            dpMax.clear();
-          }
+      for (let x = 0; x < btnClear.length; x++) {
+        btnClear[x].addEventListener('click', function () {
+          arrDp[x].clear();
         })
-      }
 
-      for (let int of dateInput) {
-        int.onkeypress = validate;
-        int.oninput = function () {
-          if (int.previousElementSibling.classList.contains('date-min')) {
-            dpMin.setViewDate(int.value);
-            dpMin.setFocusDate(int.value);
+        dateInput[x].onkeypress = validate;
+
+        dateInput[x].oninput = function () {
+          if (dateInput[x].value === '' || dateInput[x].value === " ") {
+            arrDp[x].clear();
           } else {
-            dpMax.setViewDate(int.value);
-            dpMax.setFocusDate(int.value);
+            let changeDate = new Date(Date.parse(dateInput[x].value));
+            arrDp[x].setViewDate(changeDate);
+            arrDp[x].setFocusDate(changeDate);
           }
         }
-
       }
+
 
       let dpMin = new AirDatepicker(inputMin[i], {
         autoClose: true,
         position: 'bottom center',
-        onSelect({date}) {
-
+        dateFormat: 'MM.dd.yyyy',
+        onSelect() {
           if (inputMin[i].value !== '') {
             inputMin[i].classList.add('visible-message');
           } else {
             inputMin[i].classList.remove('visible-message');
           }
         }
-
       })
 
       let dpMax = new AirDatepicker(inputMax[i], {
         autoClose: true,
         position: 'bottom center',
-        onSelect({date}) {
-
+        dateFormat: 'dd.MM.yyyy',
+        onSelect() {
           if (inputMax[i].value !== '') {
             inputMax[i].classList.add('visible-message');
           } else {
@@ -431,6 +425,9 @@
           }
         }
       })
+
+      arrDp.push(dpMin);
+      arrDp.push(dpMax);
     }
   }
 
@@ -469,9 +466,4 @@
     }
 
   }
-
-
-
-
-
 })();
