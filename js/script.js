@@ -424,7 +424,6 @@
         position: 'bottom center',
         onSelect({date}) {
 
-
           if (inputMax[i].value !== '') {
             inputMax[i].classList.add('visible-message');
           } else {
@@ -433,6 +432,42 @@
         }
       })
     }
+  }
+
+
+
+
+  if (document.querySelector('.legal-operation')) {
+    let checks = document.querySelectorAll('.input-sort');
+
+
+    for (let check of checks) {
+
+      let sortLegal = function () {
+        let tableOperation = check.parentElement.nextElementSibling;
+
+
+        let rows = tableOperation.children;
+        console.log(rows)
+        if (check.checked) {
+
+          for (let i = 1; i < rows.length; i++) {
+            let statusOperation = rows[i].querySelector('[data-status]').getAttribute('data-status');
+            (statusOperation === 'false') ? rows[i].classList.add('hidden') : rows[i].classList.remove('hidden');
+          }
+
+        } else {
+
+          for (let i = 1; i < rows.length; i++) {
+            rows[i].classList.remove('hidden');
+          }
+
+        }
+      }
+
+      check.onchange = sortLegal;
+    }
+
   }
 
 

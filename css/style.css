@@ -676,7 +676,7 @@ mark {
 .code-word-form__submit {
     margin-left: 20px;
     font-size: 21px;
-    color: #fff;
+    color: #373109;
     padding: 10px 27px 15px;
     background: rgb(255, 221, 0);
     border-radius: 5px;
@@ -689,6 +689,7 @@ mark {
 .code-word-form__submit:hover {
     background: #ff3a00;
     opacity: 0.85;
+    color: #fff;
 }
 
 .code-word__title {
@@ -890,7 +891,7 @@ input:checked + .operation-sort__text {
     margin-right: 10px;
 }
 
-.tr div:last-child:not(.table-title div), div[data-status="true"] {
+div[data-status="true"] {
     color: #52a741 !important;
 }
 
@@ -911,7 +912,6 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .link-export {
     font-size: 21px;
-    color: #fff;
     padding: 10px 27px 15px;
     background: rgb(255, 221, 0);
     border-radius: 5px;
@@ -927,6 +927,15 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .link-export span {
     margin-right: 10px;
+}
+
+.icon-export_upload_icon_176175:before, .link-export {
+    color: #373109;
+    transition: var(--normal);
+}
+
+.link-export:hover, .link-export:hover .icon-export_upload_icon_176175:before {
+    color: #fff;
 }
 
 .page-next {
@@ -999,6 +1008,10 @@ div[data-price = "false"], div[data-operation = "false"] {
     justify-content: center;
     padding: 15px;
     height: 100%;
+}
+
+.legal-operation__tr.hidden, .tr.hidden {
+    display: none;
 }
 
 .history-bonus__title, .legal-operation__title {
@@ -1498,12 +1511,19 @@ div[data-price = "false"], div[data-operation = "false"] {
     background-color: #fede31;
 }
 
-.clear:before {
-    content: "\e900";
+.icon-arrow:hover:before, .icon-arrow:hover:after {
+    color: var(--red);
+    transition: var(--normal);
 }
 
-.clear:hover:before {
-    color: var(--red);
+.icon-arrow:before {
+    position: relative;
+    left: 7px;
+}
+
+.icon-arrow:after {
+    position: relative;
+    left: -8px;
 }
 
 .clear-message {

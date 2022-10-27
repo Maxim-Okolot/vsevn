@@ -25,13 +25,14 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow__left:before {
+.icon-arrow__left:before, .icon-arrow:after {
     content: "\e900";
     color: #000;
 }
-.icon-arrow__right:before {
+
+.icon-arrow__right:before, .icon-arrow:before {
     content: "\e901";
-    color: #fff;
+    color: #000;
 }
 .icon-arrow_down:before {
     content: "\e902";
