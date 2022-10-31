@@ -233,7 +233,6 @@
       let nameAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__desc');
 
       let str = nameAdvertisement.innerHTML.split(' ');
-      console.log(str);
       str[0] = `${str[0]}a`;
       titleOutput.innerHTML = str.join(" ").toLocaleLowerCase();
     }
@@ -260,7 +259,7 @@
           div.classList.add(`id-services-${i}`, 'service-cost');
 
           div.innerHTML = `<div>${paymentRadio[i].value}. скидка ${paymentRadio[i].dataset.sale}%</div>
-          <div class="sale-price">${paymentRadio[i].dataset.salePrice} р</div>`;
+          <div class="sale-price">${paymentRadio[i].dataset.salePrice} ₽</div>`;
           servicesSum.prepend(div);
 
           for (let elementInput of paymentRadio) {
@@ -286,7 +285,7 @@
           sum = sum + Number(num);
         }
 
-        sumPrice.innerHTML = sum;
+        sumPrice.innerHTML = sum + ' ₽';
 
         let sumBonus = 0;
 
@@ -296,8 +295,8 @@
           sumBonus = 1000;
         }
 
-        currentBonus.innerHTML = sumBonus + ' р.';
-        inputBonus.value = '-' + sumBonus + ' p';
+        currentBonus.innerHTML = sumBonus + ' ₽';
+        inputBonus.value = '-' + sumBonus + ' ₽';
         totalSum.innerHTML = sum - sumBonus;
       }
 
@@ -349,7 +348,7 @@
         inputBonus.value = Number(arr.join(''));
       }
 
-      inputBonus.value = '-' + inputBonus.value + ' р';
+      inputBonus.value = '-' + inputBonus.value + ' ₽';
     };
   }
 

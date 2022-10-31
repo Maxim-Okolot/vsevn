@@ -638,7 +638,6 @@ mark {
     width: 100%;
     max-width: 1390px;
     background-color: #fff;
-    border-radius: 20px;
     position: relative;
     padding: 50px 50px 40px;
 }
@@ -1310,7 +1309,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .table-services__title, .table-services__tr {
     display: grid;
-    grid-template-columns: 375px 1fr;
+    grid-template-columns: 400px 1fr;
     border-bottom: .5px solid #d7d7cb;
 }
 
@@ -1328,8 +1327,9 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .table-services__tr > div:first-child {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .table-services__tr:last-child {
@@ -1356,6 +1356,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     align-items: center;
     height: 100%;
     padding: 15px;
+    width: calc(100% - 125px);
 }
 
 .sale__prices {
