@@ -30,7 +30,7 @@
 
 body {
     color: #2c2c2c;
-    line-height: 1.5;
+    line-height: 1;
     background: #fbf7da;
     font: 400 21px "ZabraProTest3-Regular", "Arial", sans-serif;
 }
@@ -262,6 +262,12 @@ mark {
     font: 400 23px sans-serif;
     color: #534a10;
     transition: var(--normal);
+    border-bottom: 1px dotted #534a10;
+}
+
+.breadcrumbs__item:last-child .breadcrumbs__link {
+    border: none;
+    padding-left: 5px;
 }
 /*style breadcrumbs end*/
 
@@ -393,7 +399,7 @@ mark {
     margin-bottom: 15px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: baseline;
 }
 
 .operation-history__title {
@@ -676,7 +682,7 @@ mark {
     margin-left: 20px;
     font-size: 21px;
     color: #373109;
-    padding: 10px 27px 15px;
+    padding: 15px 27px;
     background: rgb(255, 221, 0);
     border-radius: 5px;
     display: flex;
@@ -699,7 +705,7 @@ mark {
     padding: 10px 7px;
     border: 1px solid #e4ddb4;
     width: 330px;
-    height: 47px;
+    height: 54px;
     transition: var(--normal);
     font-size: 21px;
 }
@@ -841,7 +847,7 @@ input:checked + .operation-sort__text {
 }
 
 .history-table .tr {
-    grid-template-columns: 170px 1fr 215px 125px 195px;
+    grid-template-columns: 195px 1fr 215px 120px 165px;
 }
 
 .tr {

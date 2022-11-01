@@ -44,10 +44,10 @@
   <!-- breadcrumbs -->
   <ul class="breadcrumbs">
     <li class="breadcrumbs__item">
-      <a href="#" class="breadcrumbs__link">Главная</a>
+      <a href="#" class="breadcrumbs__link">Главная/</a>
     </li>
     <li class="breadcrumbs__item">
-      <a class="breadcrumbs__link">/Кошелек, история операций, бонусы</a>
+      <a class="breadcrumbs__link">Кошелек, история операций, бонусы</a>
     </li>
   </ul>
   <!-- breadcrumbs -->
@@ -241,25 +241,25 @@
       <ul class="operation-sort">
         <li class="operation-sort__item">
           <label class="operation-sort-label">
-            <input type="radio" name="sort-legal" value="legal-all" checked title=""/>
+            <input type="radio" class="radio-sort" name="sort-legal" value="all" checked title=""/>
             <span class="operation-sort__text">Все операции 4</span>
           </label>
         </li>
         <li class="operation-sort__item">
           <label class="operation-sort__">
-            <input type="radio" name="sort-legal" value="legal-add" title=""/>
+            <input type="radio" class="radio-sort" name="sort-legal" value="add" title=""/>
             <span class="operation-sort__text">Пополнение</span>
           </label>
         </li>
         <li class="operation-sort__item">
           <label class="operation-sort__">
-            <input type="radio" name="sort-legal" value="legal-refund" title=""/>
+            <input type="radio" class="radio-sort" name="sort-legal" value="refund" title=""/>
             <span class="operation-sort__text">Возврат 1</span>
           </label>
         </li>
         <li class="operation-sort__item">
           <label class="operation-sort__">
-            <input type="radio" name="sort-legal" value="legal-not" title=""/>
+            <input type="radio" class="radio-sort" name="sort-legal" value="not" title=""/>
             <span class="operation-sort__text">Не оплачен 1</span>
           </label>
         </li>
@@ -273,7 +273,7 @@
         </svg>
         <span class="btn-radio__desc">Только активные платежи</span>
       </label>
-      <div class="legal-operation">
+      <div class="legal-operation table-operation">
         <div class="legal-operation__title">
           <div>Дата и время счета</div>
           <div>Номер счета</div>
@@ -281,16 +281,22 @@
           <div>Статус</div>
         </div>
         <div class="legal-operation__tr">
-          <div>06.03.2022 09:05</div>
+          <div>06.03.2022 09:05:00</div>
           <div>№САЙТ000001932</div>
           <div>500.00</div>
-          <div data-status="false">Не оплачен</div>
+          <div data-status="false" data-type="not">Не оплачен</div>
         </div>
         <div class="legal-operation__tr">
-          <div>06.03.2022 09:05</div>
+          <div>06.03.2022 09:05:00</div>
           <div>№САЙТ000001734</div>
           <div>500.00</div>
-          <div data-status="true">Оплачен</div>
+          <div data-status="true" data-type="add">Оплачен</div>
+        </div>
+        <div class="legal-operation__tr">
+          <div>06.03.2022 09:05:00</div>
+          <div>№САЙТ000001932</div>
+          <div>500.00</div>
+          <div data-status="false" data-type="refund">Возврат</div>
         </div>
       </div>
       <a href="#" class="page-next">Следующая страница
@@ -338,25 +344,25 @@
       <ul class="operation-sort">
         <li class="operation-sort__item">
           <label class="operation-sort-label">
-            <input type="radio" name="sort-individual" value="all" checked title=""/>
+            <input type="radio" class="radio-sort" name="sort-individual" value="all" checked title=""/>
             <span class="operation-sort__text">Все операции 4</span>
           </label>
         </li>
         <li class="operation-sort__item">
           <label class="operation-sort__">
-            <input type="radio" name="sort-individual" value="all" title=""/>
+            <input type="radio" class="radio-sort" name="sort-individual" value="add" title=""/>
             <span class="operation-sort__text">Пополнение</span>
           </label>
         </li>
         <li class="operation-sort__item">
           <label class="operation-sort__">
-            <input type="radio" name="sort-individual" value="all" title=""/>
+            <input type="radio" class="radio-sort" name="sort-individual" value="refund" title=""/>
             <span class="operation-sort__text">Возврат 1</span>
           </label>
         </li>
         <li class="operation-sort__item">
           <label class="operation-sort__">
-            <input type="radio" name="sort-individual" value="all" title=""/>
+            <input type="radio" class="radio-sort" name="sort-individual" value="not" title=""/>
             <span class="operation-sort__text">Не оплачен 1</span>
           </label>
         </li>
@@ -372,7 +378,7 @@
         <span class="btn-radio__desc">Только активные платежи</span>
       </label>
 
-      <div class="history-table">
+      <div class="history-table table-operation">
         <div class="tr table-title">
           <div>Дата</div>
           <div>Операция</div>
@@ -381,32 +387,32 @@
           <div>Статус</div>
         </div>
         <div class="tr">
-          <div>18.10.2019  16:00	</div>
+          <div>18.10.2019 16:00:00</div>
           <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
           <div>Банковская Карта</div>
           <div data-price="false">-350</div>
-          <div data-status="true">Исполнено</div>
+          <div data-status="true" data-type="add">Исполнено</div>
         </div>
         <div class="tr">
-          <div>18.10.2019  16:00	</div>
+          <div>18.10.2019 16:00:00</div>
           <div><span>Услуга ”Разовое размещение”</span> <a href="#">Для объявления №534534543</a></div>
           <div>Банковская Карта</div>
-          <div data-price="true">+350</div>
-          <div data-status="true">Исполнено</div>
+          <div data-price="false">-350</div>
+          <div data-status="false" data-type="refund">Возврат</div>
         </div>
         <div class="tr">
-          <div>18.10.2019  16:00</div>
+          <div>18.10.2019 16:00:00</div>
           <div>Пополнение Vsevn.ru Кошелька</div>
           <div>Банковская Карта</div>
           <div data-price="false">-350</div>
-          <div data-status="false">Отклонено</div>
+          <div data-status="false" data-type="not">Отклонено</div>
         </div>
         <div class="tr">
-          <div>18.10.2019  16:00</div>
+          <div>18.10.2019 16:00:00</div>
           <div>Возврат денежных средств</div>
           <div>Банковская Карта</div>
           <div data-price="true">+350</div>
-          <div data-status="true">Исполнено</div>
+          <div data-status="true" data-type="add">Исполнено</div>
         </div>
       </div>
       <a href="#" class="page-next">Следующая страница

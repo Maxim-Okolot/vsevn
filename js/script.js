@@ -444,7 +444,7 @@
 
 
         let rows = tableOperation.children;
-        console.log(rows)
+
         if (check.checked) {
 
           for (let i = 1; i < rows.length; i++) {
@@ -465,4 +465,72 @@
     }
 
   }
+
+
+  let sortOperation = function (el, option) {
+    let rows = el.closest('.table-history').querySelectorAll('.table-operation > div');
+    let activeOperationInput = el.closest('.table-history').querySelector('.input-sort');
+
+    activeOperationInput.checked = false;
+
+
+    switch (option) {
+      case 'all':
+        for (let i = 1; i < rows.length; i++) {
+          rows[i].classList.remove('hidden');
+        }
+        break;
+      case 'add':
+        for (let i = 1; i < rows.length; i++) {
+          let status = rows[i].querySelector('div[data-type]');
+
+          if (status.getAttribute('data-type') !== 'add') {
+            rows[i].classList.add('hidden');
+          } else {
+            rows[i].classList.remove('hidden');
+          }
+        }
+        break;
+      case 'refund':
+        for (let i = 1; i < rows.length; i++) {
+          let status = rows[i].querySelector('div[data-type]');
+
+          if (status.getAttribute('data-type') !== 'refund') {
+            rows[i].classList.add('hidden');
+          } else {
+            rows[i].classList.remove('hidden');
+          }
+        }
+        break;
+      case 'not':
+        for (let i = 1; i < rows.length; i++) {
+          let status = rows[i].querySelector('div[data-type]');
+
+          if (status.getAttribute('data-type') !== 'not') {
+            rows[i].classList.add('hidden');
+          } else {
+            rows[i].classList.remove('hidden');
+          }
+        }
+    }
+
+
+
+
+
+  }
+
+  if (document.getElementsByName('sort-legal')) {
+    let inputs = document.querySelectorAll('.radio-sort');
+
+    for (let input of inputs) {
+      input.onchange = function () {
+        sortOperation(input, input.value);
+      }
+    }
+  }
+
+
+
+
 })();
