@@ -757,6 +757,7 @@ mark {
 
 .form-date {
     justify-content: flex-end;
+    position: relative;
 }
 
 .form-date, .operation-sort, .form-date__input-wrap {
@@ -811,9 +812,18 @@ input:checked + .operation-sort__text {
 }
 
 .form-date__input {
-    width: 110px;
     text-align: center;
-    margin: 0 5px;
+    margin: 0 2.5px;
+    font-size: 18px;
+    color: #2c2c2c;
+}
+
+.form-date__input.input-day, .form-date__input.input-month {
+    width: 30px;
+}
+
+.input-year {
+    width: 40px;
 }
 
 .form-date__input, .form-date__input-wrap > span {
@@ -828,7 +838,7 @@ input:checked + .operation-sort__text {
     align-items: center;
 }
 
-.form-date__input-wrap span, .form-date__input {
+.form-date__input-wrap span {
     color: #2c2c2c;
     font: 400 21px sans-serif;
 }
@@ -1570,4 +1580,56 @@ div[data-price = "false"], div[data-operation = "false"] {
     border: 2px solid #ffe856;
     border-right: none;
     border-bottom: none;
+}
+
+.calendar {
+    width: 680px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    top: calc(100% + 10px);
+    border: 1px solid #d3c68c;
+    background-color: #fffef4;
+    border-right: none;
+}
+
+.calendar-min, .calendar-max {
+    width: 340px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.select-years, .select-month {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column: 1/8;
+    height: 35px;
+    border-bottom: 1px solid #d3c68c;
+    border-right: 1px solid #d3c68c;
+}
+
+.week {
+    width: 100%;
+    grid-column: 1/8;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.cell {
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #d3c68c;
+    color: #665800;
+    font-size: 18px;
+}
+
+.calendar select {
+    background-color: transparent;
+    color: #665800;
+    font-size: 18px;
 }

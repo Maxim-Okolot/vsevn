@@ -370,69 +370,6 @@
   }
 
 
-  if (document.querySelector('.form-date')) {
-
-    let inputMin = document.getElementsByClassName('date-min');
-    let inputMax = document.getElementsByClassName('date-max');
-    let btnClear = document.getElementsByClassName('clear');
-    let dateInput = document.getElementsByClassName('form-date__input');
-    let arrDp = [];
-
-    for (let i = 0; i < inputMin.length; i++) {
-
-      for (let x = 0; x < btnClear.length; x++) {
-        btnClear[x].addEventListener('click', function () {
-          arrDp[x].clear();
-        })
-
-        dateInput[x].onkeypress = validate;
-
-        dateInput[x].oninput = function () {
-          if (dateInput[x].value === '' || dateInput[x].value === " ") {
-            arrDp[x].clear();
-          } else {
-            let changeDate = new Date(Date.parse(dateInput[x].value));
-            arrDp[x].setViewDate(changeDate);
-            arrDp[x].setFocusDate(changeDate);
-          }
-        }
-      }
-
-
-      let dpMin = new AirDatepicker(inputMin[i], {
-        autoClose: true,
-        position: 'bottom center',
-        dateFormat: 'MM.dd.yyyy',
-        onSelect() {
-          if (inputMin[i].value !== '') {
-            inputMin[i].classList.add('visible-message');
-          } else {
-            inputMin[i].classList.remove('visible-message');
-          }
-        }
-      })
-
-      let dpMax = new AirDatepicker(inputMax[i], {
-        autoClose: true,
-        position: 'bottom center',
-        dateFormat: 'dd.MM.yyyy',
-        onSelect() {
-          if (inputMax[i].value !== '') {
-            inputMax[i].classList.add('visible-message');
-          } else {
-            inputMax[i].classList.remove('visible-message');
-          }
-        }
-      })
-
-      arrDp.push(dpMin);
-      arrDp.push(dpMax);
-    }
-  }
-
-
-
-
   if (document.querySelector('.legal-operation')) {
     let checks = document.querySelectorAll('.input-sort');
 
@@ -463,7 +400,6 @@
 
       check.onchange = sortLegal;
     }
-
   }
 
 
@@ -483,7 +419,6 @@
       case 'add':
         for (let i = 1; i < rows.length; i++) {
           let status = rows[i].querySelector('div[data-type]');
-
           if (status.getAttribute('data-type') !== 'add') {
             rows[i].classList.add('hidden');
           } else {
@@ -513,11 +448,6 @@
           }
         }
     }
-
-
-
-
-
   }
 
   if (document.getElementsByName('sort-legal')) {
@@ -529,6 +459,60 @@
       }
     }
   }
+
+  let calendarInit = function () {
+    let arrMonth = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Ноябрь',
+      'Октябрь', 'Декабрь'];
+    let arrWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+    let date = new Date();
+    let currentYear = date.getFullYear();
+    let currentMonth = date.getMonth() + 1;
+    let currentDay = date.getDate();
+
+    let selectYears = document.querySelectorAll('.select-years select');
+
+    for (let select of selectYears) {
+      for (let i = date.getFullYear(); i >= 2003; i--) {
+        let option = document.createElement('option');
+        option.setAttribute('value', i);
+        option.innerHTML = i;
+        select.append(option);
+      }
+    }
+
+    let selectMonths = document.querySelectorAll('.select-month select');
+
+    for (let select of selectMonths) {
+      for (let i = 0; i < arrMonth.length; i++) {
+        let option = document.createElement('option');
+        option.setAttribute('value', i + 1);
+        option.innerHTML = arrMonth[i];
+        select.append(option);
+      }
+    }
+
+    let daysWeek = document.querySelectorAll('.week');
+
+    for (let day of daysWeek) {
+      for (let i = 0; i < arrWeek .length; i++) {
+        let div = document.createElement('div');
+        div.classList.add('cell');
+        div.innerHTML = arrWeek[i];
+        day.append(div)
+      }
+    }
+  }
+
+
+  let createCalendar = function (day, month, year) {
+
+  }
+
+  if (document.querySelector('.form-date')) {
+    calendarInit();
+  }
+
+
 
 
 
