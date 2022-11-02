@@ -127,28 +127,6 @@ function initInputValidation() {
     }));
 }
 
-// cross clear field
-function initClearFieldBtns(target) {
-    target.querySelectorAll('.cross').forEach(c => {
-        const field = find('#' + c.getAttribute('aria-controls'));
-        if (field.tagName.toLowerCase() !== 'input') {
-            if (field.classList.contains('date-input-field')) {
-                c.addEventListener('click', () => clearDateInputField(field));
-            }
-            return;
-        }
-        const parent = c.parentNode;
-        parent.setAttribute('data-empty', field.value === '');
-
-        field.addEventListener('input', () => field.value !== '' ? parent.setAttribute('data-empty', 'false') : parent.setAttribute('data-empty', 'true'));
-        c.addEventListener('click', () => {
-            field.value = '';
-            parent.setAttribute('data-empty', 'true');
-        });
-
-    });
-}
-
 // init filter calendar
 function initFilterCalendar(target) {
     target.querySelectorAll('.adv-filter-date.calendar-container').forEach(container => {
