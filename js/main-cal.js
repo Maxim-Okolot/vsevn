@@ -881,14 +881,6 @@ function initCopyLinkModals(article) {
 // advertisement checkboxes
 let checkedArticlesCount = 0;
 
-const mainCheckbox = find('.actions .checkbox');
-mainCheckbox.addEventListener('click', () => {
-    const checked = switchCheckbox(mainCheckbox);
-    filteredArticles.forEach(a => {
-        setArticleCheckState(a, checked);
-    });
-});
-
 function switchMainCheckBoxVisibility(visible) {
     if (visible) {
         mainCheckbox.classList.remove('hidden');
