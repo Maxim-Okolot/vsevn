@@ -1229,7 +1229,7 @@ let globalTestData;
 initFilterCalendar(document.body);
 initDateInputFields(document.body);
 initInputValidation();
-initSorts();
+
 
 fetchData().then(data => {
     initDefaultActionBtns();
