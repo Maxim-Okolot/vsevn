@@ -827,20 +827,17 @@ input:checked + .operation-sort__text {
 }
 
 .form-date__input, .form-date__input-wrap > span {
-    background-color: #fcf8df;
     height: 40px;
-}
-
-.form-date__input-wrap > span {
-    padding: 0 5px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    color: #7a7a7a;
+    font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
 .form-date__input-wrap span {
     color: #2c2c2c;
-    font: 400 21px sans-serif;
+    font: 400 21px "ZabraProTest3-Regular", sans-serif;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-date__submit:hover, .link-export:hover {
@@ -899,7 +896,7 @@ input:checked + .operation-sort__text {
 
 .table-title div, .tr div span {
     font-weight: bold;
-    font-family: 'ZabraProTest3-Medium', sans-serif;
+    font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
 .tr div span {
@@ -1036,7 +1033,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .legal-operation__title div, .history-bonus__title div {
     font-weight: bold;
-    font-family: 'ZabraProTest3-Medium', sans-serif;
+    font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
 .history-bonus__tr div, .legal-operation__tr div {
@@ -1196,7 +1193,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .payment__title {
-    font: bold 33px ZabraProTest3-Medium, sans-serif;
+    font: bold 33px ZabraProTest3-Regular, sans-serif;
     color: #665800;
 }
 
@@ -1616,6 +1613,11 @@ div[data-price = "false"], div[data-operation = "false"] {
     grid-column: 1/8;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    border-right: 1px solid #d3c68c;
+}
+
+.week .cell {
+    border: none;
 }
 
 .cell {

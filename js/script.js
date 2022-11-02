@@ -501,20 +501,50 @@
         day.append(div)
       }
     }
+
+    let inputsCalendar = document.querySelectorAll('.form-date__input[maxlength="2"]');
+
+    for (let input of inputsCalendar) {
+      input.onblur = function () {
+        if (input.value.length === 1) {
+          input.value = 0 + input.value;
+        }
+      }
+
+      if (input.classList.contains('input-day')) {
+        input.oninput = function () {
+          if (input.value.length === 1 && input.value > 3) {
+            input.value = '';
+          } else {
+            if (input.value.length === 2 && input.value > 31) {
+              input.value = '';
+            }
+          }
+        }
+      } else {
+        input.oninput = function () {
+          if (input.value.length === 2 && input.value > 12) {
+            input.value = '';
+          }
+        }
+      }
+
+    }
+
+
+
+
   }
 
 
-  let createCalendar = function (day, month, year) {
+  function createCalendar(elem, year, month) {
+
 
   }
 
   if (document.querySelector('.form-date')) {
     calendarInit();
   }
-
-
-
-
 
 
 })();
