@@ -1222,16 +1222,6 @@ const sorts = {
     },
 };
 
-function initSorts() {
-    findAll('.action-sort .select__list > li').forEach(opt => opt.addEventListener('click', e => {
-        const sortType = e.target.getAttribute('id').split('-').splice(3).join('-');
-        performSorting(sorts[sortType]);
-    }));
-    find('.action-sort .cross').addEventListener('click', () => {
-        performSorting(sorts['default']);
-    });
-}
-
 let globalTestData;
 
 
