@@ -1213,7 +1213,6 @@ function initSorts() {
 let globalTestData;
 
 
-initClearFieldBtns(document.body);
 initFilterCalendar(document.body);
 initDateInputFields(document.body);
 
