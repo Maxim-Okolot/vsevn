@@ -92,21 +92,6 @@ function showDoubleCalendar(container, selectCallback1, selectCallback2, submitC
     row.appendChild(calendar1.element);
     row.appendChild(calendar2.element);
 
-    submitBtn.addEventListener('click', () => {
-        let date1, date2, err;
-        try {
-            date1 = getDateFromCalendar(calendar1.element);
-        } catch (e) {
-            err = e;
-        }
-        try {
-            date2 = getDateFromCalendar(calendar2.element);
-        } catch (e) {
-            err = e;
-        }
-        submitCallback(date1, date2, err);
-    });
-
     container.appendChild(calendarWrapper);
 
     return {
