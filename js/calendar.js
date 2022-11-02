@@ -36,22 +36,6 @@ const calendarWrapper = document.createElement('div');
 calendarWrapper.classList.add('calendar-wrapper');
 calendarWrapper.appendChild(row);
 
-let submitBtn;
-
-function recreateSubmitBtn() {
-    submitBtn?.remove();
-
-    const newBtn = document.createElement('a');
-    newBtn.textContent = 'Применить';
-    newBtn.setAttribute('href', '');
-    newBtn.classList.add('calendar__submit-btn');
-    calendarWrapper.appendChild(newBtn);
-
-    newBtn.addEventListener('click', e => e.preventDefault());
-
-    return newBtn;
-}
-
 const availableDates = [
     [new Date('1/1/2003'), new Date('8/31/2022')],
     [new Date('10/1/2022'), new Date('12/31/2022')]
@@ -78,7 +62,6 @@ function showSingleCalendar(container, selectCallback, submitCallback) {
     row.innerHTML = '';
     row.appendChild(calendar.element);
 
-    submitBtn = recreateSubmitBtn();
     submitBtn.addEventListener('click', () => {
         let date, err;
         try {
@@ -109,7 +92,6 @@ function showDoubleCalendar(container, selectCallback1, selectCallback2, submitC
     row.appendChild(calendar1.element);
     row.appendChild(calendar2.element);
 
-    submitBtn = recreateSubmitBtn();
     submitBtn.addEventListener('click', () => {
         let date1, date2, err;
         try {
