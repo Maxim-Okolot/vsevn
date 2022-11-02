@@ -1213,8 +1213,8 @@ function initSorts() {
 let globalTestData;
 
 
-initFilterCalendar(document.body);
-initDateInputFields(document.body);
+initFilterCalendar();
+initDateInputFields();
 
 initInputValidation();
 initSorts();
