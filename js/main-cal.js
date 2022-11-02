@@ -1234,11 +1234,11 @@ function initSorts() {
 
 let globalTestData;
 
-initLinkPreventReload(document.body);
+
 initClearFieldBtns(document.body);
 initFilterCalendar(document.body);
 initDateInputFields(document.body);
-initFilterRegions(document.body);
+
 initInputValidation();
 initSorts();
 
