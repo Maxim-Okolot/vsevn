@@ -1222,63 +1222,6 @@ const sorts = {
     },
 };
 
-let globalTestData;
-
-
-
 initFilterCalendar(document.body);
 initDateInputFields(document.body);
 initInputValidation();
-
-
-fetchData().then(data => {
-    initDefaultActionBtns();
-    initStateFiltersBtns();
-    updateStateFiltersNumbers();
-
-    initFilters(data);
-    initArticles(data).then(() => {
-        const scroll = getScrollValue();
-        if (scroll) {
-            window.scrollTo(0, +scroll);
-        }
-        window.addEventListener('beforeunload', () => {
-            updateScrollValue();
-        });
-    });
-
-    globalTestData = data;
-});
-
-
-// TEST
-const testInputs = findAll('.test-form input');
-find('.test-form .add').addEventListener('click', () => {
-    const type = find('input[name="type"]:checked').value;
-    globalTestData = [...globalTestData, {
-        el: null, data: {
-            title: testInputs[0].value,
-            price: testInputs[1].value,
-            _type: type,
-            img: {
-                url: testInputs[3].value || DEFAULT_LOGO_URL,
-                className: type === 'resume' ? 'avatar-circle' : 'avatar-square'
-            },
-            cityList: testInputs[2].value.split(' '),
-            views: testInputs[4].value,
-            favourites: testInputs[5].value,
-            dialogs: testInputs[6].value,
-            responses: testInputs[7].value,
-            matchingVacancies: testInputs[8].value,
-            daysPublished: testInputs[9].value,
-            services: Array(+testInputs[10].value).fill().map((el, i) => ({
-                id: i, dateFrom: '10.05.2022', dateTo: '10.06.2022'
-            }))
-        }
-    }];
-    initArticles(globalTestData);
-    initFilters(globalTestData);
-});
-find('.test-form .delete').addEventListener('click', () => {
-    articlesContainer.innerHTML = '';
-});
