@@ -151,7 +151,7 @@ function initClearFieldBtns(target) {
 
 // init filter calendar
 function initFilterCalendar(target) {
-    target.querySelectorAll('.adv-filter-date.calendar-container').forEach(container => {
+    target.querySelectorAll('.adv-filter-date').forEach(container => {
 
         const dateFromTextElem = container.querySelector('#adv-filter-date-from');
         const dateToTextElem = container.querySelector('#adv-filter-date-to');
