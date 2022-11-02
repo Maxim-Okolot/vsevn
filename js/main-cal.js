@@ -476,7 +476,7 @@ function initFilterRegions(target) {
 
 // show modal
 const modal = find('.modal');
-const modalContent = modal.querySelector('.modal__content');
+
 const modalBody = modal.querySelector('.modal__body');
 const modalHeader = modal.querySelector('.modal__header');
 const modalFooter = modal.querySelector('.modal__footer');
@@ -485,8 +485,6 @@ function clearModal() {
     modalHeader.innerHTML = '';
     modalBody.innerHTML = '';
     modalFooter.innerHTML = '';
-
-    modalContent.classList.remove('confirm');
 }
 
 function showModal(html) {
