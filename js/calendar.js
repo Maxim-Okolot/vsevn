@@ -246,7 +246,6 @@ function renderDays(date, daysContainer, selectCallback, limitDays = false, dayS
             selectedDay = day;
             selectedDay.classList.add('selected');
         }
-        day.innerHTML = `<span class="value">${i}</span><span class="hint__text hint__text--center">Эту дату нельзя выбрать</span>`;
 
         const available = !limitDays || checkDateAvailable(new Date(date.getFullYear(), date.getMonth(), i));
         day.classList.add(available ? 'available' : 'hint');
