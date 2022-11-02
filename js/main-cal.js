@@ -19,14 +19,6 @@ function formatDateDots(date) {
     return `${day}.${month}.${year}`;
 }
 
-// set onclick = 'return false' to all links with empty href attribute
-// to prevent them from reloading the page
-function initLinkPreventReload(target) {
-    target.querySelectorAll('a[href=""]').forEach(a => {
-        a.addEventListener('click', e => e.preventDefault());
-    });
-}
-
 // custom select
 findAll('.select:not(#adv-filter-region)').forEach(sel => {
     const field = sel.querySelector('.select__body .text');
