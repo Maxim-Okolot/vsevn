@@ -202,7 +202,7 @@ function initFilterCalendar(target) {
                 } catch (e) {}
             }));
 
-            cover.addEventListener('click', () => {
+            window.addEventListener('click', () => {
                 try {
                     dateFromTextElem.textContent = formatDate(getDateInputFieldValue(dateFromInputField));
                 } catch (e) {

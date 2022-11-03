@@ -250,14 +250,3 @@ function renderDays(date, daysContainer, selectCallback, limitDays = false, dayS
 function clearSelection(calendar) {
   calendar.querySelector('.selected')?.classList.remove('selected');
 }
-
-window.addEventListener('click', function (event) {
-    if (document.querySelector('.calendar-wrapper')) {
-        if (!event.target.classList.contains('.calendar-wrapper') || !event.target.closest('.calendar-wrapper')) {
-            document.querySelector('.calendar-wrapper').remove();
-        }
-    }
-
-
-
-})
