@@ -679,19 +679,6 @@ function updateArticle(article, options = {}) {
     article.el = null;
 }
 
-async function performFiltering() {
-    filteredArticles = filterArticles(articles);
-    for (let i = 0; i < filteredArticles.length; i++) {
-        filteredArticles[i].id = i;
-    }
-    await printArticles(filteredArticles).then(updateActionBar);
-}
-
-async function initArticles(data) {
-    articles = data;
-    await performFiltering();
-}
-
 // setup article functions
 function initProlongCheckbox(article) {
     const checkboxEnable = article.el.querySelector('.adv-item__auto-prolong .enable .fancy-radiobutton');
