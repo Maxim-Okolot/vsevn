@@ -202,7 +202,7 @@ function initFilterCalendar(target) {
                 } catch (e) {}
             }));
 
-            window.addEventListener('click', () => {
+            window.addEventListener('click', (event) => {
                 try {
                     dateFromTextElem.textContent = formatDate(getDateInputFieldValue(dateFromInputField));
                 } catch (e) {
@@ -217,8 +217,11 @@ function initFilterCalendar(target) {
                     dateToTextElem.textContent = '';
                 }
 
-                container.classList.remove('calendar-expanded');
-                calendar.close();
+                if (!event.target.closest('.calendar-wrapper') && document.querySelector('.calendar-wrapper')) {
+                    container.classList.remove('calendar-expanded');
+                    calendar.close();
+                }
+
             });
 
             const [cross1, cross2] = container.querySelectorAll('.cross');
