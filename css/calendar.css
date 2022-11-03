@@ -10,10 +10,14 @@
     border: 1px solid #E3DCB2;
     border-radius: 5px;
     padding: 5px;
+    height: 50px;
 }
 
 .calendar-open-btn--double, .date-input-field {
     display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 .cross {
@@ -37,6 +41,7 @@
     top: 80px;
     right: 0;
     border: 1px solid #d3c68c;
+    border-bottom: none;
 }
 
 .calendar-container .row {

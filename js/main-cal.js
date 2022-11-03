@@ -88,17 +88,6 @@ function setFadeEffects(elems) {
     });
 }
 
-function initFadeEffects(target) {
-    const elems = [].concat(...target.querySelectorAll('.adv-item__title span.text'), ...target.querySelectorAll('.adv-item__city-list > li > div'), // ...target.querySelectorAll('.ads__field-names span')
-    );
-
-    setFadeEffects(elems);
-
-    window.addEventListener('resize', () => {
-        // setFadeEffects(elems);
-    });
-}
-
 // tab links (most used on filters)
 findAll('.tab-links').forEach(parent => {
     const links = Array.from(parent.querySelectorAll('.tab-link'));
@@ -125,28 +114,6 @@ function initInputValidation() {
             e.preventDefault();
         }
     }));
-}
-
-// cross clear field
-function initClearFieldBtns(target) {
-    target.querySelectorAll('.cross').forEach(c => {
-        const field = find('#' + c.getAttribute('aria-controls'));
-        if (field.tagName.toLowerCase() !== 'input') {
-            if (field.classList.contains('date-input-field')) {
-                c.addEventListener('click', () => clearDateInputField(field));
-            }
-            return;
-        }
-        const parent = c.parentNode;
-        parent.setAttribute('data-empty', field.value === '');
-
-        field.addEventListener('input', () => field.value !== '' ? parent.setAttribute('data-empty', 'false') : parent.setAttribute('data-empty', 'true'));
-        c.addEventListener('click', () => {
-            field.value = '';
-            parent.setAttribute('data-empty', 'true');
-        });
-
-    });
 }
 
 // init filter calendar
