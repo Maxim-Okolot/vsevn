@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0c63c6-29a9-425a-ba1a-2856d902a5dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main-cal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main-cal.js" afterDir="false" />
-    </list>
+    <list default="true" id="fb0c63c6-29a9-425a-ba1a-2856d902a5dd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +38,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667474109199</updated>
-      <workItem from="1667474111425" duration="6604000" />
+      <workItem from="1667474111425" duration="6947000" />
     </task>
     <servers />
   </component>

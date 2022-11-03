@@ -217,7 +217,7 @@ function initFilterCalendar(target) {
                     dateToTextElem.textContent = '';
                 }
 
-                if (!event.target.closest('.calendar-wrapper') && document.querySelector('.calendar-wrapper')) {
+                if (!event.target.closest('.adv-filter-date') || !event.target.closest('.calendar-wrapper') && document.querySelector('.calendar-wrapper')) {
                     container.classList.remove('calendar-expanded');
                     calendar.close();
                 }
