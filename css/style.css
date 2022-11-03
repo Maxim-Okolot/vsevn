@@ -72,6 +72,9 @@ mark {
     --content-size: calc(50% - 725px);
     --normal: .3s ease;
     --red:  #ff0000;
+    --clr-yellow: #fede31;
+    --clr-semi-white: #fffef4;
+    --clr-light: #fbf7da;
 }
 
 .bg-img {

@@ -35,10 +35,6 @@
     color: inherit;
 }
 
-.calendar > *:not(:last-child) {
-    /*border-bottom: 1px solid #d3c68c;*/
-}
-
 .calendar .icon {
     cursor: pointer;
 }
@@ -46,8 +42,7 @@
 .calendar__year {
 }
 
-.calendar__year,
-.calendar__month {
+.calendar__year, .calendar__month {
     padding-block: 5px;
     font-size: 19px;
     display: flex;
@@ -55,20 +50,16 @@
     align-items: center;
 }
 
-.calendar__weekdays,
-.calendar__days {
+.calendar__weekdays, .calendar__days {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
 }
 
-.calendar__year,
-.calendar__month,
-.calendar__weekdays {
+.calendar__year, .calendar__month, .calendar__weekdays {
     border-bottom: 1px solid #d3c68c;
 }
 
-.calendar__weekdays > *,
-.calendar__days > * {
+.calendar__weekdays > *, .calendar__days > * {
     display: grid;
     place-content: center;
     padding-block: 5px;
