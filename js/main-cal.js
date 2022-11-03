@@ -254,8 +254,6 @@ function initFilterCalendar(target) {
 
                 container.classList.remove('calendar-expanded');
                 calendar.close();
-
-                performFiltering();
             });
 
             const [cross1, cross2] = container.querySelectorAll('.cross');
@@ -265,9 +263,6 @@ function initFilterCalendar(target) {
                 dateFromTextElem.removeAttribute('data-date');
                 calendar.first.clear();
                 dateFromTextElem.textContent = '';
-                if (!container.querySelector('.calendar')) {
-                    performFiltering();
-                }
             });
             cross2.addEventListener('click', () => {
                 clearDateInputField(dateToInputField);
