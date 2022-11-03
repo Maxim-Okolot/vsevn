@@ -6,18 +6,12 @@
     z-index: 60;
     position: absolute;
     top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
     border: 1px solid #d3c68c;
 }
 
 .calendar-container .row {
     display: flex;
-}
-
-.calendar-container--left .calendar-wrapper {
-    left: 0;
-    transform: translateX(0);
 }
 
 .calendar {
