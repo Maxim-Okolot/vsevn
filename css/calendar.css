@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.calendar-container .wrapper:last-child {
+    margin-left: 10px;
+}
+
 .calendar-open-btn--double, .date-input-field {
     display: flex;
     align-items: center;
@@ -37,11 +41,15 @@
     padding-bottom: 2px;
 }
 
-.year, .day, .month {
+.date-input-field input {
     text-align: center;
     color: #7a7a7a;
-    font: 400 18px ZabraProTest3-Regular, sans-serif;
+    font: 400 19px ZabraProTest3-Regular, sans-serif;
     margin: 0 3px;
+}
+
+.date-input-field input:placeholder {
+    font: 400 18px ZabraProTest3-Regular, sans-serif;
 }
 
 .year {
