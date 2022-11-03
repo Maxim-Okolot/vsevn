@@ -252,9 +252,12 @@ function clearSelection(calendar) {
 }
 
 window.addEventListener('click', function (event) {
-
-    if (!event.target.classList.contains('.calendar-wrapper') || !event.target.closest('.calendar-wrapper')) {
-        document.querySelector('.calendar-wrapper').remove();
-
+    if (document.querySelector('.calendar-wrapper')) {
+        if (!event.target.classList.contains('.calendar-wrapper') || !event.target.closest('.calendar-wrapper')) {
+            document.querySelector('.calendar-wrapper').remove();
+        }
     }
+
+
+
 })
