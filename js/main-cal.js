@@ -120,8 +120,9 @@ function initInputValidation() {
 function initFilterCalendar(target) {
     target.querySelectorAll('.adv-filter-date').forEach(container => {
 
-        const dateFromTextElem = container.querySelector('#adv-filter-date-from');
-        const dateToTextElem = container.querySelector('#adv-filter-date-to');
+
+        const dateFromTextElem = container.querySelector('.date-value-from');
+        const dateToTextElem = container.querySelector('.date-value-to');
 
         const dateFromInputField = container.querySelector('.date-input-field.date-from');
         const dateToInputField = container.querySelector('.date-input-field.date-to');

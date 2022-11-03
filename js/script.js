@@ -174,11 +174,28 @@
     let cardDesc = this.parentElement.querySelector('.info__card-desc').innerText;
 
     let contactsQuantity = document.querySelector('.contacts_quantity');
+    let paymentTitle = document.querySelector('.package__payment .package__payment-title');
     let resumeCost = document.querySelector('.resume__cost');
 
 
     aboutTitle.innerHTML = titleText;
     contactsQuantity.innerHTML = cardDesc + ' резюме в течении 30 дней';
+
+
+    switch (Number(cardDesc.split(' ')[0])) {
+      case 10:
+        paymentTitle.innerHTML = 'Оплата «Десять контактов соискателя из резюме»';
+        break;
+      case 50:
+        paymentTitle.innerHTML = 'Оплата «Пятьдесят контактов соискателя из резюме»';
+        break;
+      case 100:
+        paymentTitle.innerHTML = 'Оплата «Сто контактов соискателя из резюме»';
+        break;
+      case 150:
+        paymentTitle.innerHTML = 'Оплата «Сто пятьдесят контактов соискателя из резюме»';
+    }
+
     resumeCost.innerHTML = price;
 
   }
