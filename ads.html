@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/calendar.css">
+
+    <script defer src="js/calendar.js"></script>
+    <script defer src="js/main-cal.js"></script>
+
+
+    <title>Мои Объявления</title>
+
+
+</head>
+<body>
+
+<div class="adv-filter-date calendar-container calendar-container--left flex">
+    <div class="wrapper">
+        <label class="calendar-open-btn--double">
+            <span class="placeholder">От</span>
+            <div class="date-input-field date-from">
+                <input placeholder="ДД" type="tel" class="day">
+                <span>.</span>
+                <input placeholder="ММ" type="tel" class="month">
+                <span>.</span>
+                <input placeholder="ГГГГ" type="tel" class="year">
+            </div>
+            <span class="date-value" id="adv-filter-date-from"></span>
+        </label>
+        <span aria-controls="adv-filter-date-from" class="hint icon cross icon-cross-svgrepo-com">
+                                <span class="hint__text hint__text--center">Очистить поле?</span>
+                            </span>
+    </div>
+    <div class="wrapper">
+        <label class="calendar-open-btn--double">
+            <span class="placeholder">До</span>
+            <div class="date-input-field date-to">
+                <input placeholder="ДД" type="tel" class="day">
+                <span>.</span>
+                <input placeholder="ММ" type="tel" class="month">
+                <span>.</span>
+                <input placeholder="ГГГГ" type="tel" class="year">
+            </div>
+            <span class="date-value" id="adv-filter-date-to"></span>
+        </label>
+        <span aria-controls="adv-filter-date-to" class="hint icon cross icon-cross-svgrepo-com">
+                                <span class="hint__text hint__text--center">Очистить поле?</span>
+                            </span>
+    </div>
+</div>
+
+    <!--  COVER  -->
+    <div class="cover hidden"></div>
+    <!--  /COVER  -->
+
+</body>
+</html>
