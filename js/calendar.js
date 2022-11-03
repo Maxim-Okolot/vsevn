@@ -252,11 +252,10 @@ function clearSelection(calendar) {
 }
 
 window.addEventListener('click', function (event) {
-    if (event.target.classList.contains('.calendar-wrapper') || event.target.closest('.calendar-wrapper')) {
-        let calendarWrap = document.querySelectorAll('.calendar-wrapper');
+    console.log(1);
 
-        for (let calendar of calendarWrap) {
-            calendar.remove();
-        }
+    if (event.target.classList.contains('.calendar-wrapper') || event.target.closest('.calendar-wrapper')) {
+        document.querySelector('.calendar-wrapper').remove();
+
     }
 })
