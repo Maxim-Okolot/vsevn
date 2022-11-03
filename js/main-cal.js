@@ -183,8 +183,6 @@ function initFilterCalendar(target) {
                     dateToTextElem.textContent = '';
                 }
 
-                performFiltering();
-
                 container.classList.toggle('calendar-expanded');
                 calendar.close();
             });
@@ -237,9 +235,6 @@ function initFilterCalendar(target) {
                 dateToTextElem.removeAttribute('data-date');
                 calendar.second.clear();
                 dateToTextElem.textContent = '';
-                if (!container.querySelector('.calendar')) {
-                    performFiltering();
-                }
             });
         }));
     });
@@ -288,26 +283,6 @@ function toggleExpandingList(list, expanded = null) {
         }
     }
 }
-
-// save scroll position
-function updateScrollValue() {
-    localStorage.setItem('scrollTop', String(find('html').scrollTop));
-}
-
-function getScrollValue() {
-    return localStorage.getItem('scrollTop');
-}
-
-// copy link to clipboard
-// function initCopyLinkBtns(target) {
-//     target.querySelectorAll('.copy-link-modal').forEach(m => {
-//         m.querySelector('.copy-link-modal__btn').addEventListener('click', () => {
-//             const url = m.querySelector('.copy-link-modal__url').textContent;
-//             navigator.clipboard.writeText(url).then(() => {
-//             }, err => console.error);
-//         });
-//     });
-// }
 
 // date input fields
 function initDateInputFields(target) {
@@ -395,150 +370,7 @@ function checkDateInputFieldEmpty(field) {
     return day === '' && month === '' && year === '';
 }
 
-// filter region popup
 
-
-// advertisement rendering system
-const DEFAULT_LOGO_URL = 'img/profile-icons/default-logo.svg';
-const DEFAULT_PHOTO_URL = 'img/profile-icons/default-photo.svg';
-const ARTICLES_URL = 'data.json';
-const ARTICLE_TEMPLATE_URL = 'article-template.html';
-const SERVICES_URL = 'services.json';
-
-const articlesContainer = find('.ads__items');
-
-let services, articleTemplate, servicesLogos = [], articles, filteredArticles;
-
-const selectors = {
-    img: '.adv-item__img',
-    title: '.adv-item__title',
-    price: '.adv-item__price > span:first-child',
-    cityList: '.adv-item__city-list',
-    rating: '.adv-item__rating',
-    links: '.adv-item__links',
-    views: '.adv-item__stats .views',
-    favourites: '.adv-item__stats .favourites',
-    dialogs: '.adv-item__stats .dialogs',
-    newMessages: '.adv-item__stats .new-messages',
-    growth: '.adv-item__stats .growth',
-    responses: '.adv-item__stats .responses',
-    matchingVacancies: '.adv-item__stats .matching-vacancies',
-    daysPublished: '.adv-item__stats .days-published',
-    servicesCount: '.adv-item__services'
-};
-
-async function renderElement(elem, payload = null) {
-    switch (elem) {
-        case 'title':
-            return `
-                <span class="hint__text">${payload}</span>
-                <span class="text">${payload}</span>
-            `;
-        case 'cityList':
-            return `
-                <li class="service-item mobile-show"><a href="">Добавить</a></li>
-                <p class="mobile-show">Регион / Населенный пункт: </p>
-                ${payload.map((c, i) => `
-                    <li ${i > 0 ? 'class="hidden"' : ''}>
-                        <span class="hint__text">${c}</span>
-                        <div>
-                            <span class="icon icon-cross hint">
-                                <span class="hint__text hint__text--center">Удалить данный населенный пункт</span>
-                            </span>
-                            <span class="text">${c}</span>
-                        </div>
-                    </li>
-                `).join('')}
-                ${
-                    payload.length > 1 
-                        ?
-                        `<a href="" class="cities-show-btn mobile-show">Ещё ${payload.length - 1}:</a>`
-                        : ''    
-                }
-            `;
-        case 'newMessages':
-            return `${+payload ? payload : ''}`;
-        case 'growth':
-            return `+${payload}`;
-        case 'rating':
-            return `<p>Объявление на ${payload} месте в поиске.</p><p><a href="">Поднять на 1 (первое) место в поиске?</a></p>`;
-        case 'servicesCount':
-            return `
-                <p>Активно: ${payload}</p>
-                <a href="">Показать</a>
-            `;
-        case 'services':
-            const skipIdx = '1' in payload.services ? 0 : 1;
-            return `
-                <h4 class="services-header">Услуги продвижения</h4>
-                ${Object.keys(services).map((s, i) => i !== skipIdx && (payload.state === 'active' || services[s].free || i in payload.services) ? `
-                        <article class="service">
-                            <div class="service__img">${servicesLogos[s]}</div>
-                            <div class="service__info">
-                                <h4 class="service__title">${services[s].title}</h4>
-                                ${!services[s].free ? (i in payload.services ? `
-                                        <p>
-                                            <span>Период:</span>
-                                            <span class="from">${payload.services[s].dateFrom}</span>
-                                            <span class="dash">-</span>
-                                            <span class="to">${payload.services[s].dateTo}</span>
-                                        </p>
-                                        <p>
-                                            Услуга АКТИВНА до ${payload.services[s].dateTo}
-                                        </p>
-                                    ` : `
-                                        <p>
-                                            Услуга не активна, <a href="">активировать</a>?
-                                        </p>
-                                    `) : ''}
-                            </div>
-                        </article>
-                    ` : '').join('')}   
-            `;
-        case 'img':
-            if (payload.url.endsWith('.html')) {
-                const logo = await fetch(payload.url).then(data => data.text());
-                return `<div class="${payload.className}">${logo}</div>`;
-            }
-            return `
-                <div class="${payload.className}" style="background-image: url(${payload.url})" alt="logo"></div>
-            `;
-        case 'links':
-            return `
-                ${payload.map(l => `
-                    <li>
-                        <span class="icon icon-link"></span>
-                        <a href="">${l.text}</a>
-                        
-                        <div class="copy-link-modal">
-                        <span class="copy-link-modal__url">${l.url}</span>
-                        <span class="copy-link-modal__btn">
-                            <span class="icon icon-link"></span>
-                            <span class="text">Скопировать ссылку</span>
-                        </span>
-                    </div>
-                    </li>
-                `).join('')}   
-                <li class="service-item"><a href=""></a></li>
-            `;
-        default:
-            return payload;
-    }
-}
-
-async function renderArticle(data) {
-    const article = document.createElement('article');
-    article.innerHTML = articleTemplate;
-    article.classList.add('adv-item', 'grid', 'underline');
-    for (const [key, value] of Object.entries(data)) {
-        if (key.startsWith('_')) {
-            continue;
-        }
-        article.querySelector(selectors[key]).innerHTML = await renderElement(key, value);
-    }
-
-    return article;
-}
 
 async function fetchData() {
     services = await fetch(SERVICES_URL).then(data => data.json());
@@ -609,9 +441,9 @@ async function printArticles(articles) {
 }
 
 function setupArticle(article) {
-    initLinkPreventReload(article.el);
+
     initExpandingLists(article.el);
-    initFadeEffects(article.el);
+
     initDateInputFields(article.el);
     initArticleCalendar(article);
     initCopyLinkModals(article);
