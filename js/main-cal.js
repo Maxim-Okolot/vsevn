@@ -446,32 +446,13 @@ function setupArticle(article) {
 
     initDateInputFields(article.el);
     initArticleCalendar(article);
-    initCopyLinkModals(article);
-    initDeleteCityBtns(article);
-    initShowCitiesBtn(article);
+
     initArticleDates(article);
-    initArticleStateBackground(article);
+
     initProlongCheckbox(article);
-
-    article.el.querySelector('.checkbox').addEventListener('click', () => {
-        if (article.checked) {
-            setArticleCheckState(article, false);
-        } else {
-            setArticleCheckState(article, true);
-        }
-    });
-
-    article.el.querySelector('.adv-item__services a').addEventListener('click', async () => {
-        showModal(await renderElement('services', { services: article.data._services, state: article.data._state }));
-    });
-
-    article.el.querySelector('.adv-item__city-list .service-item').addEventListener('click', () => showChooseRegionPopup(() => {}));
 }
 
-function updateArticle(article, options = {}) {
-    article.data = {...article.data, ...options};
-    article.el = null;
-}
+
 
 // setup article functions
 function initProlongCheckbox(article) {
@@ -591,11 +572,6 @@ function initArticleDates(article) {
         updateDateBtn.classList.add('hidden');
     });
 }
-
-
-
-
-
 
 
 initFilterCalendar(document.body);
