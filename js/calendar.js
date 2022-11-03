@@ -252,9 +252,8 @@ function clearSelection(calendar) {
 }
 
 window.addEventListener('click', function (event) {
-    console.log(1);
 
-    if (event.target.classList.contains('.calendar-wrapper') || event.target.closest('.calendar-wrapper')) {
+    if (!event.target.classList.contains('.calendar-wrapper') || !event.target.closest('.calendar-wrapper')) {
         document.querySelector('.calendar-wrapper').remove();
 
     }
