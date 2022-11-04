@@ -1788,3 +1788,15 @@ div[data-price = "false"], div[data-operation = "false"] {
 .advertisement-title-top.hide {
     display: none;
 }
+
+.calendar-expanded .date-value, .date-input-field  {
+    display: none;
+}
+
+.date-value {
+    display: flex;
+}
+
+.calendar-expanded .date-input-field {
+    display: block;
+}
