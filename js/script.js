@@ -273,11 +273,9 @@
 
         let titleName = document.querySelector('.advertisement-title-name');
 
-        if (document.querySelector('.xxl-radio').checked) {
+        if (document.querySelector('.xxl-radio').checked || document.querySelector('.color-radio').checked) {
           titleName.classList.add('title-name-color');
-          console.log(1);
         } else {
-          console.log(2);
           titleName.classList.remove('title-name-color');
         }
 
