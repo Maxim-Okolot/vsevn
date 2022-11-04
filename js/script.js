@@ -271,6 +271,16 @@
 
       paymentRadio[i].onchange = function () {
 
+        let titleName = document.querySelector('.advertisement-title-name');
+
+        if (document.querySelector('.xxl-radio').checked) {
+          titleName.classList.add('title-name-color');
+          console.log(1);
+        } else {
+          console.log(2);
+          titleName.classList.remove('title-name-color');
+        }
+
 
         let div = document.createElement('div');
 
@@ -292,39 +302,46 @@
           }
 
 
-          if (document.querySelector('.vip-radio').checked) {
-            let titleWrap = document.querySelector('.advertisement-preview-title-wrap');
-            let company = document.querySelector('.advertisement-title-company');
-            let advertisementContacts = document.querySelector('.advertisement-contacts');
-            let ratingWrap = document.querySelector('.advertisement-rating-wrap');
-            let rating = document.querySelector('.advertisement-rating');
-            let titleTop = document.querySelector('.advertisement-title-top');
+          let titleWrap = document.querySelector('.advertisement-preview-title-wrap');
+          let company = document.querySelector('.advertisement-title-company');
+          let advertisementContacts = document.querySelector('.advertisement-contacts');
+          let ratingWrap = document.querySelector('.advertisement-rating-wrap');
+          let rating = document.querySelector('.advertisement-rating');
+          let titleTop = document.querySelector('.advertisement-title-top');
+          let topRadio = document.querySelector('.top-radio');
 
-
-            if (document.querySelector('.vip-radio').classList.contains('top-radio') && company.closest('.advertisement-preview-title-wrap')) {
-              company.classList.remove('advertisement-title-company');
+          if (document.querySelector('.top-radio').checked) {
+            if (topRadio.classList.contains('top-radio') && company.closest('.advertisement-preview-title-wrap')) {
               advertisementContacts.prepend(company);
               advertisementContacts.after(rating);
               titleTop.classList.remove('hide');
-            } else {
-              if (!titleTop.classList.contains('hide')) {
-                titleTop.classList.add('hide');
-                company = advertisementContacts.querySelector('span:first-child');
-                company.classList.add('advertisement-title-company');
-                titleWrap.append(company);
-                ratingWrap.append(rating);
-              }
+              titleWrap.classList.add('top-current');
+            }
+          } else {
+            if (company.parentElement.classList.contains('advertisement-contacts')) {
+              titleTop.classList.add('hide');
+              company = advertisementContacts.querySelector('span:first-child');
+              titleWrap.append(company);
+              ratingWrap.append(rating);
+              titleWrap.classList.remove('top-current');
             }
           }
 
           advertisementPreview.classList.remove('hide');
 
-
         } else {
           let arrClass = paymentRadio[i].classList;
           document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
 
-          advertisementPreview.classList.add('hide');
+          for (let x = 0; x < paymentRadio.length; x++) {
+            if (paymentRadio[x].checked) {
+              break;
+            } else {
+              if (x === paymentRadio.length - 1) {
+                advertisementPreview.classList.add('hide');
+              }
+            }
+          }
         }
 
 
