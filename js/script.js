@@ -243,6 +243,7 @@
     let currentBonus = document.querySelector('.current-bonus');
     let titleOutput = document.querySelector('.title-output');
     let advertisementRadio = document.querySelectorAll('.advertisement__radio');
+    let advertisementPreview = document.querySelector('.advertisement-preview-wrap');
 
 
   for (let inputs of advertisementRadio) {
@@ -283,20 +284,47 @@
           for (let elementInput of paymentRadio) {
             if (!elementInput.checked) {
               let arrClass = elementInput.classList;
+
               if (document.querySelector(`div.${arrClass[arrClass.length - 1]}`)) {
                 document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
               }
             }
           }
 
-          document.querySelector('.advertisement-preview-wrap').classList.remove('hide');
+
+          if (document.querySelector('.vip-radio').checked) {
+            let titleWrap = document.querySelector('.advertisement-preview-title-wrap');
+            let company = document.querySelector('.advertisement-title-company');
+            let advertisementContacts = document.querySelector('.advertisement-contacts');
+            let ratingWrap = document.querySelector('.advertisement-rating-wrap');
+            let rating = document.querySelector('.advertisement-rating');
+            let titleTop = document.querySelector('.advertisement-title-top');
+
+
+            if (document.querySelector('.vip-radio').classList.contains('top-radio') && company.closest('.advertisement-preview-title-wrap')) {
+              company.classList.remove('advertisement-title-company');
+              advertisementContacts.prepend(company);
+              advertisementContacts.after(rating);
+              titleTop.classList.remove('hide');
+            } else {
+              if (!titleTop.classList.contains('hide')) {
+                titleTop.classList.add('hide');
+                company = advertisementContacts.querySelector('span:first-child');
+                company.classList.add('advertisement-title-company');
+                titleWrap.append(company);
+                ratingWrap.append(rating);
+              }
+            }
+          }
+
+          advertisementPreview.classList.remove('hide');
 
 
         } else {
           let arrClass = paymentRadio[i].classList;
           document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
 
-          document.querySelector('.advertisement-preview-wrap').classList.add('hide');
+          advertisementPreview.classList.add('hide');
         }
 
 
