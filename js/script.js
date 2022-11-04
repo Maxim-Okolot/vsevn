@@ -248,10 +248,11 @@
   for (let inputs of advertisementRadio) {
     if (inputs.checked) {
       let nameAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__desc');
+      let idAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__id');
 
       let str = nameAdvertisement.innerHTML.split(' ');
       str[0] = `${str[0]}a`;
-      titleOutput.innerHTML = str.join(" ").toLocaleLowerCase();
+      titleOutput.innerHTML = `<span>${str.join(" ").toLocaleLowerCase()}</span>` + ` <mark>(${idAdvertisement.innerHTML})</mark>`;
     }
   }
 
@@ -288,9 +289,14 @@
             }
           }
 
+          document.querySelector('.advertisement-preview-wrap').classList.remove('hide');
+
+
         } else {
           let arrClass = paymentRadio[i].classList;
           document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
+
+          document.querySelector('.advertisement-preview-wrap').classList.add('hide');
         }
 
 

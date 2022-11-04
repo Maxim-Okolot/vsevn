@@ -397,7 +397,7 @@ mark {
 }
 
 .deposit__title, .code-word__title, .operation-history__title {
-    font: 23px ZabraProTest3-Medium sans-serif;
+    font: 23px 'ZabraProTest3-Medium', sans-serif;
     color: #665800;
     margin-bottom: 15px;
     display: flex;
@@ -423,7 +423,7 @@ mark {
     border: 1px solid #e4ddb4;
     margin-right: 15px;
     outline: none;
-    font: 23px ZabraProTest3-Medium sans-serif;
+    font: 23px 'ZabraProTest3-Medium', sans-serif;
     color: #534a10;
 }
 
@@ -495,8 +495,7 @@ mark {
 
 .enter-link-wrap {
     border: 1px solid #e4ddb4;
-    padding: 17px 18px;
-    padding-top: 6px;
+    padding: 6px 18px 17px;
     margin-top: 10px;
 }
 
@@ -571,7 +570,6 @@ mark {
 .btn-radio input:checked+svg path.outer {
     stroke-dashoffset: 0;
 }
-
 /*style deposit end*/
 
 /*style cookie start*/
@@ -740,14 +738,6 @@ mark {
 }
 /*style code word end*/
 
-.operation-history {
-
-}
-
-.bonus-history {
-
-}
-
 .table-history {
     width: 100%;
     margin: 20px 0 0;
@@ -816,7 +806,7 @@ input:checked + .operation-sort__text {
 
 .form-date__input {
     text-align: center;
-    margin: 0 2.5px;
+    margin: 0 21px;
     font-size: 18px;
     color: #2c2c2c;
 }
@@ -868,7 +858,7 @@ input:checked + .operation-sort__text {
 }
 
 .tr div {
-    border: 0.5px solid #d7d7cb;
+    border: 01px solid #d7d7cb;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1030,7 +1020,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .history-bonus__title, .legal-operation__title {
-    border: 0.5px solid #d7d7cb;
+    border: 01px solid #d7d7cb;
     border-bottom: none;
 }
 
@@ -1040,7 +1030,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .history-bonus__tr div, .legal-operation__tr div {
-    border: 0.5px solid #d7d7cb94;
+    border: 01px solid #d7d7cb94;
     color: #a39c7d;
 }
 
@@ -1320,13 +1310,13 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .table-services {
     width: 100%;
-    border: .5px solid #d7d7cb;
+    border: 1px solid #d7d7cb;
 }
 
 .table-services__title, .table-services__tr {
     display: grid;
     grid-template-columns: 400px 1fr;
-    border-bottom: .5px solid #d7d7cb;
+    border-bottom: 1px solid #d7d7cb;
 }
 
 .table-services__title > div,  .table-services__tr > div:not(div:first-child) {
@@ -1334,7 +1324,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .table-services__title > div:first-child, .table-services__tr > div:first-child {
-    border-right: .5px solid #d7d7cb;
+    border-right: 1px solid #d7d7cb;
 }
 
 .table-services__title > div:first-child {
@@ -1494,8 +1484,22 @@ div[data-price = "false"], div[data-operation = "false"] {
     font-size: 21px;
 }
 
-.current-bonus, .title-output, .advertisement__date-end {
+.current-bonus, .title-output, .advertisement__date-end, .title-output mark {
     color: #ff0000;
+}
+
+.title-output {
+    text-transform: uppercase;
+}
+
+.title-output span {
+    border-bottom: 1px solid #ff0000;
+}
+
+.title-output mark {
+    text-transform: none;
+    font-weight: 400;
+    font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
 .services-sum__total {
@@ -1580,4 +1584,145 @@ div[data-price = "false"], div[data-operation = "false"] {
     border: 2px solid #ffe856;
     border-right: none;
     border-bottom: none;
+}
+
+.advertisement-preview-wrap {
+    width: 100%;
+    padding: 30px 0;
+    border-bottom: 1px solid #d7d7cb;
+}
+
+.advertisement-preview {
+    width: 730px;
+    display: flex;
+    margin: auto;
+    padding: 15px 25px;
+    border: 10px solid #fbf6d7;
+}
+
+.advertisement-preview__img {
+    width: 61px;
+    height: 61px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 15px;
+    border-radius: 7px;
+}
+
+.advertisement-preview-content {
+    width: calc(100% - 76px);
+}
+
+.advertisement-preview-title {
+    border-bottom: 2px solid rgb(255, 221, 0);
+    padding-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-gap: 15px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.advertisement-rating-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.advertisement-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.advertisement-rating__item svg, .add-favourites svg {
+    stroke: rgb(255, 221, 0);
+    stroke-width: 1px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    fill: none;
+    fill-rule: evenodd;
+    width: 13.5px;
+    height: 12.5px;
+}
+
+.advertisement-rating__item.active svg, .advertisement-rating__item.active ~ .advertisement-rating__item svg {
+    fill: rgb(255, 221, 0);
+}
+
+.advertisement-rating__item {
+    font-size: 18px;
+    color: #5c697c;
+    margin-left: 3px;
+}
+
+.advertisement-title-name {
+    color: #002041;
+    font: 500 20px "ZabraProTest3-Medium", sans-serif;
+    margin-bottom: 5px;
+}
+
+.advertisement-title-company {
+    font: 400 18px "ZabraProTest3-Regular", sans-serif;
+    color: #2da000;
+}
+
+.advertisement-desc, .advertisement-preview__tel {
+    font-size: 16px;
+    color: #39516a;
+}
+
+.advertisement-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0 15px;
+}
+
+.advertisement-contacts span {
+    font-size: 15px;
+    color: #39516a;
+    position: relative;
+    padding-right: 15px;
+}
+
+.advertisement-contacts span:after {
+    content: '';
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #39516a;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 7px;
+}
+
+.add-favourites {
+    display: flex;
+    align-items: center;
+    transition: .3s;
+    font: 400 18px "ZabraProTest3-Regular", sans-serif;
+    color: rgb(255, 221, 0);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.add-favourites svg {
+    stroke: rgb(255, 221, 0);
+    margin-right: 10px;
+    transition: var(--normal);
+}
+
+.add-favourites:hover, .add-favourites:hover svg {
+    fill: #D3B700FF;
+    stroke: #D3B700FF;
+    color: #D3B700FF;
+}
+
+.advertisement-preview__tel {
+    padding: 5px 10px;
+    border: 2px solid rgb(255, 221, 0);
+    cursor: pointer;
+    margin-bottom: 5px;
 }
