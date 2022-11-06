@@ -1610,7 +1610,14 @@ div[data-price = "false"], div[data-operation = "false"] {
     position: relative;
     overflow: hidden;
     margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #dcdcdc;
+    font: bold 14px "ZabraProTest3-Medium", sans-serif;
+    border: 2px solid #dcdcdc;
     border-radius: 7px;
+    text-transform: uppercase;
 }
 
 .advertisement-preview-content {
@@ -1674,7 +1681,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .advertisement-title-company {
     font: 400 18px "ZabraProTest3-Regular", sans-serif;
-    color: #2da000;
+    color: #474747;
 }
 
 .advertisement-contacts .advertisement-title-company {
@@ -1702,6 +1709,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: #424242;
 }
 
 .advertisement-contacts {
@@ -1712,7 +1720,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .advertisement-contacts span {
     font-size: 15px;
-    color: #39516a;
+    color: #8c8c8c;
     position: relative;
     padding-right: 15px;
 }
@@ -1723,7 +1731,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     height: 1px;
     border-radius: 50%;
     position: absolute;
-    background-color: #39516a;
+    background-color: #8c8c8c;
     top: 50%;
     transform: translateY(-50%);
     right: 7px;
@@ -1741,6 +1749,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     color: rgb(255, 221, 0);
     margin-top: 10px;
     cursor: pointer;
+    font-size: 17px;
 }
 
 .add-favourites svg {
@@ -1753,15 +1762,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     fill: #D3B700FF;
     stroke: #D3B700FF;
     color: #D3B700FF;
-}
-
-.advertisement-preview__tel {
-    padding: 3px 10px;
-    border: 2px solid rgb(255, 221, 0);
-    cursor: pointer;
-    margin-bottom: 5px;
-    font-size: 16px;
-    font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
 .advertisement-title-top {
