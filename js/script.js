@@ -258,7 +258,6 @@
   }
 
 
-
     tableServices.setAttribute('aria-disabled', false);
 
     for (let i = 0; i < paymentRadio.length; i++ ) {

@@ -1799,5 +1799,5 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .calendar-expanded .date-input-field {
-    display: block;
+    display: flex;
 }
