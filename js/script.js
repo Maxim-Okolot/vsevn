@@ -244,6 +244,8 @@
     let titleOutput = document.querySelector('.title-output');
     let advertisementRadio = document.querySelectorAll('.advertisement__radio');
     let advertisementPreview = document.querySelector('.advertisement-preview-wrap');
+    let advertisementWrap = document.querySelector('.advertisement-preview');
+    let titleMark = document.querySelector('.advertisement-title-mark');
 
 
   for (let inputs of advertisementRadio) {
@@ -272,10 +274,20 @@
 
         let titleName = document.querySelector('.advertisement-title-name');
 
-        if (document.querySelector('.xxl-radio').checked || document.querySelector('.color-radio').checked) {
+        if (document.querySelector('.color-radio').checked) {
           titleName.classList.add('title-name-color');
+          advertisementWrap.classList.add('xxl-bg', 'color-bg');
         } else {
           titleName.classList.remove('title-name-color');
+          advertisementWrap.classList.remove('xxl-bg', 'color-bg');
+        }
+
+        if (document.querySelector('.xxl-radio').checked) {
+          advertisementWrap.classList.add('xxl-bg');
+        } else {
+          if (!document.querySelector('.color-radio').checked) {
+            advertisementWrap.classList.remove('xxl-bg');
+          }
         }
 
 
@@ -306,40 +318,33 @@
           let rating = document.querySelector('.advertisement-rating');
           let titleTop = document.querySelector('.advertisement-title-top');
           let topRadio = document.querySelector('.top-radio');
+          let vipRadio = document.querySelector('.vip-radio');
 
-          if (document.querySelector('.top-radio').checked) {
-            if (topRadio.classList.contains('top-radio') && company.closest('.advertisement-preview-title-wrap')) {
-              advertisementContacts.prepend(company);
-              advertisementContacts.after(rating);
-              titleTop.classList.remove('hide');
-              titleWrap.classList.add('top-current');
-            }
-          } else {
-            if (company.parentElement.classList.contains('advertisement-contacts')) {
-              titleTop.classList.add('hide');
-              company = advertisementContacts.querySelector('span:first-child');
-              titleWrap.append(company);
-              ratingWrap.append(rating);
-              titleWrap.classList.remove('top-current');
-            }
+
+          if (topRadio.checked || vipRadio.checked && company.closest('.advertisement-preview-title-wrap')) {
+            advertisementContacts.prepend(company);
+            advertisementContacts.after(rating);
+          }
+
+          if (vipRadio.checked) {
+            advertisementWrap.classList.add('vip');
+            titleMark.classList.remove('red-mark');
+            titleMark.classList.add('vip-mark')
+            titleTop.classList.add('hide');
+          }
+
+          if (topRadio.checked) {
+            advertisementWrap.classList.remove('vip');
+            titleTop.classList.remove('hide');
+            titleMark.classList.remove('vip-mark');
+            titleMark.classList.add('red-mark');
+            titleWrap.classList.add('top-current');
           }
 
           advertisementPreview.classList.remove('hide');
-
-        } else {
-          let arrClass = paymentRadio[i].classList;
-          document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
-
-          for (let x = 0; x < paymentRadio.length; x++) {
-            if (paymentRadio[x].checked) {
-              break;
-            } else {
-              if (x === paymentRadio.length - 1) {
-                advertisementPreview.classList.add('hide');
-              }
-            }
-          }
         }
+
+
 
 
         let serviceCost = document.querySelectorAll('.service-cost .sale-price');
