@@ -6,7 +6,7 @@
 }
 
 .calendar-container .wrapper {
-    width: 235px;
+    min-width: 235px;
     border: 1px solid #E3DCB2;
     border-radius: 5px;
     padding: 5px;
