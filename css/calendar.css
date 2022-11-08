@@ -27,14 +27,10 @@
 }
 
 .cross {
-    /*opacity: 0;*/
-    /*visibility: hidden;*/
-    /*z-index: -10;*/
-
+    display: none;
     width: 40px;
     height: 40px;
     background-color: #fcf8df;
-    display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -49,7 +45,7 @@
 .hint__text {
     font-family: 'ZabraProRegular', serif;
     position: absolute;
-    top: 40px;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -10;
@@ -100,7 +96,7 @@
     margin: 0 3px;
 }
 
-.date-input-field input:placeholder {
+.date-input-field input::placeholder {
     font: 400 18px ZabraProTest3-Regular, sans-serif;
 }
 
@@ -201,4 +197,8 @@
     padding-block: 5px;
     background-color: red;
     color: #fff !important;
+}
+
+.wrapper[data-empty] ~ .cross {
+    display: flex;
 }
