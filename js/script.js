@@ -342,6 +342,21 @@
           }
 
           advertisementPreview.classList.remove('hide');
+        } else {
+
+          let arrClass = paymentRadio[i].classList;
+          document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
+
+          for (let x = 0; x < paymentRadio.length; x++) {
+            if (paymentRadio[x].checked) {
+              break;
+            } else {
+              if (x === paymentRadio.length - 1) {
+                advertisementPreview.classList.add('hide');
+              }
+            }
+          }
+
         }
 
 
