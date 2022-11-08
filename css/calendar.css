@@ -208,3 +208,8 @@
 .wrapper[data-empty='false'] .calendar-open-btn--double, .wrapper[data-empty='false'] .date-input-field input {
     background-color: #fcf8df;
 }
+
+.icon-cross-svgrepo-com:before {
+    content: "\e900";
+    color: red;
+}
