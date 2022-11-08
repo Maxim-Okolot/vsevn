@@ -23,7 +23,8 @@
     display: flex;
     align-items: center;
     height: 100%;
-    width: calc(100% - 40px)
+    width: calc(100% - 40px);
+    padding: 0 10px;
 }
 
 .cross {
@@ -36,6 +37,7 @@
     cursor: pointer;
     transition: var(--normal);
     position: relative;
+    margin-left: 5px;
 }
 
 .cross:hover {
@@ -201,4 +203,8 @@
 
 .wrapper[data-empty='false'] .cross {
     display: flex;
+}
+
+.wrapper[data-empty='false'] .calendar-open-btn--double {
+    background-color: #fcf8df;
 }

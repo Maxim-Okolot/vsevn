@@ -1853,6 +1853,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 .date-value {
     display: flex;
     margin-left: 10px;
+    font-size: 19px;
 }
 
 .calendar-expanded .date-input-field {
