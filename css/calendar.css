@@ -205,6 +205,6 @@
     display: flex;
 }
 
-.wrapper[data-empty='false'] .calendar-open-btn--double {
+.wrapper[data-empty='false'] .calendar-open-btn--double, .wrapper[data-empty='false'] .date-input-field input {
     background-color: #fcf8df;
 }
