@@ -183,7 +183,7 @@ function initFilterCalendar(target) {
                     dateToTextElem.textContent = '';
                 }
 
-                container.classList.toggle('calendar-expanded');
+                container.classList.remove('calendar-expanded');
                 calendar.close();
             });
 
