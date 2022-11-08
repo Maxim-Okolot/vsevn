@@ -27,10 +27,22 @@
 }
 
 .cross {
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    z-index: -10;
+    /*opacity: 0;*/
+    /*visibility: hidden;*/
+    /*z-index: -10;*/
+
+    width: 40px;
+    height: 40px;
+    background-color: #fcf8df;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--normal);
+}
+
+.cross:hover {
+    background-color: #fede31;
 }
 
 .day, .month {
