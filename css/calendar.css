@@ -45,6 +45,30 @@
     background-color: #fede31;
 }
 
+.hint__text {
+    font-family: 'ZabraProRegular', serif;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    transform: translateX(-50%);
+    z-index: -10;
+    visibility: hidden;
+    opacity: 0;
+    color: #665800;
+    font-size: 20px;
+    white-space: nowrap;
+    background-color: #fff9e0;
+    padding: 10px 25px 14px 25px;
+    border: 2px solid #ffe856;
+    transition: var(--normal);
+}
+
+.cross:hover .hint__text {
+    z-index: 100;
+    opacity: 1;
+    visibility: visible;
+}
+
 .day, .month {
     width: 30px;
 }
