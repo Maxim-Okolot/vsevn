@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb0c63c6-29a9-425a-ba1a-2856d902a5dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/js/main-cal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main-cal.js" afterDir="false" />
-    </list>
+    <list default="true" id="fb0c63c6-29a9-425a-ba1a-2856d902a5dd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +44,7 @@
       <workItem from="1667735554297" duration="3381000" />
       <workItem from="1667766271679" duration="1470000" />
       <workItem from="1667813731410" duration="11761000" />
-      <workItem from="1667920266166" duration="5471000" />
+      <workItem from="1667920266166" duration="6060000" />
     </task>
     <servers />
   </component>

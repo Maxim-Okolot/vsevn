@@ -201,12 +201,16 @@
     color: #fff !important;
 }
 
-.wrapper[data-empty='false'] .cross {
+.wrapper[data-empty='false'] .cross, .wrapper[data-empty='false'] .date-value {
     display: flex;
 }
 
 .wrapper[data-empty='false'] .calendar-open-btn--double, .wrapper[data-empty='false'] .date-input-field input {
     background-color: #fcf8df;
+}
+
+.wrapper[data-empty='false'] .date-input-field {
+    display: none;
 }
 
 .icon-cross-svgrepo-com:before {
