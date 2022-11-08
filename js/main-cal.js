@@ -218,7 +218,7 @@ function initFilterCalendar(target) {
                 }
 
                 if (!event.target.closest('.adv-filter-date') && !event.target.closest('.calendar-wrapper') && document.querySelector('.calendar-wrapper')) {
-                    container.classList.remove('calendar-expanded');
+                    container.classList.toggle('calendar-expanded');
                     calendar.close();
                 }
 
