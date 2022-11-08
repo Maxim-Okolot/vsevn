@@ -39,6 +39,7 @@
     align-items: center;
     cursor: pointer;
     transition: var(--normal);
+    position: relative;
 }
 
 .cross:hover {
@@ -49,7 +50,7 @@
     font-family: 'ZabraProRegular', serif;
     position: absolute;
     top: 40px;
-    left: 0;
+    left: 50%;
     transform: translateX(-50%);
     z-index: -10;
     visibility: hidden;
@@ -67,6 +68,21 @@
     z-index: 100;
     opacity: 1;
     visibility: visible;
+}
+
+.hint__text:before {
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    position: absolute;
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    top: 0;
+    background-color: #fff9e0;
+    border: 2px solid #ffe856;
+    border-right: none;
+    border-bottom: none;
 }
 
 .day, .month {
