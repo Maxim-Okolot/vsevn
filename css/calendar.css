@@ -199,6 +199,6 @@
     color: #fff !important;
 }
 
-.wrapper[data-empty] .cross {
+.wrapper[data-empty='false'] .cross {
     display: flex;
 }
