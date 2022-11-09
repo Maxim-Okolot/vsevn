@@ -246,7 +246,10 @@
     let advertisementPreview = document.querySelector('.advertisement-preview-wrap');
     let advertisementWrap = document.querySelector('.advertisement-preview');
     let titleMark = document.querySelector('.advertisement-title-mark');
+    let titleTop = document.querySelector('.advertisement-title-top');
 
+
+    advertisementPreview.classList.remove('hide');
 
   for (let inputs of advertisementRadio) {
     if (inputs.checked) {
@@ -272,21 +275,36 @@
 
       paymentRadio[i].onchange = function () {
 
+        advertisementPreview.classList.remove('hide');
+
+        let company = document.querySelector('.advertisement-title-company');
+        let advertisementContacts = document.querySelector('.advertisement-contacts');
+        let rating = document.querySelector('.advertisement-rating');
+
+        let topRadio = document.querySelector('.top-radio');
+        let vipRadio = document.querySelector('.vip-radio');
+
+        for (let inp of paymentRadio) {
+          if (inp.checked && company.closest('.advertisement-preview-title-wrap')) {
+            advertisementContacts.prepend(company);
+            advertisementContacts.after(rating);
+          }
+
+        }
+
         let titleName = document.querySelector('.advertisement-title-name');
 
         if (document.querySelector('.color-radio').checked) {
-          titleName.classList.add('title-name-color');
-          advertisementWrap.classList.add('xxl-bg', 'color-bg');
-        } else {
-          titleName.classList.remove('title-name-color');
-          advertisementWrap.classList.remove('xxl-bg', 'color-bg');
+          titleName.classList.toggle('title-name-color');
+          advertisementWrap.classList.toggle('color-bg');
         }
 
         if (document.querySelector('.xxl-radio').checked) {
-          advertisementWrap.classList.add('xxl-bg');
+          advertisementWrap.classList.toggle('xxl-bg');
+          titleTop.classList.remove('hide');
         } else {
           if (!document.querySelector('.color-radio').checked) {
-            advertisementWrap.classList.remove('xxl-bg');
+            titleTop.classList.add('hide');
           }
         }
 
@@ -312,50 +330,43 @@
 
 
           let titleWrap = document.querySelector('.advertisement-preview-title-wrap');
-          let company = document.querySelector('.advertisement-title-company');
-          let advertisementContacts = document.querySelector('.advertisement-contacts');
-          let ratingWrap = document.querySelector('.advertisement-rating-wrap');
-          let rating = document.querySelector('.advertisement-rating');
-          let titleTop = document.querySelector('.advertisement-title-top');
-          let topRadio = document.querySelector('.top-radio');
-          let vipRadio = document.querySelector('.vip-radio');
 
-
-          if (topRadio.checked || vipRadio.checked && company.closest('.advertisement-preview-title-wrap')) {
-            advertisementContacts.prepend(company);
-            advertisementContacts.after(rating);
-          }
 
           if (vipRadio.checked) {
             advertisementWrap.classList.add('vip');
             titleMark.classList.remove('red-mark');
             titleMark.classList.add('vip-mark')
             titleTop.classList.add('hide');
+            titleWrap.classList.remove('top-current');
           }
 
           if (topRadio.checked) {
             advertisementWrap.classList.remove('vip');
+            advertisementWrap.classList.add('top-current');
             titleTop.classList.remove('hide');
             titleMark.classList.remove('vip-mark');
             titleMark.classList.add('red-mark');
             titleWrap.classList.add('top-current');
           }
 
-          advertisementPreview.classList.remove('hide');
         } else {
 
-          let arrClass = paymentRadio[i].classList;
-          document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
+          function delPrice() {
+            let arrClass = paymentRadio[i].classList;
+            document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
 
-          for (let x = 0; x < paymentRadio.length; x++) {
-            if (paymentRadio[x].checked) {
-              break;
-            } else {
-              if (x === paymentRadio.length - 1) {
-                advertisementPreview.classList.add('hide');
+            for (let x = 0; x < paymentRadio.length; x++) {
+              if (paymentRadio[x].checked) {
+                break;
+              } else {
+                if (x === paymentRadio.length - 1) {
+                  advertisementPreview.classList.add('hide');
+                }
               }
             }
           }
+
+          delPrice()
 
         }
 
@@ -405,6 +416,9 @@
     btnChoose.addEventListener('click', checkServices);
 
     btncancel.addEventListener('click', popup);
+
+
+
   }
 
   if (document.querySelector('.write-down-bonus')) {

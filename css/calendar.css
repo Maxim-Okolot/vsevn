@@ -217,3 +217,7 @@
     content: "\e962";
     color: red;
 }
+
+.xxl-bg .advertisement-title-mark {
+    display: none;
+}

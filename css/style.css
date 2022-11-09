@@ -1597,12 +1597,12 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .advertisement-preview.vip {
-    border-radius: 10px;
     border: 2px solid #ffde00;
 }
 
 .advertisement-preview.vip .advertisement-preview__img {
     color: #ffde00;
+    border-color: #efe4c6;
 }
 
 .advertisement-preview.vip .add-favourites {
@@ -1628,17 +1628,16 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: inline-flex;
 }
 
-.advertisement-preview.xxl-bg .advertisement-preview__img {
+.advertisement-preview.xxl-bg .advertisement-preview__img, .advertisement-preview.top-current .advertisement-preview__img {
     border-color: #ffde00;
     color: #ffde00;
 }
 
 .advertisement-preview {
-    width: 730px;
+    width: calc(100% - 100px);
     display: flex;
     margin: auto;
     padding: 15px 25px;
-    border: 10px solid #fbf6d7;
 }
 
 .advertisement-preview__img {
@@ -1776,7 +1775,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     position: absolute;
     background-color: #8c8c8c;
     top: 50%;
-    transform: translateY(-50%);
     right: 7px;
 }
 
@@ -1799,6 +1797,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     stroke: rgb(255, 221, 0);
     margin-right: 10px;
     transition: var(--normal);
+    fill: transparent;
 }
 
 .add-favourites:hover, .add-favourites:hover svg {
