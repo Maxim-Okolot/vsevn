@@ -247,6 +247,7 @@
     let advertisementWrap = document.querySelector('.advertisement-preview');
     let titleMark = document.querySelector('.advertisement-title-mark');
     let titleTop = document.querySelector('.advertisement-title-top');
+    let moreInfo = document.querySelector('.advertisement-more-info');
 
 
     advertisementPreview.classList.remove('hide');
@@ -295,16 +296,32 @@
         let titleName = document.querySelector('.advertisement-title-name');
 
         if (document.querySelector('.color-radio').checked) {
-          titleName.classList.toggle('title-name-color');
-          advertisementWrap.classList.toggle('color-bg');
+          titleName.classList.add('title-name-color');
+          advertisementWrap.classList.add('color-bg');
+        } else {
+          titleName.classList.remove('title-name-color');
+          advertisementWrap.classList.remove('color-bg');
         }
 
         if (document.querySelector('.xxl-radio').checked) {
-          advertisementWrap.classList.toggle('xxl-bg');
-          titleTop.classList.remove('hide');
+          advertisementWrap.classList.add('xxl-bg');
         } else {
-          if (!document.querySelector('.color-radio').checked) {
-            titleTop.classList.add('hide');
+          advertisementWrap.classList.remove('xxl-bg');
+        }
+
+        if (document.querySelector('.xxl-radio').checked || document.querySelector('.color-radio').checked) {
+          moreInfo.classList.remove('hide');
+
+          if (!vipRadio.checked && !topRadio.checked) {
+            titleTop.classList.remove('hide');
+          }
+
+        } else {
+          moreInfo.classList.add('hide');
+          titleTop.classList.add('hide');
+
+          if (!vipRadio.checked && !topRadio.checked) {
+            titleTop.classList.remove('hide');
           }
         }
 

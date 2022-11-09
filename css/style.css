@@ -1858,3 +1858,17 @@ div[data-price = "false"], div[data-operation = "false"] {
 .calendar-expanded .date-input-field {
     display: flex;
 }
+
+.advertisement-more-info {
+    margin: 5px 0;
+}
+
+.advertisement-more-info p {
+    color: #abbacb;
+    font: 400 14px 'ZabraProTest3-Regular', sans-serif;
+}
+
+.advertisement-more-info p span {
+    color: #39516a;
+    font: 400 14px 'ZabraProTest3-Regular', sans-serif;
+}
