@@ -1676,13 +1676,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     width: 100%;
 }
 
-.advertisement-rating-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-
 .advertisement-rating {
     display: flex;
     flex-direction: row-reverse;

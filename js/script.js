@@ -246,10 +246,6 @@
     let titleOutput = document.querySelector('.title-output');
     let advertisementRadio = document.querySelectorAll('.advertisement__radio');
     let advertisementPreview = document.querySelector('.advertisement-preview-wrap');
-
-    let titleMark = document.querySelector('.advertisement-title-mark');
-    let moreInfo = document.querySelector('.advertisement-more-info');
-    let titleWrap = document.querySelector('.advertisement-preview-title-wrap');
     let company = document.querySelector('.advertisement-title-company');
     let advertisementContacts = document.querySelector('.advertisement-contacts');
     let rating = document.querySelector('.advertisement-rating');
@@ -323,10 +319,15 @@
           advertisementWrap.classList.add('top-current');
         }
 
-        if (!noneRadio && !company.closest('.advertisement-preview-title-wrap') && topRadio.checked || vipRadio.checked) {
-          company.classList.remove('advertisement-title-company');
+        if (!noneRadio.checked && company.closest('.advertisement-preview-title-wrap')) {
           advertisementContacts.prepend(company);
           advertisementContacts.after(rating);
+          company.classList.remove('advertisement-title-company');
+        } else {
+          if (noneRadio.checked && !company.closest('.advertisement-preview-title-wrap')) {
+            document.querySelector('.advertisement-preview-title-wrap').append(company);
+            document.querySelector('.advertisement-preview-title ').append(rating);
+          }
         }
 
         if (!noneRadio.checked) {
