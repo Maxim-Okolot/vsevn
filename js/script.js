@@ -285,7 +285,7 @@
     advertisementPreview.classList.remove('hide');
 
     // Активируем услугу без оформления
-    noneRadio.checked;
+    noneRadio.setAttribute('checked', 'checked');
 
     for (let i = 0; i < paymentRadio.length; i++ ) {
       // Присваиваем каждой услуге класс в виде id
@@ -357,22 +357,8 @@
 
         } else {
 
-          function delPrice() {
-            let arrClass = paymentRadio[i].classList;
-            document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
-
-            for (let x = 0; x < paymentRadio.length; x++) {
-              if (paymentRadio[x].checked) {
-                break;
-              } else {
-                if (x === paymentRadio.length - 1) {
-                  advertisementPreview.classList.add('hide');
-                }
-              }
-            }
-          }
-
-          delPrice();
+          let arrClass = paymentRadio[i].classList;
+          document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
 
         }
 
