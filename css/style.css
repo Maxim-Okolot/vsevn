@@ -1634,7 +1634,8 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .advertisement-preview {
-    width: calc(100% - 100px);
+    width: 100%;
+    max-width: 696px;
     display: flex;
     margin: auto;
     padding: 15px 25px;

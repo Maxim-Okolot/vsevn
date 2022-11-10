@@ -233,6 +233,7 @@
   }
 
 
+
   let checkServices = function () {
     let tableServices = document.querySelector('.table-services');
     let paymentRadio = document.querySelectorAll('.payment__radio');
@@ -244,84 +245,93 @@
     let titleOutput = document.querySelector('.title-output');
     let advertisementRadio = document.querySelectorAll('.advertisement__radio');
     let advertisementPreview = document.querySelector('.advertisement-preview-wrap');
-    let advertisementWrap = document.querySelector('.advertisement-preview');
+
     let titleMark = document.querySelector('.advertisement-title-mark');
-    let titleTop = document.querySelector('.advertisement-title-top');
     let moreInfo = document.querySelector('.advertisement-more-info');
+    let titleWrap = document.querySelector('.advertisement-preview-title-wrap');
+    let company = document.querySelector('.advertisement-title-company');
+    let advertisementContacts = document.querySelector('.advertisement-contacts');
+    let rating = document.querySelector('.advertisement-rating');
+
+    let noneRadio = document.querySelector('.none-radio');
+    let vipRadio = document.querySelector('.vip-radio');
+    let topRadio = document.querySelector('.top-radio');
+    let xxlService = document.querySelector('.xxl-radio');
+    let colorService = document.querySelector('.color-radio');
 
 
-    advertisementPreview.classList.remove('hide');
 
-  for (let inputs of advertisementRadio) {
-    if (inputs.checked) {
-      let nameAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__desc');
-      let idAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__id');
 
-      let str = nameAdvertisement.innerHTML.split(' ');
-      str[0] = `${str[0]}a`;
-      titleOutput.innerHTML = `<span>${str.join(" ").toLocaleLowerCase()}</span>` + ` <mark>(${idAdvertisement.innerHTML})</mark>`;
+    let advertisementWrap = document.querySelector('.advertisement-preview');
+
+
+    // при нажатии "добавить объявление" подставляем в заголовок название
+    for (let inputs of advertisementRadio) {
+      if (inputs.checked) {
+        let nameAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__desc');
+        let idAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__id');
+
+        let str = nameAdvertisement.innerHTML.split(' ');
+        str[0] = `${str[0]}a`;
+        titleOutput.innerHTML = `<span>${str.join(" ").toLocaleLowerCase()}</span>` + ` <mark>(${idAdvertisement.innerHTML})</mark>`;
+      }
     }
-  }
 
-
+    // активируем область выбора услуг
     tableServices.setAttribute('aria-disabled', false);
 
+
+    // Показываем превью объявления
+    advertisementPreview.classList.remove('hide');
+
+    // Активируем услугу без оформления
+    noneRadio.checked;
+
     for (let i = 0; i < paymentRadio.length; i++ ) {
+      // Присваиваем каждой услуге класс в виде id
       if (!paymentRadio[i].classList.contains('id-services')) {
         paymentRadio[i].classList.add(`id-services-${i}`);
       }
 
+      // Делаем доступным для выбора кнопки выбора услуг
       paymentRadio[i].removeAttribute('disabled');
+
+
+      // Делаем доступным поле с вводом бонусов
       inputBonus.removeAttribute('disabled');
+
 
       paymentRadio[i].onchange = function () {
 
-        advertisementPreview.classList.remove('hide');
+        // Без оформления
+        if (noneRadio.checked) {
+          advertisementWrap.classList.remove('vip', 'top-current', 'vip-mark', 'red-mark');
+        }
 
-        let company = document.querySelector('.advertisement-title-company');
-        let advertisementContacts = document.querySelector('.advertisement-contacts');
-        let rating = document.querySelector('.advertisement-rating');
+        // vip объявление
+        if (vipRadio.checked) {
 
-        let topRadio = document.querySelector('.top-radio');
-        let vipRadio = document.querySelector('.vip-radio');
+        }
 
-        for (let inp of paymentRadio) {
-          if (inp.checked && company.closest('.advertisement-preview-title-wrap')) {
-            advertisementContacts.prepend(company);
-            advertisementContacts.after(rating);
+        // ТОП оформление
+        if (topRadio.checked) {
+
+        }
+
+        if (!noneRadio.checked) {
+
+          // Услуга Выделить XXL
+          if (xxlService.checked) {
+            advertisementWrap.classList.add('xxl-bg');
+          } else {
+            advertisementWrap.classList.remove('xxl-bg');
           }
 
-        }
-
-        let titleName = document.querySelector('.advertisement-title-name');
-
-        if (document.querySelector('.color-radio').checked) {
-          titleName.classList.add('title-name-color');
-          advertisementWrap.classList.add('color-bg');
-        } else {
-          titleName.classList.remove('title-name-color');
-          advertisementWrap.classList.remove('color-bg');
-        }
-
-        if (document.querySelector('.xxl-radio').checked) {
-          advertisementWrap.classList.add('xxl-bg');
-        } else {
-          advertisementWrap.classList.remove('xxl-bg');
-        }
-
-        if (document.querySelector('.xxl-radio').checked || document.querySelector('.color-radio').checked) {
-          moreInfo.classList.remove('hide');
-
-          if (!vipRadio.checked && !topRadio.checked) {
-            titleTop.classList.remove('hide');
-          }
-
-        } else {
-          moreInfo.classList.add('hide');
-          titleTop.classList.add('hide');
-
-          if (!vipRadio.checked && !topRadio.checked) {
-            titleTop.classList.remove('hide');
+          // Услуга Выделить название вакансии цветом
+          if (colorService.checked) {
+            advertisementWrap.classList.add('color-bg');
+          } else {
+            advertisementWrap.classList.remove('color-bg');
           }
         }
 
@@ -345,27 +355,6 @@
             }
           }
 
-
-          let titleWrap = document.querySelector('.advertisement-preview-title-wrap');
-
-
-          if (vipRadio.checked) {
-            advertisementWrap.classList.add('vip');
-            titleMark.classList.remove('red-mark');
-            titleMark.classList.add('vip-mark')
-            titleTop.classList.add('hide');
-            titleWrap.classList.remove('top-current');
-          }
-
-          if (topRadio.checked) {
-            advertisementWrap.classList.remove('vip');
-            advertisementWrap.classList.add('top-current');
-            titleTop.classList.remove('hide');
-            titleMark.classList.remove('vip-mark');
-            titleMark.classList.add('red-mark');
-            titleWrap.classList.add('top-current');
-          }
-
         } else {
 
           function delPrice() {
@@ -383,11 +372,9 @@
             }
           }
 
-          delPrice()
+          delPrice();
 
         }
-
-
 
 
         let serviceCost = document.querySelectorAll('.service-cost .sale-price');
@@ -421,7 +408,7 @@
 
   if (document.querySelector('.table-services')) {
     let btnChoose = document.querySelector('.advertisement-confirm__choose');
-    let btncancel = document.querySelector('.advertisement-confirm__cancel');
+    let btnCancel = document.querySelector('.advertisement-confirm__cancel');
     let advertisementInput = document.querySelectorAll('.advertisement__radio');
 
     for (let input of advertisementInput) {
@@ -432,9 +419,7 @@
 
     btnChoose.addEventListener('click', checkServices);
 
-    btncancel.addEventListener('click', popup);
-
-
+    btnCancel.addEventListener('click', popup);
 
   }
 
