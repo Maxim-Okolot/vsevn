@@ -1830,8 +1830,9 @@ div[data-price = "false"], div[data-operation = "false"] {
     background-position: 0 2px
 }
 
-.advertisement-title-mark.red-mark {
+.advertisement-preview.top-current .advertisement-title-mark {
     background: no-repeat 0/cover url("../img/figure.svg");
+    display: inline-flex;
 }
 
 .advertisement-title-mark.vip-mark {
@@ -1842,11 +1843,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     color: #39516a;
 }
 
-.advertisement-title-top.hide, .advertisement-title-top.hide ~ .advertisement-title-mark {
-    display: none;
-}
-
-.calendar-expanded .date-value, .date-input-field  {
+.calendar-expanded .date-value, .date-input-field, .advertisement-title-top, .advertisement-title-mark {
     display: none;
 }
 

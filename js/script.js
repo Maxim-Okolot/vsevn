@@ -234,6 +234,7 @@
 
 
 
+  // ФУНКЦИЯ ВЫБОРА УСЛУГ
   let checkServices = function () {
     let tableServices = document.querySelector('.table-services');
     let paymentRadio = document.querySelectorAll('.payment__radio');
@@ -265,7 +266,7 @@
     let advertisementWrap = document.querySelector('.advertisement-preview');
 
 
-    // при нажатии "добавить объявление" подставляем в заголовок название
+    // ПРИ НАЖАТИИ "ДОБАВИТЬ ОБЪЯВЛЕНИЕ" ПОДСТАВЛЯЕМ В ЗАГОЛОВОК НАЗВАНИЕ
     for (let inputs of advertisementRadio) {
       if (inputs.checked) {
         let nameAdvertisement = inputs.closest('.advertisement__item').querySelector('.advertisement__desc');
@@ -277,57 +278,67 @@
       }
     }
 
-    // активируем область выбора услуг
+    // АКТИВИРУЕМ ОБЛАСТЬ ВЫБОРА УСЛУГ
     tableServices.setAttribute('aria-disabled', false);
 
 
-    // Показываем превью объявления
+    // ПОКАЗЫВАЕМ ПРЕВЬЮ ОБЪЯВЛЕНИЯ
     advertisementPreview.classList.remove('hide');
 
-    // Активируем услугу без оформления
+    // АКТИВИРУЕМ УСЛУГУ БЕЗ ОФОРМЛЕНИЯ
     noneRadio.setAttribute('checked', 'checked');
 
     for (let i = 0; i < paymentRadio.length; i++ ) {
-      // Присваиваем каждой услуге класс в виде id
+      // ПРИСВАИВАЕМ КАЖДОЙ УСЛУГЕ КЛАСС В ВИДЕ ID
       if (!paymentRadio[i].classList.contains('id-services')) {
         paymentRadio[i].classList.add(`id-services-${i}`);
       }
 
-      // Делаем доступным для выбора кнопки выбора услуг
+      // ДЕЛАЕМ ДОСТУПНЫМ ДЛЯ ВЫБОРА КНОПКИ ВЫБОРА УСЛУГ
       paymentRadio[i].removeAttribute('disabled');
 
 
-      // Делаем доступным поле с вводом бонусов
+      // ДЕЛАЕМ ДОСТУПНЫМ ПОЛЕ С ВВОДОМ БОНУСОВ
       inputBonus.removeAttribute('disabled');
 
 
+      // КАЖДОЙ УСЛУГЕ ПРИСУЩ СВОЙ КЛАСС - КОТОРЫЙ ПРИСВАИВАЕТСЯ БЛОКУ ОБЪЯВЛЕНИЯ. ИЗМЕНЕНИЯ ПРОИСХОДЯТ В CSS
+
       paymentRadio[i].onchange = function () {
 
-        // Без оформления
+        // БЕЗ ОФОРМЛЕНИЯ
         if (noneRadio.checked) {
           advertisementWrap.classList.remove('vip', 'top-current', 'vip-mark', 'red-mark');
         }
 
-        // vip объявление
+        // VIP ОБЪЯВЛЕНИЕ
         if (vipRadio.checked) {
-
+          advertisementWrap.classList.remove('top-current', 'vip-mark', 'red-mark');
+          advertisementWrap.classList.add('vip');
         }
 
-        // ТОП оформление
+        // ТОП ОФОРМЛЕНИЕ
         if (topRadio.checked) {
+          advertisementWrap.classList.remove('vip', 'vip-mark', 'red-mark');
+          advertisementWrap.classList.add('top-current');
+        }
 
+        if (!noneRadio && !company.closest('.advertisement-preview-title-wrap') && topRadio.checked || vipRadio.checked) {
+          company.classList.remove('advertisement-title-company');
+          advertisementContacts.prepend(company);
+          advertisementContacts.after(rating);
         }
 
         if (!noneRadio.checked) {
 
-          // Услуга Выделить XXL
+          // УСЛУГА ВЫДЕЛИТЬ XXL
           if (xxlService.checked) {
             advertisementWrap.classList.add('xxl-bg');
           } else {
             advertisementWrap.classList.remove('xxl-bg');
           }
 
-          // Услуга Выделить название вакансии цветом
+          // УСЛУГА ВЫДЕЛИТЬ НАЗВАНИЕ ВАКАНСИИ ЦВЕТОМ
           if (colorService.checked) {
             advertisementWrap.classList.add('color-bg');
           } else {
@@ -336,6 +347,7 @@
         }
 
 
+        // ДОБАВЛЯЕМ УСЛУГУ В БЛОК ПОДСЧЕТА
         let div = document.createElement('div');
 
         if (paymentRadio[i].checked) {
@@ -343,8 +355,10 @@
 
           div.innerHTML = `<div>${paymentRadio[i].value}. скидка ${paymentRadio[i].dataset.sale}%</div>
           <div class="sale-price">${paymentRadio[i].dataset.salePrice} ₽</div>`;
+
           servicesSum.prepend(div);
 
+          // ЕСЛИ УСЛУГА (TYPE RADIO) СНЯТА С ВЫБОРА - УДАЛЯЕМ ПОЛЕ С БЛОКА ПОДСЧЕТА
           for (let elementInput of paymentRadio) {
             if (!elementInput.checked) {
               let arrClass = elementInput.classList;
@@ -357,12 +371,13 @@
 
         } else {
 
+          // ЕСЛИ УСЛУГА (TYPE CHECKBOX) СНЯТА С ВЫБОРА - УДАЛЯЕМ ПОЛЕ С БЛОКА ПОДСЧЕТА
           let arrClass = paymentRadio[i].classList;
           document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
-
         }
 
 
+        // ЕСЛИ УСЛУГА (TYPE CHECKBOX) СНЯТА С ВЫБОРА - УДАЛЯЕМ ПОЛЕ С БЛОКА ПОДСЧЕТА
         let serviceCost = document.querySelectorAll('.service-cost .sale-price');
         let sum = 0;
 
@@ -375,6 +390,7 @@
 
         let sumBonus = 0;
 
+        // ЕСЛИ СУММА МЕНЬШЕ 1000 - ПЕРЕКРЫВАЕМ В ЭТУ СУММУ БОНУСАМИ. ЕСЛИ БОЛЬШЕ - ОТНИМАЕМ ТОЛЬКО 1000
         if (sum <= 1000) {
           sumBonus = sum;
         } else {
@@ -439,13 +455,15 @@
     };
   }
 
+
+  // ФУНКЦИЯ ВАЛИДАЦИИ ВВОДА ТОЛЬКО ЧИСЛОВОГО ЗНАЧЕНИЯ И СИМВОЛА ТОЧКИ
   function validate(evt) {
     let theEvent = evt || window.event;
     let key = theEvent.keyCode || theEvent.which;
 
     key = String.fromCharCode( key );
 
-    var regex = /[0-9]|\./;
+    let regex = /[0-9]|\./;
 
     if ( !regex.test(key) ) {
       theEvent.returnValue = false;
@@ -457,16 +475,15 @@
   }
 
 
+
+  // СОРТИРОВКА АКТИВНЫХ ПЛАТЕЖЕЙ
   if (document.querySelector('.legal-operation')) {
     let checks = document.querySelectorAll('.input-sort');
-
 
     for (let check of checks) {
 
       let sortLegal = function () {
         let tableOperation = check.parentElement.nextElementSibling;
-
-
         let rows = tableOperation.children;
 
         if (check.checked) {
@@ -490,59 +507,66 @@
   }
 
 
-  let sortOperation = function (el, option) {
-    let rows = el.closest('.table-history').querySelectorAll('.table-operation > div');
-    let activeOperationInput = el.closest('.table-history').querySelector('.input-sort');
-
-    activeOperationInput.checked = false;
 
 
-    switch (option) {
-      case 'all':
-        for (let i = 1; i < rows.length; i++) {
-          rows[i].classList.remove('hidden');
-        }
-        break;
-      case 'add':
-        for (let i = 1; i < rows.length; i++) {
-          let status = rows[i].querySelector('div[data-type]');
-          if (status.getAttribute('data-type') !== 'add') {
-            rows[i].classList.add('hidden');
-          } else {
-            rows[i].classList.remove('hidden');
-          }
-        }
-        break;
-      case 'refund':
-        for (let i = 1; i < rows.length; i++) {
-          let status = rows[i].querySelector('div[data-type]');
-
-          if (status.getAttribute('data-type') !== 'refund') {
-            rows[i].classList.add('hidden');
-          } else {
-            rows[i].classList.remove('hidden');
-          }
-        }
-        break;
-      case 'not':
-        for (let i = 1; i < rows.length; i++) {
-          let status = rows[i].querySelector('div[data-type]');
-
-          if (status.getAttribute('data-type') !== 'not') {
-            rows[i].classList.add('hidden');
-          } else {
-            rows[i].classList.remove('hidden');
-          }
-        }
-    }
-  }
-
+  //СОРТИРОВКА ОПЕРАЦИЙ
   if (document.getElementsByName('sort-legal')) {
     let inputs = document.querySelectorAll('.radio-sort');
 
     for (let input of inputs) {
       input.onchange = function () {
         sortOperation(input, input.value);
+      }
+    }
+
+    let sortOperation = function (el, option) {
+      let rows = el.closest('.table-history').querySelectorAll('.table-operation > div');
+      let activeOperationInput = el.closest('.table-history').querySelector('.input-sort');
+
+      activeOperationInput.checked = false;
+
+
+      // Значения атрибутов:
+      // all - все
+      // add - поступление
+      // not - не выполненная операция
+      switch (option) {
+        case 'all':
+          for (let i = 1; i < rows.length; i++) {
+            rows[i].classList.remove('hidden');
+          }
+          break;
+        case 'add':
+          for (let i = 1; i < rows.length; i++) {
+            let status = rows[i].querySelector('div[data-type]');
+            if (status.getAttribute('data-type') !== 'add') {
+              rows[i].classList.add('hidden');
+            } else {
+              rows[i].classList.remove('hidden');
+            }
+          }
+          break;
+        case 'refund':
+          for (let i = 1; i < rows.length; i++) {
+            let status = rows[i].querySelector('div[data-type]');
+
+            if (status.getAttribute('data-type') !== 'refund') {
+              rows[i].classList.add('hidden');
+            } else {
+              rows[i].classList.remove('hidden');
+            }
+          }
+          break;
+        case 'not':
+          for (let i = 1; i < rows.length; i++) {
+            let status = rows[i].querySelector('div[data-type]');
+
+            if (status.getAttribute('data-type') !== 'not') {
+              rows[i].classList.add('hidden');
+            } else {
+              rows[i].classList.remove('hidden');
+            }
+          }
       }
     }
   }
