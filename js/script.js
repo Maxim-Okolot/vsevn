@@ -235,7 +235,7 @@
 
 
   // ФУНКЦИЯ ВЫБОРА УСЛУГ
-  let checkServices = function () {
+  let checkServices = () => {
     let tableServices = document.querySelector('.table-services');
     let paymentRadio = document.querySelectorAll('.payment__radio');
     let inputBonus = document.querySelector('.write-down-bonus');
@@ -295,16 +295,36 @@
 
 
       // ДЕЛАЕМ ДОСТУПНЫМ ПОЛЕ С ВВОДОМ БОНУСОВ
-      inputBonus.removeAttribute('disabled');
+      let deActivationCheckbox = () => {
+        if (noneRadio.checked) {
+          for (let x = 0; x < paymentRadio.length; x++) {
+            if (paymentRadio[x].type === 'checkbox') {
+              paymentRadio[x].checked = false;
+              paymentRadio[x].setAttribute('disabled', 'disabled');
+              paymentRadio[x].closest('.table-services__tr').setAttribute('disabled', 'disabled');
+            }
+          }
+        } else {
+          for (let x = 0; x < paymentRadio.length; x++) {
+            if (paymentRadio[x].type === 'checkbox') {
+              paymentRadio[x].removeAttribute('disabled');
+              paymentRadio[x].closest('.table-services__tr').removeAttribute('disabled');
+            }
+          }
+        }
+      }
+
+      deActivationCheckbox();
 
 
       // КАЖДОЙ УСЛУГЕ ПРИСУЩ СВОЙ КЛАСС - КОТОРЫЙ ПРИСВАИВАЕТСЯ БЛОКУ ОБЪЯВЛЕНИЯ. ИЗМЕНЕНИЯ ПРОИСХОДЯТ В CSS
 
-      paymentRadio[i].onchange = function () {
+      paymentRadio[i].onchange = () => {
 
         // БЕЗ ОФОРМЛЕНИЯ
         if (noneRadio.checked) {
-          advertisementWrap.classList.remove('vip', 'top-current', 'vip-mark', 'red-mark');
+          advertisementWrap.classList.remove('vip', 'top-current', 'vip-mark', 'red-mark', 'color-bg', 'xxl-bg');
+          deActivationCheckbox();
         }
 
         // VIP ОБЪЯВЛЕНИЕ
@@ -317,6 +337,11 @@
         if (topRadio.checked) {
           advertisementWrap.classList.remove('vip', 'vip-mark', 'red-mark');
           advertisementWrap.classList.add('top-current');
+        }
+
+
+        if (topRadio.checked || vipRadio.checked) {
+          deActivationCheckbox();
         }
 
         if (!noneRadio.checked && company.closest('.advertisement-preview-title-wrap')) {
@@ -371,7 +396,6 @@
           }
 
         } else {
-
           // ЕСЛИ УСЛУГА (TYPE CHECKBOX) СНЯТА С ВЫБОРА - УДАЛЯЕМ ПОЛЕ С БЛОКА ПОДСЧЕТА
           let arrClass = paymentRadio[i].classList;
           document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();

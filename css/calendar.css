@@ -218,6 +218,16 @@
     color: red;
 }
 
-.xxl-bg .advertisement-title-mark {
+.calendar-expanded .date-value, .date-input-field, .advertisement-title-top, .advertisement-title-mark {
     display: none;
+}
+
+.date-value {
+    display: flex;
+    margin-left: 10px;
+    font-size: 19px;
+}
+
+.calendar-expanded .date-input-field {
+    display: flex;
 }

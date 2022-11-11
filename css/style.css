@@ -116,6 +116,7 @@ mark {
     width: 100%;
     background: #fffef4;
     padding: 50px 30px 50px 25px;
+    position: relative;
 }
 
 .title-h2 {
@@ -1639,6 +1640,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: flex;
     margin: auto;
     padding: 15px 25px;
+    background-color: #fff;
 }
 
 .advertisement-preview__img {
@@ -1723,7 +1725,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     font: 400 20px "ZabraProTest3-Regular", sans-serif;
 }
 
-.advertisement-title-name.title-name-color {
+.color-bg .advertisement-title-name  {
     background-color: rgb(255, 221, 0);
     padding: 3px 5px;
     width: max-content;
@@ -1746,6 +1748,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .advertisement-preview.color-bg .advertisement-title-name {
     text-transform: uppercase;
+    font-family: 'ZabraProTest3-Regular', sans-serif;
 }
 
 .advertisement-contacts {
@@ -1806,11 +1809,11 @@ div[data-price = "false"], div[data-operation = "false"] {
     color: var(--red);
     font-weight: 500;
     position: relative;
+    display: none;
 }
 
 .advertisement-title-mark {
     height: 25px;
-    display: inline-flex;
     justify-content: center;
     align-items: center;
     color: #fff;
@@ -1820,7 +1823,8 @@ div[data-price = "false"], div[data-operation = "false"] {
     position: relative;
     margin-left: 5px;
     background-size: cover;
-    background-position: 0 2px
+    background-position: 0 2px;
+    display: none;
 }
 
 .advertisement-preview.top-current .advertisement-title-mark {
@@ -1828,7 +1832,11 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: inline-flex;
 }
 
-.advertisement-title-mark.vip-mark {
+.advertisement-preview.top-current .advertisement-title-top {
+    display: inline-block;
+}
+
+.advertisement-preview.vip .advertisement-title-mark {
     background:rgb(255, 221, 0);
     width: auto;
     padding: 0 20px;
@@ -1836,22 +1844,13 @@ div[data-price = "false"], div[data-operation = "false"] {
     color: #39516a;
 }
 
-.calendar-expanded .date-value, .date-input-field, .advertisement-title-top, .advertisement-title-mark {
+.advertisement-preview.vip .advertisement-title-top {
     display: none;
-}
-
-.date-value {
-    display: flex;
-    margin-left: 10px;
-    font-size: 19px;
-}
-
-.calendar-expanded .date-input-field {
-    display: flex;
 }
 
 .advertisement-more-info {
     margin: 5px 0;
+    display: none;
 }
 
 .advertisement-more-info p {
@@ -1862,4 +1861,16 @@ div[data-price = "false"], div[data-operation = "false"] {
 .advertisement-more-info p span {
     color: #39516a;
     font: 400 14px 'ZabraProTest3-Regular', sans-serif;
+}
+
+.xxl-bg .advertisement-more-info, .color-bg .advertisement-more-info {
+    display: block;
+}
+
+.advertisement-preview.xxl-bg .advertisement-title-top {
+    display: block;
+}
+
+.table-services__tr[disabled='disabled'] {
+    opacity: .5;
 }
