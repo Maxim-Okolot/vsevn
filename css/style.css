@@ -1842,6 +1842,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding: 0 20px;
     border-radius: 15px;
     color: #39516a;
+    display: inline-flex;
 }
 
 .advertisement-preview.vip .advertisement-title-top {
