@@ -352,6 +352,7 @@
           if (noneRadio.checked && !company.closest('.advertisement-preview-title-wrap')) {
             document.querySelector('.advertisement-preview-title-wrap').append(company);
             document.querySelector('.advertisement-preview-title ').append(rating);
+            company.classList.add('advertisement-title-company');
           }
         }
 
