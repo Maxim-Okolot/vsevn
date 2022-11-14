@@ -1674,13 +1674,12 @@ div[data-price = "false"], div[data-operation = "false"] {
     grid-template-columns: 1fr max-content;
     grid-gap: 15px;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
     width: 100%;
 }
 
 .advertisement-rating {
     display: flex;
-    flex-direction: row-reverse;
     align-items: center;
 }
 

@@ -249,16 +249,11 @@
     let company = document.querySelector('.advertisement-title-company');
     let advertisementContacts = document.querySelector('.advertisement-contacts');
     let rating = document.querySelector('.advertisement-rating');
-
     let noneRadio = document.querySelector('.none-radio');
     let vipRadio = document.querySelector('.vip-radio');
     let topRadio = document.querySelector('.top-radio');
     let xxlService = document.querySelector('.xxl-radio');
     let colorService = document.querySelector('.color-radio');
-
-
-
-
     let advertisementWrap = document.querySelector('.advertisement-preview');
 
 
