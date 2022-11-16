@@ -233,6 +233,6 @@
     display: flex;
 }
 
-.calendar__year-next, .calendar__month-next  {
+.calendar__year-next, .calendar__month-next, .calendar__year-prev, .calendar__month-prev {
     font-size: 10px;
 }

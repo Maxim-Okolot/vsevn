@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fb0c63c6-29a9-425a-ba1a-2856d902a5dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/icons.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
       <workItem from="1668453829609" duration="1387000" />
       <workItem from="1668499357671" duration="494000" />
       <workItem from="1668604942298" duration="598000" />
-      <workItem from="1668633094115" duration="1474000" />
+      <workItem from="1668633094115" duration="1790000" />
     </task>
     <servers />
   </component>
