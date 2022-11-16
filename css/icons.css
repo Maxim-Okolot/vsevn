@@ -455,3 +455,11 @@
     margin-left: -1em;
     color: rgb(254, 195, 5);
 }
+
+.icon-left_arrow_icon_224523:before {
+    content: "\e907";
+}
+
+.icon-right_arrow_icon_224556:before {
+    content: "\e906";
+}

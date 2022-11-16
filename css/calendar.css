@@ -231,3 +231,9 @@
 .calendar-expanded .date-input-field {
     display: flex;
 }
+
+.calendar .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
