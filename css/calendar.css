@@ -141,9 +141,6 @@
     align-items: center;
 }
 
-.calendar__year {
-}
-
 .calendar__year, .calendar__month {
     padding-block: 5px;
     font-size: 19px;
@@ -233,4 +230,8 @@
 
 .calendar-expanded .date-input-field {
     display: flex;
+}
+
+.calendar__year-next, .calendar__month-next  {
+    font-size: 10px;
 }
