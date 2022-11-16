@@ -136,6 +136,9 @@
 
 .calendar .icon {
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .calendar__year {
@@ -230,10 +233,4 @@
 
 .calendar-expanded .date-input-field {
     display: flex;
-}
-
-.calendar .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
