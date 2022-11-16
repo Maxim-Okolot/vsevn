@@ -132,6 +132,7 @@
 
 .calendar select {
     color: inherit;
+    background-color: transparent;
 }
 
 .calendar .icon {
