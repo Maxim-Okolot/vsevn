@@ -1,5 +1,31 @@
-const monthDefault = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь',];
-const monthsGenitive = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря',];
+const monthDefault = [
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
+];
+const monthsGenitive = [
+  'Января',
+  'Февраля',
+  'Марта',
+  'Апреля',
+  'Мая',
+  'Июня',
+  'Июля',
+  'Августа',
+  'Сентября',
+  'Октября',
+  'Ноября',
+  'Декабря',
+];
 
 const START_YEAR = 2003;
 
@@ -9,6 +35,22 @@ row.classList.add('row');
 const calendarWrapper = document.createElement('div');
 calendarWrapper.classList.add('calendar-wrapper');
 calendarWrapper.appendChild(row);
+
+let submitBtn;
+
+function recreateSubmitBtn() {
+  submitBtn?.remove();
+
+  const newBtn = document.createElement('a');
+  newBtn.textContent = 'Применить';
+  newBtn.setAttribute('href', '');
+  newBtn.classList.add('calendar__submit-btn');
+  calendarWrapper.appendChild(newBtn);
+
+  newBtn.addEventListener('click', e => e.preventDefault());
+
+  return newBtn;
+}
 
 const availableDates = [
   [new Date('1/1/2003'), new Date('8/31/2022')],
@@ -36,6 +78,7 @@ function showSingleCalendar(container, selectCallback, submitCallback) {
   row.innerHTML = '';
   row.appendChild(calendar.element);
 
+  submitBtn = recreateSubmitBtn();
   submitBtn.addEventListener('click', () => {
     let date, err;
     try {
@@ -65,6 +108,22 @@ function showDoubleCalendar(container, selectCallback1, selectCallback2, submitC
   row.innerHTML = '';
   row.appendChild(calendar1.element);
   row.appendChild(calendar2.element);
+
+  submitBtn = recreateSubmitBtn();
+  submitBtn.addEventListener('click', () => {
+    let date1, date2, err;
+    try {
+      date1 = getDateFromCalendar(calendar1.element);
+    } catch (e) {
+      err = e;
+    }
+    try {
+      date2 = getDateFromCalendar(calendar2.element);
+    } catch (e) {
+      err = e;
+    }
+    submitCallback(date1, date2, err);
+  });
 
   container.appendChild(calendarWrapper);
 
@@ -220,7 +279,7 @@ function renderDays(date, daysContainer, selectCallback, limitDays = false, dayS
       selectedDay = day;
       selectedDay.classList.add('selected');
     }
-    day.innerHTML = `<span class="value">${i}</span>`;
+    day.innerHTML = `<span class="value">${i}</span><span class="hint__text hint__text--center">Эту дату нельзя выбрать</span>`;
 
     const available = !limitDays || checkDateAvailable(new Date(date.getFullYear(), date.getMonth(), i));
     day.classList.add(available ? 'available' : 'hint');
