@@ -353,6 +353,9 @@
 
         if (!noneRadio.checked) {
 
+          let advertisementContacts = document.querySelector('.advertisement-contacts');
+          let bottomContacts = document.querySelector('.advertisement-contacts-bottom');
+
           // УСЛУГА ВЫДЕЛИТЬ XXL
           if (xxlService.checked) {
             advertisementWrap.classList.add('xxl-bg');
@@ -366,6 +369,35 @@
           } else {
             advertisementWrap.classList.remove('color-bg');
           }
+
+          if (colorService.checked || xxlService.checked) {
+            if (!bottomContacts.classList.contains('append')) {
+              let spans = advertisementContacts.querySelectorAll('span');
+
+              let i = 1;
+              while (i < spans.length) {
+                bottomContacts.append(spans[i]);
+                i++;
+              }
+
+              bottomContacts.classList.add('append');
+
+            }
+          } else {
+            if (bottomContacts.classList.contains('append')) {
+              let spans = bottomContacts.querySelectorAll('span');
+
+              let i = 0;
+              while (i < spans.length) {
+                advertisementContacts.append(spans[i]);
+                i++;
+              }
+              bottomContacts.classList.remove('append');
+            }
+          }
+
+
+
         }
 
 
