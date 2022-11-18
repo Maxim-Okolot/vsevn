@@ -395,9 +395,6 @@
               bottomContacts.classList.remove('append');
             }
           }
-
-
-
         }
 
 
