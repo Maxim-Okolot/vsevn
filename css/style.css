@@ -1636,7 +1636,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .advertisement-preview {
     width: 100%;
-    max-width: 696px;
+    max-width: 700px;
     display: flex;
     margin: auto;
     padding: 15px 25px;
@@ -1701,7 +1701,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 .advertisement-rating__item {
     font-size: 18px;
     color: #5c697c;
-    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .advertisement-title-name {
@@ -1726,7 +1726,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 .advertisement-preview-title-wrap {
     display: grid;
     grid-template-columns: auto 1fr;
-    align-items: center;
+    align-items: baseline;
 }
 
 .color-bg .advertisement-title-name  {
@@ -1758,7 +1758,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 .advertisement-contacts {
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 0;
+    margin: 10px 0 0;
 }
 
 .advertisement-contacts span {
@@ -1844,7 +1844,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .advertisement-preview.top-current .advertisement-title-mark {
-    background: no-repeat 0/cover url("../img/figure.svg");
+    background: no-repeat 0/cover url("../img/figure.png");
     display: inline-flex;
 }
 
@@ -1897,4 +1897,8 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: inline-block;
     vertical-align: middle;
     height: 100%;
+}
+
+.top-current .advertisement-title-name {
+    font-family: "ZabraProTest3-Regular", sans-serif;
 }
