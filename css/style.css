@@ -1869,6 +1869,10 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: none;
 }
 
+.advertisement-preview.xxl-bg .advertisement-title-top, .advertisement-preview.color-bg .advertisement-title-top {
+    display: block;
+}
+
 .advertisement-more-info {
     margin: 5px 0;
     display: none;
