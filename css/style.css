@@ -1654,8 +1654,8 @@ div[data-price = "false"], div[data-operation = "false"] {
     align-items: center;
     color: #dcdcdc;
     font: bold 14px "ZabraProTest3-Medium", sans-serif;
-    border: 2px solid #dcdcdc;
-    border-radius: 7px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
     text-transform: uppercase;
 }
 
@@ -1744,7 +1744,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     margin-top: 10px;
     max-height: 60px;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     color: #424242;
@@ -1762,7 +1762,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .advertisement-contacts span {
-    font-size: 15px;
+    font-size: 16px;
     color: #8c8c8c;
     position: relative;
     padding-right: 15px;
@@ -1788,17 +1788,19 @@ div[data-price = "false"], div[data-operation = "false"] {
     align-items: center;
     transition: .3s;
     font: 400 18px "ZabraProTest3-Regular", sans-serif;
-    color: rgb(255, 221, 0);
+    color: #eac300;
     margin-top: 10px;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .add-favourites svg {
-    stroke: rgb(255, 221, 0);
+    stroke: #eac300;
     margin-right: 10px;
     transition: var(--normal);
     fill: transparent;
+    width: 19.5px;
+    height: 19.5px;
 }
 
 .add-favourites:hover, .add-favourites:hover svg {
