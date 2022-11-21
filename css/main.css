@@ -2312,17 +2312,19 @@ table {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: baseline;
     max-width: none;
     column-gap: 25px;
 }
 
 .payment-block p {
     background: #fffbdb;
-    padding: 13px 15px;
+    padding: 0 15px;
+    height: 40px;
     border: 1px solid #ffdd00;
     color: #665800;
-    padding-top: 9px;
+    display: flex;
+    align-items: center;
 }
 
 .modal__about {

@@ -1472,11 +1472,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     font-family: 'ZabraProTest3-Medium', sans-serif;
 }
 
-.payment__result-block {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+
 
 .payment__result-block a {
     margin: 0;
