@@ -1311,8 +1311,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     height: 40px;
 }
 
-
-
 .table-services {
     width: 100%;
     border: 1px solid #d7d7cb;
@@ -1321,7 +1319,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .table-services__title, .table-services__tr {
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 500px 1fr;
     border-bottom: 1px solid #d7d7cb;
 }
 
@@ -1392,10 +1390,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     z-index: 10;
 }
 
-.table-services[aria-disabled='true'] * {
-    opacity: 0.85;
-    cursor: auto;
-}
 
 .advertisement__item {
     display: flex;
@@ -1410,6 +1404,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .placement {
     text-align: center;
+    white-space: nowrap;
 }
 
 .advertisement-confirm {
@@ -1471,8 +1466,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     color: #665800;
     font-family: 'ZabraProTest3-Medium', sans-serif;
 }
-
-
 
 .payment__result-block a {
     margin: 0;
@@ -1876,12 +1869,12 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .advertisement-more-info p {
     color: #abbacb;
-    font: 400 14px 'ZabraProTest3-Regular', sans-serif;
+    font: 400 16px 'ZabraProTest3-Regular', sans-serif;
 }
 
 .advertisement-more-info p span {
     color: #39516a;
-    font: 400 14px 'ZabraProTest3-Regular', sans-serif;
+    font: 400 16px 'ZabraProTest3-Regular', sans-serif;
 }
 
 .xxl-bg .advertisement-more-info, .color-bg .advertisement-more-info {
