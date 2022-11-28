@@ -2291,8 +2291,7 @@ table {
     text-align: end;
 }
 
-.total_text,
-.total_price {
+.total_text, .total_price {
     text-transform: uppercase;
     font-weight: bold;
 }

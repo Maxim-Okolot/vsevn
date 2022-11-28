@@ -133,7 +133,7 @@
             <div class="table-services__check">
               <label class="btn-radio">
                 <input type="radio" name="services-radio" class="payment__radio none-radio" disabled="disabled"
-                       value="Без дополнительного продвижения" data-price="100" data-sale="95" data-sale-price="5"/>
+                       value="Без дополнительного продвижения" data-price="100" data-id="none" data-sale-price="5"/>
                 <svg width="27px" height="27px" viewBox="0 0 20 20" class="table_icon1">
                   <circle cx="10" cy="10" r="9"></circle>
                   <path
@@ -162,7 +162,7 @@
             <div class="table-services__check">
               <label class="btn-radio">
                 <input type="radio" name="services-radio" class="payment__radio vip-radio" disabled="disabled"
-                       value="VIP - размещение" data-price="800" data-sale="95" data-sale-price="40"/>
+                       value="VIP - размещение" data-price="800" data-id="vip" data-sale-price="40"/>
                 <svg width="27px" height="27px" viewBox="0 0 20 20" class="table_icon1">
                   <circle cx="10" cy="10" r="9"></circle>
                   <path
@@ -197,7 +197,7 @@
             <div class="table-services__check">
               <label class="btn-radio">
                 <input type="radio" name="services-radio" class="payment__radio top-radio" disabled="disabled"
-                       value="ТОП – размещение" data-price="2000" data-sale="95" data-sale-price="100"/>
+                       value="ТОП – размещение" data-price="2000" data-id="top" data-sale-price="100"/>
                 <svg width="27px" height="27px" viewBox="0 0 20 20" class="table_icon1">
                   <circle cx="10" cy="10" r="9"></circle>
                   <path
@@ -231,7 +231,7 @@
             <div class="table-services__check">
               <label class="table-services__label">
                 <input type="checkbox" class="payment__radio xxl-radio" disabled="disabled"
-                       value="Выделить XXL" data-price="300" data-sale="95" data-sale-price="15"/>
+                       value="Выделить XXL" data-price="300" data-id="xxl" data-sale-price="15"/>
                 <span class="table-services__flag"></span>
               </label>
               <img src="img/xxl.png" class="service__img" alt="" title=""/>
@@ -254,7 +254,7 @@
             <div class="table-services__check">
               <label class="table-services__label">
                 <input type="checkbox" class="payment__radio color-radio" disabled="disabled"
-                       value="Выделить название вакансии цветом" data-price="600" data-sale="95" data-sale-price="30"/>
+                       value="Выделить название вакансии цветом" data-price="600" data-id="color" data-sale-price="30"/>
                 <span class="table-services__flag"></span>
               </label>
               <img src="img/highlighter.png" class="service__img" alt="" title=""/>
@@ -350,6 +350,27 @@
       </div>
 
       <div class="services-sum">
+        <div id="services-none" class="hide">
+          <div>Без дополнительного продвижения. Скидка 95%</div>
+          <div>5 ₽</div>
+        </div>
+        <div id="services-vip" class="hide">
+          <div>VIP - размещение. Скидка 95%</div>
+          <div>40 ₽</div>
+        </div>
+        <div id="services-top" class="hide">
+          <div>ТОП – размещение. Скидка 95%</div>
+          <div>100 ₽</div>
+        </div>
+        <div id="services-xxl" class="hide">
+          <div>Выделить XXL. Скидка 95%</div>
+          <div>15 ₽</div>
+        </div>
+        <div id="services-color" class="hide">
+          <div>Выделить название вакансии цветом. Скидка 95%</div>
+          <div>100 ₽</div>
+        </div>
+
         <div class="services-sum__total">
           <div>Итого</div>
           <div class="sum-price">0 ₽</div>

@@ -1,6 +1,4 @@
 (function () {
-  MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-
   /*cookies*/
   let closeCookies = function () {
     let cookie = document.querySelector('.cookie');
@@ -239,7 +237,6 @@
     let tableServices = document.querySelector('.table-services');
     let paymentRadio = document.querySelectorAll('.payment__radio');
     let inputBonus = document.querySelector('.write-down-bonus');
-    let servicesSum = document.querySelector('.services-sum');
     let sumPrice = document.querySelector('.sum-price');
     let totalSum = document.querySelector('.total-sum');
     let currentBonus = document.querySelector('.current-bonus');
@@ -269,6 +266,39 @@
       }
     }
 
+    // БЛОК ПОДСЧЕТА
+    let sumServices = () => {
+      let sum = 0;
+
+      for (let el of paymentRadio) {
+        if (el.checked) {
+          let service = document.querySelector(`#services-${el.dataset.id}`);
+          service.classList.remove('hide');
+
+          let num = el.dataset.salePrice;
+          sum = sum + Number(num);
+        } else {
+          let service = document.querySelector(`#services-${el.dataset.id}`);
+          service.classList.add('hide');
+        }
+      }
+
+      sumPrice.innerHTML = sum + ' ₽';
+
+      let sumBonus = 0;
+
+      // ЕСЛИ СУММА МЕНЬШЕ 1000 - ПЕРЕКРЫВАЕМ В ЭТУ СУММУ БОНУСАМИ. ЕСЛИ БОЛЬШЕ - ОТНИМАЕМ ТОЛЬКО 1000
+      if (sum <= 1000) {
+        sumBonus = sum;
+      } else {
+        sumBonus = 1000;
+      }
+
+      currentBonus.innerHTML = sumBonus + ' ₽';
+      inputBonus.value = '-' + sumBonus + ' ₽';
+      totalSum.innerHTML = sum - sumBonus;
+    }
+
     // АКТИВИРУЕМ ОБЛАСТЬ ВЫБОРА УСЛУГ
     tableServices.setAttribute('aria-disabled', false);
 
@@ -279,11 +309,12 @@
     // АКТИВИРУЕМ УСЛУГУ БЕЗ ОФОРМЛЕНИЯ
     noneRadio.setAttribute('checked', 'checked');
 
+    //ПОКАЗЫВАЕМ УСЛУГУ БЕЗ ОФОРМЛЕНИЯ В БЛОКЕ ПОДСЧЕТА
+    document.querySelector('#services-none').classList.remove('hide');
+
+    sumServices();
+
     for (let i = 0; i < paymentRadio.length; i++ ) {
-      // ПРИСВАИВАЕМ КАЖДОЙ УСЛУГЕ КЛАСС В ВИДЕ ID
-      if (!paymentRadio[i].classList.contains('id-services')) {
-        paymentRadio[i].classList.add(`id-services-${i}`);
-      }
 
       // ДЕЛАЕМ ДОСТУПНЫМ ДЛЯ ВЫБОРА КНОПКИ ВЫБОРА УСЛУГ
       paymentRadio[i].removeAttribute('disabled');
@@ -397,59 +428,7 @@
           }
         }
 
-
-        // ДОБАВЛЯЕМ УСЛУГУ В БЛОК ПОДСЧЕТА
-        let div = document.createElement('div');
-
-        if (paymentRadio[i].checked) {
-          div.classList.add(`id-services-${i}`, 'service-cost');
-
-          div.innerHTML = `<div>${paymentRadio[i].value}. скидка ${paymentRadio[i].dataset.sale}%</div>
-          <div class="sale-price">${paymentRadio[i].dataset.salePrice} ₽</div>`;
-
-          servicesSum.prepend(div);
-
-          // ЕСЛИ УСЛУГА (TYPE RADIO) СНЯТА С ВЫБОРА - УДАЛЯЕМ ПОЛЕ С БЛОКА ПОДСЧЕТА
-          for (let elementInput of paymentRadio) {
-            if (!elementInput.checked) {
-              let arrClass = elementInput.classList;
-
-              if (document.querySelector(`div.${arrClass[arrClass.length - 1]}`)) {
-                document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
-              }
-            }
-          }
-
-        } else {
-          // ЕСЛИ УСЛУГА (TYPE CHECKBOX) СНЯТА С ВЫБОРА - УДАЛЯЕМ ПОЛЕ С БЛОКА ПОДСЧЕТА
-          let arrClass = paymentRadio[i].classList;
-          document.querySelector(`div.${arrClass[arrClass.length - 1]}`).remove();
-        }
-
-
-        // ЕСЛИ УСЛУГА (TYPE CHECKBOX) СНЯТА С ВЫБОРА - УДАЛЯЕМ ПОЛЕ С БЛОКА ПОДСЧЕТА
-        let serviceCost = document.querySelectorAll('.service-cost .sale-price');
-        let sum = 0;
-
-        for (let el of serviceCost) {
-          let num = el.innerHTML.split(' ').shift();
-          sum = sum + Number(num);
-        }
-
-        sumPrice.innerHTML = sum + ' ₽';
-
-        let sumBonus = 0;
-
-        // ЕСЛИ СУММА МЕНЬШЕ 1000 - ПЕРЕКРЫВАЕМ В ЭТУ СУММУ БОНУСАМИ. ЕСЛИ БОЛЬШЕ - ОТНИМАЕМ ТОЛЬКО 1000
-        if (sum <= 1000) {
-          sumBonus = sum;
-        } else {
-          sumBonus = 1000;
-        }
-
-        currentBonus.innerHTML = sumBonus + ' ₽';
-        inputBonus.value = '-' + sumBonus + ' ₽';
-        totalSum.innerHTML = sum - sumBonus;
+        sumServices();
       }
 
     }

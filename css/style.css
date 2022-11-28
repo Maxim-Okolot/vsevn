@@ -1390,7 +1390,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     z-index: 10;
 }
 
-
 .advertisement__item {
     display: flex;
     justify-content: flex-start;
@@ -1905,3 +1904,4 @@ div[data-price = "false"], div[data-operation = "false"] {
     color: #343434;
     font-weight: bold;
 }
+
