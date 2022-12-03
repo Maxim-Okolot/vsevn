@@ -268,16 +268,22 @@
 
     // БЛОК ПОДСЧЕТА
     let sumServices = () => {
+      // ПЕРВОНАЧАЛЬНАЯ СУММА
       let sum = 0;
 
       for (let el of paymentRadio) {
         if (el.checked) {
+          // БЕРЕМ ИЗ АКТИВНЫХ ЧЕКБОКСОВ ВЫБРАННЫХ УСЛУГ ЗНАЧЕНИЕ АТРИБУТА DATA-ID
           let service = document.querySelector(`#services-${el.dataset.id}`);
+
+          // ИЩЕМ В СПИВКЕ ПОДСЧЕТА БЛОК С ТАКИМ ID И ПОКАЗЫВАЕМ ЕГО
           service.classList.remove('hide');
 
+          // ИЗ АКТИВНОГО ЧЕКБОКСА БЕРЕМ ЗНАЧЕНИЕ АТРИБУТА DATA-SALE-PRICE И СУММИРУЕМ ИХ
           let num = el.dataset.salePrice;
           sum = sum + Number(num);
         } else {
+          // СКРЫВАЕМ ВСЕ НЕ ВЫБРАННЫЕ УСЛУГИ
           let service = document.querySelector(`#services-${el.dataset.id}`);
           service.classList.add('hide');
         }
@@ -285,6 +291,7 @@
 
       sumPrice.innerHTML = sum + ' ₽';
 
+      // ПЕРВОНАЧАЛЬНОЕ КОЛИЧЕСТВО БОНУСОВ
       let sumBonus = 0;
 
       // ЕСЛИ СУММА МЕНЬШЕ 1000 - ПЕРЕКРЫВАЕМ В ЭТУ СУММУ БОНУСАМИ. ЕСЛИ БОЛЬШЕ - ОТНИМАЕМ ТОЛЬКО 1000
