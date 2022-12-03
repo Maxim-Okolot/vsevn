@@ -1343,7 +1343,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .services-desc {
-    height: 85px;
+    height: 70px;
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
@@ -1352,7 +1352,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 .services-desc:before {
     content: "";
     width: 100%;
-    height: 25px;
+    height: 20px;
     bottom: -10px;
     left: 0;
     filter: blur(9px);
