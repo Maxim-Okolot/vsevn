@@ -1640,7 +1640,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .advertisement-preview.vip {
     border: 2px solid #ffde00 !important;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .advertisement-preview.vip .advertisement-preview__img {

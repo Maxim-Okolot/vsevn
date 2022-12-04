@@ -301,7 +301,6 @@
         sumBonus = 1000;
       }
 
-      currentBonus.innerHTML = sumBonus + ' ₽';
       inputBonus.value = '-' + sumBonus + ' ₽';
       totalSum.innerHTML = sum - sumBonus;
     }
