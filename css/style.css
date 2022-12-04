@@ -1669,15 +1669,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: inline-flex;
 }
 
-.advertisement-preview.xxl-bg .advertisement-preview__img, .advertisement-preview.top-current .advertisement-preview__img {
-    border-color: #ffde00;
-    color: #ffde00;
-}
-
-.advertisement-preview.xxl-bg, .advertisement-preview.color-bg  {
-    border: 3px solid #fbf7da;
-}
-
 .advertisement-preview {
     width: 100%;
     max-width: 705px;

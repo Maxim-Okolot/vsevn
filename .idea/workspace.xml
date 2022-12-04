@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb0c63c6-29a9-425a-ba1a-2856d902a5dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/payment-services.html" beforeDir="false" afterPath="$PROJECT_DIR$/payment-services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
       <workItem from="1669973711247" duration="4631000" />
       <workItem from="1670062765103" duration="39000" />
       <workItem from="1670101306123" duration="2064000" />
-      <workItem from="1670147292178" duration="1728000" />
+      <workItem from="1670147292178" duration="2087000" />
     </task>
     <servers />
   </component>
