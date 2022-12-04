@@ -306,10 +306,6 @@
       totalSum.innerHTML = sum - sumBonus;
     }
 
-    // АКТИВИРУЕМ ОБЛАСТЬ ВЫБОРА УСЛУГ
-    tableServices.setAttribute('aria-disabled', false);
-
-
     // ПОКАЗЫВАЕМ ПРЕВЬЮ ОБЪЯВЛЕНИЯ
     advertisementPreview.classList.remove('hide');
 
@@ -327,37 +323,13 @@
       paymentRadio[i].removeAttribute('disabled');
 
 
-      // ДЕЛАЕМ ДОСТУПНЫМ ПОЛЕ С ВВОДОМ БОНУСОВ
-      let deActivationCheckbox = () => {
-        if (noneRadio.checked) {
-          for (let x = 0; x < paymentRadio.length; x++) {
-            if (paymentRadio[x].type === 'checkbox') {
-              paymentRadio[x].checked = false;
-              paymentRadio[x].setAttribute('disabled', 'disabled');
-              paymentRadio[x].closest('.table-services__tr').setAttribute('disabled', 'disabled');
-            }
-          }
-        } else {
-          for (let x = 0; x < paymentRadio.length; x++) {
-            if (paymentRadio[x].type === 'checkbox') {
-              paymentRadio[x].removeAttribute('disabled');
-              paymentRadio[x].closest('.table-services__tr').removeAttribute('disabled');
-            }
-          }
-        }
-      }
-
-      deActivationCheckbox();
-
-
       // КАЖДОЙ УСЛУГЕ ПРИСУЩ СВОЙ КЛАСС - КОТОРЫЙ ПРИСВАИВАЕТСЯ БЛОКУ ОБЪЯВЛЕНИЯ. ИЗМЕНЕНИЯ ПРОИСХОДЯТ В CSS
 
       paymentRadio[i].onchange = () => {
 
         // БЕЗ ОФОРМЛЕНИЯ
         if (noneRadio.checked) {
-          advertisementWrap.classList.remove('vip', 'top-current', 'vip-mark', 'red-mark', 'color-bg', 'xxl-bg');
-          deActivationCheckbox();
+          advertisementWrap.classList.remove('vip', 'top-current', 'vip-mark', 'red-mark');
         }
 
         // VIP ОБЪЯВЛЕНИЕ
@@ -372,10 +344,7 @@
           advertisementWrap.classList.add('top-current');
         }
 
-
-        if (topRadio.checked || vipRadio.checked) {
-          deActivationCheckbox();
-        }
+        let advertisementContacts = document.querySelector('.advertisement-contacts');
 
         if (!noneRadio.checked && company.closest('.advertisement-preview-title-wrap')) {
           advertisementContacts.prepend(company);
@@ -389,51 +358,50 @@
           }
         }
 
-        if (!noneRadio.checked) {
 
-          let advertisementContacts = document.querySelector('.advertisement-contacts');
-          let bottomContacts = document.querySelector('.advertisement-contacts-bottom');
+        let bottomContacts = document.querySelector('.advertisement-contacts-bottom');
 
-          // УСЛУГА ВЫДЕЛИТЬ XXL
-          if (xxlService.checked) {
-            advertisementWrap.classList.add('xxl-bg');
-          } else {
-            advertisementWrap.classList.remove('xxl-bg');
-          }
+        // УСЛУГА ВЫДЕЛИТЬ XXL
+        if (xxlService.checked) {
+          advertisementWrap.classList.add('xxl-bg');
+        } else {
+          advertisementWrap.classList.remove('xxl-bg');
+        }
 
-          // УСЛУГА ВЫДЕЛИТЬ НАЗВАНИЕ ВАКАНСИИ ЦВЕТОМ
-          if (colorService.checked) {
-            advertisementWrap.classList.add('color-bg');
-          } else {
-            advertisementWrap.classList.remove('color-bg');
-          }
+        // УСЛУГА ВЫДЕЛИТЬ НАЗВАНИЕ ВАКАНСИИ ЦВЕТОМ
+        if (colorService.checked) {
+          advertisementWrap.classList.add('color-bg');
+        } else {
+          advertisementWrap.classList.remove('color-bg');
+        }
 
-          if (colorService.checked || xxlService.checked) {
-            if (!bottomContacts.classList.contains('append')) {
-              let spans = advertisementContacts.querySelectorAll('span');
+        if (colorService.checked || xxlService.checked) {
+          if (!bottomContacts.classList.contains('append')) {
+            let spans = advertisementContacts.querySelectorAll('span');
 
-              let i = 1;
-              while (i < spans.length) {
-                bottomContacts.append(spans[i]);
-                i++;
-              }
-
-              bottomContacts.classList.add('append');
-
+            let i = 1;
+            while (i < spans.length) {
+              bottomContacts.append(spans[i]);
+              i++;
             }
-          } else {
-            if (bottomContacts.classList.contains('append')) {
-              let spans = bottomContacts.querySelectorAll('span');
 
-              let i = 0;
-              while (i < spans.length) {
-                advertisementContacts.append(spans[i]);
-                i++;
-              }
-              bottomContacts.classList.remove('append');
+            bottomContacts.classList.add('append');
+
+          }
+        } else {
+          if (bottomContacts.classList.contains('append')) {
+            let spans = bottomContacts.querySelectorAll('span');
+
+            let i = 0;
+            while (i < spans.length) {
+              advertisementContacts.append(spans[i]);
+              i++;
             }
+            bottomContacts.classList.remove('append');
           }
         }
+
+
 
         sumServices();
       }

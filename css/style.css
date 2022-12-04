@@ -1901,7 +1901,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: none;
 }
 
-.advertisement-preview.xxl-bg .advertisement-title-top, .advertisement-preview.color-bg .advertisement-title-top {
+.advertisement-preview.color-bg .advertisement-title-top {
     display: block;
 }
 
@@ -1924,8 +1924,16 @@ div[data-price = "false"], div[data-operation = "false"] {
     display: block;
 }
 
-.advertisement-preview.xxl-bg .advertisement-title-top {
+.advertisement-preview.color-bg .advertisement-title-top {
     display: block;
+}
+
+.advertisement-preview.color-bg .advertisement-title-company {
+    display: none;
+}
+
+.advertisement-preview.xxl-bg .advertisement-title-name {
+    text-transform: uppercase;
 }
 
 .table-services__tr[disabled='disabled'] {
