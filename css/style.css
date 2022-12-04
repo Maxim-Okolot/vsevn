@@ -1327,6 +1327,10 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding: 10px;
 }
 
+.table-services__tr > div:last-child .services-desc:before {
+    content: none;
+}
+
 .table-services__title > div:first-child, .table-services__tr > div:first-child {
     border-right: 1px solid #d7d7cb;
 }
@@ -1407,7 +1411,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 .table-services__name {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
     padding: 10px;
@@ -1449,6 +1453,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 .placement {
     text-align: center;
     white-space: nowrap;
+    font-size: 19px;
 }
 
 .advertisement-confirm {
