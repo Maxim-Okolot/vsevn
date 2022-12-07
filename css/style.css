@@ -291,11 +291,26 @@ mark {
     height: 100%;
     padding: 10px;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: 10px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid #e4ddb4;
+}
+
+.current-page-flag {
+    font: 400 14px/16px "ZabraProTest3-Regular", sans-serif;
+    color: #ff0000;
+    margin: 0 0 0 auto;
+    transition: var(--normal);
+    z-index: 10;
+}
+
+.panel-nav__item:hover .current-page-flag {
+    color: #fff;
 }
 
 .panel-nav__item.current {
@@ -314,7 +329,7 @@ mark {
     top: -100px;
     left: 0;
     z-index: 0;
-    border-radius: 0 50% 50% 50%;
+    border-radius: 0 50% 50% 40%;
 }
 
 .panel-nav__item:hover:before {
