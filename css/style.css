@@ -1824,6 +1824,11 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding-right: 15px;
 }
 
+.xxl-bg .advertisement-contacts span, .xxl-bg .advertisement-contacts-bottom span {
+    font-family: "ZabraProTest3-Medium", sans-serif;
+    font-weight: bold;
+}
+
 .advertisement-contacts span:after, .advertisement-contacts-bottom span:after {
     content: '';
     width: 1px;
@@ -1946,6 +1951,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 
 .advertisement-preview.xxl-bg .advertisement-title-name {
     text-transform: uppercase;
+    font-family: 'ZabraProTest3-Medium', sans-serif;
 }
 
 .table-services__tr[disabled='disabled'] {
@@ -1963,7 +1969,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
-.advertisement-preview.xxl-bg .advertisement-contacts span, .advertisement-preview.color-bg .advertisement-contacts span {
+.advertisement-preview.xxl-bg .advertisement-contacts span {
     font-family: "ZabraProTest3-Medium", sans-serif;
     color: #343434;
     font-weight: bold;

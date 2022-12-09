@@ -324,11 +324,26 @@
 
       // КАЖДОЙ УСЛУГЕ ПРИСУЩ СВОЙ КЛАСС - КОТОРЫЙ ПРИСВАИВАЕТСЯ БЛОКУ ОБЪЯВЛЕНИЯ. ИЗМЕНЕНИЯ ПРОИСХОДЯТ В CSS
 
+
       paymentRadio[i].onchange = () => {
+
+        let bottomContacts = document.querySelector('.advertisement-contacts-bottom');
+        let advertisementContacts = document.querySelector('.advertisement-contacts');
 
         // БЕЗ ОФОРМЛЕНИЯ
         if (noneRadio.checked) {
           advertisementWrap.classList.remove('vip', 'top-current', 'vip-mark', 'red-mark');
+
+          if (bottomContacts.classList.contains('append')) {
+            let spans = bottomContacts.querySelectorAll('span');
+
+            let i = 0;
+            while (i < spans.length) {
+              advertisementContacts.append(spans[i]);
+              i++;
+            }
+            bottomContacts.classList.remove('append');
+          }
         }
 
         // VIP ОБЪЯВЛЕНИЕ
@@ -343,7 +358,7 @@
           advertisementWrap.classList.add('top-current');
         }
 
-        let advertisementContacts = document.querySelector('.advertisement-contacts');
+
 
         if (!noneRadio.checked && company.closest('.advertisement-preview-title-wrap')) {
           advertisementContacts.prepend(company);
@@ -358,7 +373,7 @@
         }
 
 
-        let bottomContacts = document.querySelector('.advertisement-contacts-bottom');
+
 
         // УСЛУГА ВЫДЕЛИТЬ XXL
         if (xxlService.checked) {
@@ -374,33 +389,33 @@
           advertisementWrap.classList.remove('color-bg');
         }
 
-        if (colorService.checked || xxlService.checked) {
-          if (!bottomContacts.classList.contains('append')) {
-            let spans = advertisementContacts.querySelectorAll('span');
+        if (!noneRadio.checked) {
+          if (colorService.checked || xxlService.checked) {
+            if (!bottomContacts.classList.contains('append')) {
+              let spans = advertisementContacts.querySelectorAll('span');
 
-            let i = 1;
-            while (i < spans.length) {
-              bottomContacts.append(spans[i]);
-              i++;
+              let i = 1;
+              while (i < spans.length) {
+                bottomContacts.append(spans[i]);
+                i++;
+              }
+
+              bottomContacts.classList.add('append');
+
             }
+          } else {
+            if (bottomContacts.classList.contains('append')) {
+              let spans = bottomContacts.querySelectorAll('span');
 
-            bottomContacts.classList.add('append');
-
-          }
-        } else {
-          if (bottomContacts.classList.contains('append')) {
-            let spans = bottomContacts.querySelectorAll('span');
-
-            let i = 0;
-            while (i < spans.length) {
-              advertisementContacts.append(spans[i]);
-              i++;
+              let i = 0;
+              while (i < spans.length) {
+                advertisementContacts.append(spans[i]);
+                i++;
+              }
+              bottomContacts.classList.remove('append');
             }
-            bottomContacts.classList.remove('append');
           }
         }
-
-
 
         sumServices();
       }
