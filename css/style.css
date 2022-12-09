@@ -1937,7 +1937,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     font: 400 16px 'ZabraProTest3-Regular', sans-serif;
 }
 
-.xxl-bg .advertisement-more-info, .color-bg .advertisement-more-info {
+.xxl-bg .advertisement-more-info {
     display: block;
 }
 
