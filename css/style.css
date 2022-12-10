@@ -1343,7 +1343,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding: 10px;
 }
 
-.table-services__tr > div:last-child .services-desc:before {
+.table-services__title + .table-services__tr .services-desc:before {
     content: none;
 }
 
