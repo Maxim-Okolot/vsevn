@@ -1721,6 +1721,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    position: relative;
 }
 
 .advertisement-preview-title {
@@ -1737,6 +1738,8 @@ div[data-price = "false"], div[data-operation = "false"] {
 .advertisement-rating {
     display: flex;
     align-items: center;
+    right: 0;
+    top: 67px;
 }
 
 .advertisement-rating__item svg, .add-favourites svg {
@@ -1825,7 +1828,8 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding-right: 15px;
 }
 
-.xxl-bg .advertisement-contacts span, .xxl-bg .advertisement-contacts-bottom span {
+.xxl-bg.vip .advertisement-contacts span, .xxl-bg.vip .advertisement-contacts-bottom span,
+.xxl-bg.top-current .advertisement-contacts span, .xxl-bg.top-current .advertisement-contacts-bottom span {
     font-family: "ZabraProTest3-Medium", sans-serif;
     font-weight: bold;
 }
@@ -1959,8 +1963,47 @@ div[data-price = "false"], div[data-operation = "false"] {
     font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
-.advertisement-preview.xxl-bg .advertisement-contacts span {
+.advertisement-preview.xxl-bg.vip .advertisement-contacts span,
+.advertisement-preview.xxl-bg.top-current .advertisement-contacts span {
     font-family: "ZabraProTest3-Medium", sans-serif;
     color: #343434;
     font-weight: bold;
+}
+
+.advertisement-preview.vip .advertisement-rating, .advertisement-preview.top-current .advertisement-rating {
+    position: absolute;
+}
+
+.advertisement-preview.top-current .advertisement-rating, .advertisement-preview.top-current.color-bg .advertisement-rating,
+.advertisement-preview.vip.color-bg .advertisement-rating{
+    top: 44px;
+}
+
+.advertisement-preview.vip .advertisement-rating {
+    top: 70px;
+}
+
+.advertisement-preview.top-current.xxl-bg .advertisement-rating {
+    top: 40px;
+}
+
+.advertisement-preview.top-current.color-bg .advertisement-rating {
+    top: 46px;
+}
+
+.advertisement-preview.vip.xxl-bg .advertisement-rating {
+    top: 76px;
+}
+
+.advertisement-preview.vip.color-bg .advertisement-rating {
+    top: 80px;
+}
+
+.advertisement-preview.top-current .advertisement-contacts, .advertisement-preview.vip .advertisement-contacts {
+    display: block;
+}
+
+.advertisement-preview.top-current.xxl-bg .advertisement-contacts,
+.advertisement-preview.top-current.color-bg .advertisement-contacts {
+    display: flex;
 }

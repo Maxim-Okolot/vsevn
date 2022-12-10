@@ -350,12 +350,22 @@
         if (vipRadio.checked) {
           advertisementWrap.classList.remove('top-current', 'vip-mark', 'red-mark');
           advertisementWrap.classList.add('vip');
+          addBr();
         }
 
         // ТОП ОФОРМЛЕНИЕ
         if (topRadio.checked) {
           advertisementWrap.classList.remove('vip', 'vip-mark', 'red-mark');
           advertisementWrap.classList.add('top-current');
+          addBr();
+        }
+
+        function addBr () {
+          if (!advertisementContacts.querySelector('br')) {
+            let spans = advertisementContacts.querySelectorAll('span');
+            let el = document.createElement('br');
+            spans[0].before(el);
+          }
         }
 
 
@@ -371,9 +381,6 @@
             company.classList.add('advertisement-title-company');
           }
         }
-
-
-
 
         // УСЛУГА ВЫДЕЛИТЬ XXL
         if (xxlService.checked) {
