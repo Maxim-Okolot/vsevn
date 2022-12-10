@@ -2311,7 +2311,7 @@ table {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items: baseline;
+    align-items: center;
     max-width: none;
     column-gap: 25px;
 }
