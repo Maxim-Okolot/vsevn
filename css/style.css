@@ -309,7 +309,7 @@ mark {
     z-index: 10;
 }
 
-.panel-nav__item:hover .current-page-flag {
+.panel-nav__item:hover .current-page-flag, .panel-nav__item.current .current-page-flag {
     color: #fff;
 }
 
@@ -332,7 +332,7 @@ mark {
     border-radius: 0 50% 50% 40%;
 }
 
-.panel-nav__item:hover:before {
+.panel-nav__item:hover:before, .panel-nav__item.current:before {
     animation: bg-hover 1s alternate forwards;
 }
 
@@ -360,7 +360,8 @@ mark {
     transition: 1s;
 }
 
-.panel-nav__item:hover .panel-nav__title, .panel-nav__item:hover .panel-nav__text {
+.panel-nav__item:hover .panel-nav__title, .panel-nav__item:hover .panel-nav__text,
+.panel-nav__item.current .panel-nav__text, .panel-nav__item.current .panel-nav__title {
     color: #fff !important;
 }
 
