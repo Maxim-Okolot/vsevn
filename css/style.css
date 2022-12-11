@@ -1654,6 +1654,15 @@ div[data-price = "false"], div[data-operation = "false"] {
     border-bottom: 1px solid #d7d7cb;
 }
 
+.advertisement-preview-wrap__title {
+    max-width: 705px;
+    padding: 0 25px;
+    color: var(--red);
+    font: 500 18px/1.4 "ZabraProTest3-Medium", sans-serif;
+    margin: 0 auto 20px;
+    text-transform: uppercase;
+}
+
 .advertisement-preview.vip {
     border: 2px solid #ffde00 !important;
     border-radius: 5px;
