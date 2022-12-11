@@ -366,9 +366,8 @@ mark {
 }
 
 .panel-nav__text {
-    font: 300 18px sans-serif;
+    font: 300 18px/24px sans-serif;
     color: #665800;
-    line-height: 24px;
 }
 
 .panel-nav__item:nth-child(1) .panel-nav__title {
@@ -1339,8 +1338,9 @@ div[data-price = "false"], div[data-operation = "false"] {
     border-bottom: 1px solid #d7d7cb;
 }
 
-.table-services__title > div,  .table-services__tr > div:not(div:first-child) {
+.table-services__title > div, .table-services__tr > div:not(div:first-child) {
     padding: 10px;
+    position: relative;
 }
 
 .table-services__title + .table-services__tr .services-desc:before {
@@ -1385,7 +1385,6 @@ div[data-price = "false"], div[data-operation = "false"] {
     position: absolute;
     font-size: 18px;
     background: #fff;
-    max-width: 450px;
     width: 100%;
     opacity: 0;
     z-index: -1;
@@ -1396,6 +1395,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     transition: 0.5s;
     box-shadow: 0 0 10px 0 #a9a7a7e8;
     text-align: justify;
+    left: 0;
 }
 
 .table-services__tr > div:not(div:first-child):hover .full-text {
