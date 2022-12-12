@@ -1838,7 +1838,7 @@ div[data-price = "false"], div[data-operation = "false"] {
 }
 
 .xxl-bg.vip .advertisement-contacts span, .xxl-bg.vip .advertisement-contacts-bottom span,
-.xxl-bg.top-current .advertisement-contacts span, .xxl-bg.top-current .advertisement-contacts-bottom span {
+.xxl-bg.top-current .advertisement-contacts span {
     font-family: "ZabraProTest3-Medium", sans-serif;
     font-weight: bold;
 }
