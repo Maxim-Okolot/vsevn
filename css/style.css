@@ -1837,8 +1837,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding-right: 15px;
 }
 
-.xxl-bg.vip .advertisement-contacts span, .xxl-bg.vip .advertisement-contacts-bottom span,
-.xxl-bg.top-current .advertisement-contacts span {
+.xxl-bg.vip .advertisement-contacts span, .xxl-bg.top-current .advertisement-contacts span {
     font-family: "ZabraProTest3-Medium", sans-serif;
     font-weight: bold;
 }
@@ -1968,11 +1967,14 @@ div[data-price = "false"], div[data-operation = "false"] {
     font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
-.advertisement-preview.xxl-bg.vip .advertisement-contacts span,
-.advertisement-preview.xxl-bg.top-current .advertisement-contacts span {
+.advertisement-preview.xxl-bg.vip .advertisement-contacts span {
     font-family: "ZabraProTest3-Medium", sans-serif;
     color: #343434;
     font-weight: bold;
+}
+
+.advertisement-preview.xxl-bg.top-current .advertisement-contacts span {
+    font-family: "ZabraProTest3-Regular", sans-serif;
 }
 
 .advertisement-preview.vip .advertisement-rating, .advertisement-preview.top-current .advertisement-rating {
@@ -2011,4 +2013,18 @@ div[data-price = "false"], div[data-operation = "false"] {
 .advertisement-preview.top-current.xxl-bg .advertisement-contacts,
 .advertisement-preview.top-current.color-bg .advertisement-contacts {
     display: flex;
+}
+
+
+.fff {
+    position: relative;
+    height: 40px;
+    width: 100px;
+}
+
+.fff__span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
