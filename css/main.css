@@ -2319,7 +2319,7 @@ table {
 .payment-block p {
     background: #fffbdb;
     padding: 0 15px;
-    height: 40px;
+    min-height: 40px;
     border: 1px solid #ffdd00;
     color: #665800;
     display: flex;
