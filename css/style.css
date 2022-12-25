@@ -664,7 +664,7 @@ mark {
 
 .popup-wrap {
     width: 100%;
-    max-width: 1390px;
+    max-width: calc(100% - 150px);
     background-color: #fff;
     position: relative;
     padding: 50px 50px 40px;
@@ -767,6 +767,7 @@ mark {
     box-shadow: 0 0 10px rgba(17, 33, 60, 0.2);
     display: grid;
     grid-template-columns: 1fr max-content;
+    align-items: center;
 }
 
 .form-date {
@@ -1029,7 +1030,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     height: 30px;
     color: #000;
     text-align: center;
-    border: 1px solid #000;
+    border: 1px solid #d7d7cb94;
     margin: 0 15px;
 }
 
@@ -1449,8 +1450,16 @@ div[data-price = "false"], div[data-operation = "false"] {
     padding: 10px;
 }
 
-.table-services__check .btn-radio, .table-services__label, .advertisement__item .btn-radio {
-    margin: 0 15px 0 0;
+.table-services__check .btn-radio, .table-services__label {
+    margin: 0;
+}
+
+.advertisement__item .btn-radio {
+    margin: 0 30px 0 0;
+}
+
+.advertisement__id {
+    margin-left: 15px;
 }
 
 .table-services__name {
@@ -1489,10 +1498,15 @@ div[data-price = "false"], div[data-operation = "false"] {
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .advertisement__desc {
-    margin: 0 30px;
+    margin: 0 30px 0 0;
+}
+
+.advertisement__desc, .advertisement__date, .advertisement__id {
+    font-size: 18px;
 }
 
 .placement {
@@ -1690,6 +1704,7 @@ div[data-price = "false"], div[data-operation = "false"] {
     font: 500 18px/1.4 "ZabraProTest3-Medium", sans-serif;
     margin: 0 auto 20px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .advertisement-preview.vip {
@@ -2046,6 +2061,24 @@ div[data-price = "false"], div[data-operation = "false"] {
     .cookie__wrapper {
         padding: 15px 20px;
     }
+
+
+}
+
+@media screen and (max-width: 1440px) {
+
+}
+
+@media screen and (max-width: 1180px) {
+    .main__info-cards {
+       display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 30px 20px;
+    }
+
+    .main__info-card {
+        max-width: 100%;
+    }
 }
 
 
@@ -2072,6 +2105,18 @@ div[data-price = "false"], div[data-operation = "false"] {
 
     .panel-nav__item:first-child {
         margin: 0;
+    }
+
+    .table-services__tr {
+        grid-template-columns: 1fr;
+    }
+
+    .table-services__title {
+        display: none;
+    }
+
+    .table-services__name {
+        align-items: flex-start;
     }
 }
 
@@ -2115,6 +2160,51 @@ div[data-price = "false"], div[data-operation = "false"] {
     .breadcrumbs__link {
         font-size: 3vw;
     }
+
+    .advertisement-confirm, .payment__result-block {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .services-sum div:not(.services-sum__total) {
+        grid-template-columns: 1fr;
+    }
+
+    .services-sum .services-sum__total {
+        grid-template-columns: 1fr auto;
+    }
+
+    .advertisement-confirm__cancel {
+        margin: 15px 0 0;
+    }
+
+    .advertisement-confirm__choose, .advertisement-confirm__cancel {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .close-popup {
+        width: 30px;
+        right: 5px;
+        stroke: #000;
+        top: 5px;
+    }
+
+    .popup-wrap {
+        max-width: calc(100% - 50px);
+        padding: 50px 20px;
+    }
+
+    .payment-block p {
+        margin: 0 0 20px;
+        font-size: 16px;
+    }
+
+    .payment__result-block {
+        align-items: flex-end;
+    }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -2146,6 +2236,22 @@ div[data-price = "false"], div[data-operation = "false"] {
         margin: 20px 0 0;
     }
 
+    .create {
+        grid-template-columns: 1fr;
+    }
+
+    .create__title {
+        text-align: center;
+    }
+
+    .services-sum div {
+        font-size: 18px;
+    }
+
+    .main__info-cards {
+        grid-template-columns: 1fr;
+        grid-gap: 30px 20px;
+    }
 
 }
 
@@ -2158,6 +2264,10 @@ div[data-price = "false"], div[data-operation = "false"] {
     .panel-nav__text {
         font-size: 14px;
         line-height: 140%;
+    }
+
+    .services-sum div {
+        font-size: 13px;
     }
 
 }
