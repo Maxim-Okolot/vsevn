@@ -1010,6 +1010,38 @@ div[data-price = "false"], div[data-operation = "false"] {
     background-color: #bca200;
 }
 
+.pagination-wrap, .pagination-page-value {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pagination-page-value {
+    margin-left: 30px;
+}
+
+.pagination-page-value span {
+    font-size: 18px;
+}
+
+.pagination-page-value input {
+    width: 50px;
+    height: 30px;
+    color: #000;
+    text-align: center;
+    border: 1px solid #000;
+    margin: 0 15px;
+}
+
+.pagination-page-value button {
+    width: 35px;
+    height: 35px;
+    background-color: #fbda00;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 7px;
+}
+
 .history-bonus-wrap {
     grid-column: 1/3;
     margin-top: 30px;
